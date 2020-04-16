@@ -13,7 +13,6 @@ const SearchForm = (props) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
-    console.log(state);
   };
 
   const handleSubmit = (event) => {
@@ -28,7 +27,7 @@ const SearchForm = (props) => {
         console.log(e);
       }
     } else {
-      alert('Please fill all fields');
+      alert('Please fill in all fields');
     }
   };
   const { from1, from2, departDate, returnDate } = state;
@@ -77,7 +76,7 @@ const SearchForm = (props) => {
           />
         </div>
         <div className="ButtonDiv">
-          <button type="submit"> Search Meeting Locations</button>
+          <button type="submit"> Lets Meet There!</button>
         </div>
       </form>
     </div>
