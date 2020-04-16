@@ -1,0 +1,27 @@
+Lets Meet There App Plan
+
+TOOLS --
+REACT 
+BOOTSTRAP
+REDUX
+
+APIS -----
+Skyscanner API from RapidAPI.com
+
+MVP ----
+
+Gives the combined results of two different "I'll go anywhere" searches on Skyscanner.
+
+Extras ----
+
+Responsive - works on mobile
+- Can add a third person to the search
+- Sort by options - Price - time difference between flights - no early morning flights 
+- can pick all potential flights and save as a wishlist
+- can email the wishlist.
+
+Components ----
+
+Dashboard 
+Flights List
+Flight Tile
