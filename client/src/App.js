@@ -13,10 +13,11 @@ function App() {
     carriers: [],
   };
   const [loading, setLoading] = useState(false);
-  const [quotes, setQuotes] = useState(quoteFormat);
-  const [quotes2, setQuotes2] = useState(quoteFormat);
+  // const [quotes, setQuotes] = useState(quoteFormat);
+  // const [quotes2, setQuotes2] = useState(quoteFormat);
   const [matched, setMatched] = useState([]);
   const [places, setPlaces] = useState({});
+  const [carriers, setCarriers] = useState({});
 
   const searchFlights = async (from1, from2, departDate, returnDate) => {
     setLoading(true);
@@ -28,7 +29,7 @@ function App() {
           places: data.Places,
           carriers: data.Carriers,
         };
-        setQuotes(quote);
+        // setQuotes(quote);
         return quote;
       }
     );
@@ -39,16 +40,46 @@ function App() {
           places: data.Places,
           carriers: data.Carriers,
         };
-        setQuotes2(quote);
+        // setQuotes2(quote);
         return quote;
       }
     );
     const quotesA = await search1;
     const quotesB = await search2;
-    setPlaces([...quotesA.places, ...quotesB.places]);
-    console.log(places);
+    const allPlaces = createDict(quotesA.places, quotesB.places, 'PlaceId');
+    const allCarriers = createDict(
+      quotesA.carriers,
+      quotesB.carriers,
+      'CarrierId'
+    );
+
+    setPlaces(allPlaces);
+    setCarriers(allCarriers);
     setMatched(matchFlights(quotesA, quotesB)); // Careful quotes and setQuotes may have not been set at this point.
     setLoading(false);
+  };
+
+  const ArrToDict = (array, key) => {
+    const initialValue = {};
+    return array.reduce((obj, item) => {
+      return {
+        ...obj,
+        [item[key]]: item,
+      };
+    }, initialValue);
+  };
+  const createDict = (arrOfObj1, arrOfObj2, key) => {
+    let combined = [...arrOfObj1, ...arrOfObj2];
+    console.log('createDict -> combined', combined[0][key]);
+
+    let combined2 = Array.from(
+      new Set(combined.map((a) => a[key])) // creates a new array of just the placeIDs and converts it to a set (no duplicates)
+    ).map((num) => {
+      // then maps this new array creating another new array of the unique placeID's from the original array.
+      return combined.find((a) => a[key] === num); // find returns the  first element that has the same PlaceId
+    });
+    console.log('createDict -> combined2', combined2);
+    return ArrToDict(combined2, key);
   };
 
   // Matched results format {
@@ -59,10 +90,7 @@ function App() {
   const matchFlights = (quotes, quotes2) => {
     const unionSet = {};
 
-    // each union item should be {quote: {quoteId: 1.... OutboundLeg{ DestinationId: 90711}},quote2:{quoteId: 58.... OutboundLeg{ DestinationId: 90711 }}}
-    //{
     for (let i = 0; i < quotes.quotes.length; i++) {
-      // console.log(quotes.quotes[i].OutboundLeg.DestinationId);
       unionSet[quotes.quotes[i].OutboundLeg.DestinationId]
         ? unionSet[quotes.quotes[i].OutboundLeg.DestinationId][0][0].push(
             quotes.quotes[i]
@@ -72,8 +100,6 @@ function App() {
             [],
           ]);
     }
-    console.log(unionSet);
-    console.log(Object.keys(unionSet).length);
     for (let i = 0; i < quotes2.quotes.length; i++) {
       unionSet[quotes2.quotes[i].OutboundLeg.DestinationId]
         ? unionSet[quotes2.quotes[i].OutboundLeg.DestinationId][1].push([
@@ -84,12 +110,10 @@ function App() {
             [[quotes2.quotes[i]]],
           ]);
     }
-    console.log(unionSet);
     const filteredSet = pickBy(
       unionSet,
       (item) => item[0].length && item[1].length
     );
-    console.log(filteredSet);
     return filteredSet;
   };
 
@@ -100,7 +124,11 @@ function App() {
         <div>{loading ? <h1>LOADING....</h1> : <h1>LOADED</h1>}</div>
         {loading ? null : console.log(places)}
         <SearchForm searchFlights={searchFlights}></SearchForm>
-        <FlightList matchedFlights={matched} places={places}></FlightList>
+        <FlightList
+          matchedFlights={matched}
+          places={places}
+          carriers={carriers}
+        ></FlightList>
       </header>
     </div>
   );
