@@ -3,7 +3,6 @@ import './flightList.css';
 import FlightTile from '../../Components/FlightTile/flightTile';
 
 export default ({ matchedFlights, places, carriers }) => {
-  console.log(matchedFlights);
   return (
     <div>
       <div className="tile_Container">

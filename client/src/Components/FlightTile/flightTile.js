@@ -2,8 +2,6 @@ import React from 'react';
 import './flightTile.css';
 
 const FlightTile = ({ flight1, flight2, location, places, carriers }) => {
-  // console.log(flight1);
-  // console.log(places);
   return (
     <div className="flightTile">
       <div className="flight1">

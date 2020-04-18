@@ -14,7 +14,6 @@ function App() {
 
   const getPlace = async (query) => {
     return ApiClient.getPlace(query).then((res) => {
-      console.log(placeId(res, query));
       return placeId(res, query);
     });
   };
@@ -76,7 +75,6 @@ function App() {
     setPlaces(allPlaces);
     setCarriers(allCarriers);
     const matchedflights = matchFlights(quotesA, quotesB);
-    console.log(matchedflights);
     setMatched(matchedflights);
     setLoading(false);
   };
