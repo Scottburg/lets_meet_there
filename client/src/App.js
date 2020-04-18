@@ -135,7 +135,9 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header"></header>
+      <body className="App-body">
+        <h1>Search for a place to meet</h1>
         <SearchForm
           searchFlights={searchFlights}
           getPlace={getPlace}
@@ -152,7 +154,7 @@ function App() {
             ></FlightList>
           )}
         </div>
-      </header>
+      </body>
     </div>
   );
 }

@@ -1,11 +1,13 @@
 .flightTile {
   display: flex;
+  align-content: center;
   color: darkgrey;
   background-color: mintcream;
-  margin: 10px;
+  margin: 20px;
   border: 1px solid wheat;
   border-radius: 15px;
   box-shadow: 0 1px 1px 3px rgba(240, 240, 240, 0.5);
+  width: 80vw;
 }
 .flight1 {
   display: flex;

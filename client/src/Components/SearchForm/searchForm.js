@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 import './searchForm.css';
+import 'react-dates/initialize';
+import { DateRangePicker } from 'react-dates';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-dates/lib/css/_datepicker.css';
 
 const SearchForm = ({ searchFlights, getPlace }) => {
   const initialState = {
     from1: '',
     from2: '',
-    departDate: '',
-    returnDate: '',
   };
   const [state, setState] = useState(initialState);
+  const [focus, setFocus] = useState(null);
+
+  const [dateRange, setdateRange] = useState({
+    startDate: null,
+    endDate: null,
+  });
+
+  const handleOnDateChange = (startDate, endDate) =>
+    setdateRange(startDate, endDate);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -17,13 +28,13 @@ const SearchForm = ({ searchFlights, getPlace }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(state);
-    const { from1, from2, departDate, returnDate } = state;
-    if (from1 && from2 && departDate && returnDate) {
+    const { from1, from2 } = state;
+    if (from1 && from2 && dateRange) {
       try {
         const fmtFrom1 = await getPlace(from1);
         const fmtFrom2 = await getPlace(from2);
-        // from2 = getPlace(from2);
+        const departDate = dateRange.startDate.format('YYYY-MM-DD');
+        const returnDate = dateRange.endDate.format('YYYY-MM-DD');
         searchFlights(fmtFrom1, fmtFrom2, departDate, returnDate);
         setState(initialState);
       } catch (e) {
@@ -33,10 +44,10 @@ const SearchForm = ({ searchFlights, getPlace }) => {
       alert('Please fill in all fields');
     }
   };
-  const { from1, from2, departDate, returnDate } = state;
+  const { startDate, endDate } = dateRange;
+  const { from1, from2 } = state;
   return (
-    <div className="form_container">
-      <h1>Search for a place to meet</h1>
+    <div className="form-container">
       <form className="form" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="from1">From</label>
@@ -45,40 +56,39 @@ const SearchForm = ({ searchFlights, getPlace }) => {
             name="from1"
             onChange={handleChange}
             value={from1}
-            placeholder="Insert the first location"
+            placeholder="first location"
           />
         </div>
         <div>
-          <label htmlFor="from2">And from</label>
+          <label htmlFor="from2">And</label>
           <input
             type="text"
             name="from2"
             onChange={handleChange}
             value={from2}
-            placeholder="Insert the other location"
+            placeholder="other location"
           />
         </div>
-        <div>
-          <label htmlFor="departDate">Depart</label>
-          <input
-            type="text"
-            name="departDate"
-            onChange={handleChange}
-            value={departDate}
-            placeholder="Insert departure date"
+        <div className="datePicker">
+          <DateRangePicker
+            startDatePlaceholderText="Depart"
+            startDate={startDate}
+            onDatesChange={handleOnDateChange}
+            endDatePlaceholderText="Return"
+            endDate={endDate}
+            numberOfMonths={2}
+            displayFormat="MMM D"
+            showClearDates={true}
+            focusedInput={focus}
+            onFocusChange={(focus) => {
+              setFocus(focus);
+            }}
+            startDateId="startDate"
+            endDateId="endDate"
+            minimumNights={0}
           />
         </div>
-        <div>
-          <label htmlFor="returnDate">Return</label>
-          <input
-            type="text"
-            name="returnDate"
-            onChange={handleChange}
-            value={returnDate}
-            placeholder="Insert return date"
-          />
-        </div>
-        <div className="ButtonDiv">
+        <div className="buttonDiv">
           <button type="submit"> Lets Meet There!</button>
         </div>
       </form>
