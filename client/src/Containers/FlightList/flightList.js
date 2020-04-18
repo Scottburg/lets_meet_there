@@ -9,7 +9,7 @@ export default ({ matchedFlights, places, carriers }) => {
       <div className="tile_Container">
         {Object.keys(matchedFlights).map((key) => (
           <FlightTile
-            flight1={matchedFlights[key][0][0][0]} //extra []  here sort it out
+            flight1={matchedFlights[key][0][0][0]}
             flight2={matchedFlights[key][1][0][0]}
             location={key}
             places={places}

@@ -1,0 +1,24 @@
+.flightTile {
+  display: flex;
+  color: darkgrey;
+  background-color: mintcream;
+  margin: 10px;
+  border: 1px solid wheat;
+  border-radius: 15px;
+  box-shadow: 0 1px 1px 3px rgba(240, 240, 240, 0.5);
+}
+.flight1 {
+  display: flex;
+  /* border: 1px solid black; */
+  width: 40%;
+}
+.flight2 {
+  display: flex;
+  /* border: 1px solid black; */
+  width: 40%;
+}
+.bothFlights {
+  display: flex;
+  /* border: 1px solid black; */
+  width: 20%;
+}

@@ -21,4 +21,14 @@ export default {
       }
     );
   },
+  getPlace: (query) => {
+    return fetchRequest(`${process.env.REACT_APP_API_PLACE_URL}${query}`, {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-host':
+          'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
+        'x-rapidapi-key': process.env.REACT_APP_API_KEY,
+      },
+    });
+  },
 };
