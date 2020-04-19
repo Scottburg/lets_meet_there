@@ -3,12 +3,31 @@ import './flightTile.css';
 
 const FlightTile = ({ flight1, flight2, location, places, carriers }) => {
   console.log(flight1);
+  const bookingUrl = 'https://www.skyscanner.net/transport/flights/';
+
   return (
     <div className="flightTile">
       <div className="flight1">
-        <h3>{places[flight1.OutboundLeg.OriginId].CityName}</h3>€
-        {flight1.MinPrice}
-        <div>{flight1.Direct ? 'Direct Flight' : 'Indirect Flight'}</div>
+        <div className="tripDetails">
+          <h3>{places[flight1.OutboundLeg.OriginId].CityName}</h3>€
+          {flight1.MinPrice}
+          <div>{flight1.Direct ? 'Direct Flight' : 'Indirect Flight'}</div>
+          <a
+            href={`${bookingUrl}${places[
+              flight1.OutboundLeg.OriginId
+            ].CityName.slice(0, 4)}/${places[location].CityName.slice(
+              0,
+              4
+            )}/${flight1.OutboundLeg.DepartureDate.slice(
+              0,
+              10
+            )}/${flight1.InboundLeg.DepartureDate.slice(0, 10)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book
+          </a>
+        </div>
         <div className="outbound">
           <div>{carriers[flight1.OutboundLeg.CarrierIds[0]].Name}</div>
           <div>{places[flight1.OutboundLeg.OriginId].Name}</div>
@@ -21,9 +40,8 @@ const FlightTile = ({ flight1, flight2, location, places, carriers }) => {
         </div>
       </div>
       <div className="bothFlights">
-        <h3>
-          {places[location].CityName} - {places[location].CountryName}
-        </h3>
+        <h3>{places[location].CityName}</h3>
+        <h4>{places[location].CountryName}</h4>
         <h4>€{flight2.MinPrice + flight1.MinPrice}</h4>
       </div>
       <div className="flight1">
@@ -37,9 +55,26 @@ const FlightTile = ({ flight1, flight2, location, places, carriers }) => {
           <div>{places[flight2.InboundLeg.OriginId].Name}</div>
           <div>{flight2.InboundLeg.DepartureDate.slice(0, 10)}</div>
         </div>
-        <div>{flight2.Direct ? 'Direct Flight' : 'Indirect Flight'}</div>
-        <div>€{flight2.MinPrice}</div>
-        <h3>{places[flight2.OutboundLeg.OriginId].CityName}</h3>
+        <div className="tripDetails">
+          <h3>{places[flight2.OutboundLeg.OriginId].CityName}</h3>
+          <div>€{flight2.MinPrice}</div>
+          <div>{flight2.Direct ? 'Direct Flight' : 'Indirect Flight'}</div>
+          <a
+            href={`${bookingUrl}${places[
+              flight2.OutboundLeg.OriginId
+            ].CityName.slice(0, 4)}/${places[location].CityName.slice(
+              0,
+              4
+            )}/${flight2.OutboundLeg.DepartureDate.slice(
+              0,
+              10
+            )}/${flight2.InboundLeg.DepartureDate.slice(0, 10)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book
+          </a>
+        </div>
       </div>
     </div>
   );

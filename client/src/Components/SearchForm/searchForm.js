@@ -49,7 +49,7 @@ const SearchForm = ({ searchFlights, getPlace }) => {
   return (
     <div className="form-container">
       <form className="form" onSubmit={handleSubmit}>
-        <div>
+        <div className="from1">
           <label htmlFor="from1">From</label>
           <input
             type="text"
@@ -59,7 +59,7 @@ const SearchForm = ({ searchFlights, getPlace }) => {
             placeholder="first location"
           />
         </div>
-        <div>
+        <div className="from2">
           <label htmlFor="from2">And</label>
           <input
             type="text"

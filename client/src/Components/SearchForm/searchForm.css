@@ -1,6 +1,9 @@
 .form-container {
   display: flex;
   align-content: center;
+  text-align: center;
 }
-.form {
+.from1 {
+  width: fit-content;
+  display: inline-block;
 }
