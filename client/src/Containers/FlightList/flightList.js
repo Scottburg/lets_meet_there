@@ -3,15 +3,16 @@ import './flightList.css';
 import FlightTile from '../../Components/FlightTile/flightTile';
 
 export default ({ matchedFlights, places, carriers }) => {
+  console.log(matchedFlights);
   return (
     <div>
       <div className="tile_Container">
-        {Object.keys(matchedFlights).map((key) => (
+        {matchedFlights.map((el) => (
           <FlightTile
-            key={key}
-            flight1={matchedFlights[key][0][0][0]}
-            flight2={matchedFlights[key][1][0][0]}
-            location={key}
+            key={el[0]}
+            flight1={el[1][0][0]}
+            flight2={el[2][0][0]}
+            location={el[0]}
             places={places}
             carriers={carriers}
           ></FlightTile>

@@ -5,6 +5,7 @@ import './App.css';
 import SearchForm from './Components/SearchForm/searchForm';
 import FlightList from './Containers/FlightList/flightList';
 import { pickBy } from 'lodash';
+import helpers from './helpers';
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -21,7 +22,7 @@ function App() {
   const placeId = (res, query) => {
     if (res.Places.length === 0) return null;
     if (res.Places.length === 1) return res.Places[0].PlaceId;
-    let location = toTitleCase(query);
+    let location = helpers.toTitleCase(query);
 
     for (const place of res.Places) {
       if (location === place.PlaceName) {
@@ -30,16 +31,6 @@ function App() {
     }
     return res.Places[0].PlaceId;
   };
-  const toTitleCase = (str) => {
-    const resStr = str
-      .toLowerCase()
-      .split(' ')
-      .map((word) => word.charAt(0).toUpperCase() + word.substring(1))
-      .join(' ');
-    return resStr;
-  };
-  // get all the cityIDs and go with the most numerous
-  // if result is just one go with the airport ID
 
   const searchFlights = async (from1, from2, departDate, returnDate) => {
     setLoading(true);
@@ -65,8 +56,12 @@ function App() {
     );
     const quotesA = await search1;
     const quotesB = await search2;
-    const allPlaces = createDict(quotesA.places, quotesB.places, 'PlaceId');
-    const allCarriers = createDict(
+    const allPlaces = helpers.createDict(
+      quotesA.places,
+      quotesB.places,
+      'PlaceId'
+    );
+    const allCarriers = helpers.createDict(
       quotesA.carriers,
       quotesB.carriers,
       'CarrierId'
@@ -78,30 +73,6 @@ function App() {
     setMatched(matchedflights);
     setLoading(false);
   };
-
-  const ArrToDict = (array, key) => {
-    const initialValue = {};
-    return array.reduce((obj, item) => {
-      return {
-        ...obj,
-        [item[key]]: item,
-      };
-    }, initialValue);
-  };
-  const createDict = (arrOfObj1, arrOfObj2, key) => {
-    let combined = [...arrOfObj1, ...arrOfObj2];
-
-    let combined2 = Array.from(
-      new Set(combined.map((a) => a[key])) // creates a new array of just the placeIDs and converts it to a set (no duplicates)
-    ).map((num) => {
-      // then maps this new array creating another new array of the unique placeID's from the original array.
-      return combined.find((a) => a[key] === num); // find returns the  first element that has the same PlaceId
-    });
-    return ArrToDict(combined2, key);
-  };
-  // const sortFlights = (matchedFlights) => { //TODO Not sure how to order it as its a dictionary by placeId
-  //   // match[0][0].MinPrice + match[0][0].MinPrice;
-  // };
 
   const matchFlights = (quotes, quotes2) => {
     const unionSet = {};
@@ -130,7 +101,22 @@ function App() {
       unionSet,
       (item) => item[0].length && item[1].length
     );
-    return filteredSet;
+    orderedCollection(filteredSet);
+    return orderedCollection(filteredSet);
+  };
+
+  const orderedCollection = (collection) => {
+    const toArr = Object.keys(collection).map((key) => {
+      return [key, ...collection[key]];
+    });
+
+    const sorted = toArr.sort((a, b) =>
+      a[1][0][0].MinPrice + a[2][0][0].MinPrice >
+      b[1][0][0].MinPrice + b[2][0][0].MinPrice
+        ? 1
+        : -1
+    );
+    return sorted;
   };
 
   return (
