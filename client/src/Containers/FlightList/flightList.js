@@ -2,7 +2,7 @@ import React from 'react';
 import './flightList.css';
 import FlightTile from '../../Components/FlightTile/flightTile';
 
-export default ({ matchedFlights, places, carriers }) => {
+export default ({ matchedFlights }) => {
   return (
     <div>
       <div className="tile_Container">

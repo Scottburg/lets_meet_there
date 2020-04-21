@@ -48,50 +48,52 @@ const SearchForm = ({ searchFlights, getPlace }) => {
   };
   return (
     <div className="form-container">
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="from1">
-          <label htmlFor="from1">From</label>
-          <input
-            type="text"
-            name="from1"
-            onChange={handleChange}
-            value={from1}
-            placeholder="first location"
-          />
-        </div>
-        <div className="from2">
-          <label htmlFor="from2">And</label>
-          <input
-            type="text"
-            name="from2"
-            onChange={handleChange}
-            value={from2}
-            placeholder="other location"
-          />
-        </div>
-        <div className="datePicker">
-          <DateRangePicker
-            startDatePlaceholderText="Depart"
-            startDate={startDate}
-            onDatesChange={handleOnDateChange}
-            endDatePlaceholderText="Return"
-            endDate={endDate}
-            numberOfMonths={1}
-            displayFormat="MMM D"
-            showClearDates={true}
-            focusedInput={focus}
-            onFocusChange={(focus) => {
-              setFocus(focus);
-            }}
-            startDateId="startDate"
-            endDateId="endDate"
-            minimumNights={0}
-          />
-        </div>
-        <div className="buttonDiv">
-          <button type="submit"> Lets Meet There!</button>
-        </div>
-      </form>
+      <div className="form">
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="from1">
+            <label htmlFor="from1">From</label>
+            <input
+              type="text"
+              name="from1"
+              onChange={handleChange}
+              value={from1}
+              placeholder="first location"
+            />
+          </div>
+          <div className="from2">
+            <label htmlFor="from2">And</label>
+            <input
+              type="text"
+              name="from2"
+              onChange={handleChange}
+              value={from2}
+              placeholder="other location"
+            />
+          </div>
+          <div className="datePicker">
+            <DateRangePicker
+              startDatePlaceholderText="Depart"
+              startDate={startDate}
+              onDatesChange={handleOnDateChange}
+              endDatePlaceholderText="Return"
+              endDate={endDate}
+              numberOfMonths={1}
+              displayFormat="MMM D"
+              showClearDates={true}
+              focusedInput={focus}
+              onFocusChange={(focus) => {
+                setFocus(focus);
+              }}
+              startDateId="startDate"
+              endDateId="endDate"
+              minimumNights={0}
+            />
+          </div>
+          <div className="buttonDiv">
+            <button type="submit"> Lets Meet There!</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

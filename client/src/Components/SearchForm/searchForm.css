@@ -2,6 +2,12 @@
   display: flex;
   align-content: center;
   text-align: center;
+  justify-content: center;
+}
+.form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: flex-end;
 }
 .from1 {
   width: fit-content;
