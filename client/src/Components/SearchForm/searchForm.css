@@ -9,7 +9,17 @@
   flex-flow: column nowrap;
   align-content: flex-end;
 }
-.from1 {
-  width: fit-content;
-  display: inline-block;
+.formTitles {
+  font-size: 0.8em;
+  text-align: left;
+}
+.inputboxes {
+  width: 100%;
+}
+.datePicker {
+  margin: 15px 0px 15px 0px;
+}
+::placeholder {
+  opacity: 0.4;
+  font-size: 0.7em;
 }

@@ -31,11 +31,25 @@ const FlightTile = ({ flight1, flight2, location }) => {
           </a>
         </div>
         <div className="outbound">
+          <div className="heading">
+            {' '}
+            Out{' '}
+            <span role="img" aria-label="plane">
+              🛫
+            </span>
+          </div>
           <div>{carriers[flight1.OutboundLeg.CarrierIds[0]].Name}</div>
           <div>{places[flight1.OutboundLeg.OriginId].Name}</div>
           <div>{flight1.OutboundLeg.DepartureDate.slice(0, 10)}</div>
         </div>
         <div className="inbound">
+          <div className="heading">
+            {' '}
+            Return{' '}
+            <span role="img" aria-label="plane">
+              🛫
+            </span>
+          </div>
           <div>{carriers[flight1.InboundLeg.CarrierIds[0]].Name}</div>
           <div>{places[flight1.InboundLeg.OriginId].Name}</div>
           <div>{flight1.InboundLeg.DepartureDate.slice(0, 10)}</div>
@@ -48,11 +62,25 @@ const FlightTile = ({ flight1, flight2, location }) => {
       </div>
       <div className="flight1">
         <div className="outbound">
+          <div className="heading">
+            {' '}
+            Out{' '}
+            <span role="img" aria-label="plane">
+              🛫
+            </span>
+          </div>
           <div>{carriers[flight2.OutboundLeg.CarrierIds[0]].Name}</div>
           <div>{places[flight2.OutboundLeg.OriginId].Name}</div>
           <div>{flight2.OutboundLeg.DepartureDate.slice(0, 10)}</div>
         </div>
         <div className="inbound">
+          <div className="heading">
+            {' '}
+            Return
+            <span role="img" aria-label="plane">
+              🛫
+            </span>{' '}
+          </div>
           <div>{carriers[flight2.InboundLeg.CarrierIds[0]].Name}</div>
           <div>{places[flight2.InboundLeg.OriginId].Name}</div>
           <div>{flight2.InboundLeg.DepartureDate.slice(0, 10)}</div>

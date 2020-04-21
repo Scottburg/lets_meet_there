@@ -51,23 +51,27 @@ const SearchForm = ({ searchFlights, getPlace }) => {
       <div className="form">
         <form className="form" onSubmit={handleSubmit}>
           <div className="from1">
-            <label htmlFor="from1">From</label>
+            <div className="formTitles">From</div>
+            <label htmlFor="from1"></label>
             <input
+              className="inputboxes"
               type="text"
               name="from1"
               onChange={handleChange}
               value={from1}
-              placeholder="first location"
+              placeholder="E.g. London"
             />
           </div>
           <div className="from2">
-            <label htmlFor="from2">And</label>
+            <div className="formTitles">And</div>
+            <label htmlFor="from2"></label>
             <input
+              className="inputboxes"
               type="text"
               name="from2"
               onChange={handleChange}
               value={from2}
-              placeholder="other location"
+              placeholder="E.g. Barcelona"
             />
           </div>
           <div className="datePicker">
