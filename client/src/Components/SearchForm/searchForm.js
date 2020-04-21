@@ -76,7 +76,7 @@ const SearchForm = ({ searchFlights, getPlace }) => {
             onDatesChange={handleOnDateChange}
             endDatePlaceholderText="Return"
             endDate={endDate}
-            numberOfMonths={2}
+            numberOfMonths={1}
             displayFormat="MMM D"
             showClearDates={true}
             focusedInput={focus}

@@ -6,12 +6,19 @@ import SearchForm from './Components/SearchForm/searchForm';
 import FlightList from './Containers/FlightList/flightList';
 import { pickBy } from 'lodash';
 import helpers from './helpers';
-
+import { useSelector, useDispatch } from 'react-redux';
+// import { isLoading, getplaces } from './Actions';
+import { isLoading, getPlaces, getCarriers } from './Actions';
 function App() {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [matched, setMatched] = useState([]);
-  const [places, setPlaces] = useState({});
+  // const [places, setPlaces] = useState({});
   const [carriers, setCarriers] = useState({});
+  // Redux items
+  const loading2 = useSelector((state) => state.isLoading);
+  const places2 = useSelector((state) => state.places);
+  const carriers2 = useSelector((state) => state.carriers);
+  const dispatch = useDispatch();
 
   const getPlace = async (query) => {
     return ApiClient.getPlace(query).then((res) => {
@@ -33,7 +40,8 @@ function App() {
   };
 
   const searchFlights = async (from1, from2, departDate, returnDate) => {
-    setLoading(true);
+    // setLoading(true);
+    dispatch(isLoading());
     const search1 = ApiClient.getFlights(from1, departDate, returnDate).then(
       (data) => {
         const quote = {
@@ -56,22 +64,26 @@ function App() {
     );
     const quotesA = await search1;
     const quotesB = await search2;
-    const allPlaces = helpers.createDict(
-      quotesA.places,
-      quotesB.places,
-      'PlaceId'
-    );
-    const allCarriers = helpers.createDict(
-      quotesA.carriers,
-      quotesB.carriers,
-      'CarrierId'
-    );
+    // const allPlaces = helpers.createDict(
+    //   quotesA.places,
+    //   quotesB.places,
+    //   'PlaceId'
+    // );
+    // dispatch is a redux function that invokes all reducers passing the action.
+    dispatch(getPlaces(quotesA.places, quotesB.places));
+    dispatch(getCarriers(quotesA.carriers, quotesB.carriers));
+    // const allCarriers = helpers.createDict(
+    //   quotesA.carriers,
+    //   quotesB.carriers,
+    //   'CarrierId'
+    // );
 
-    setPlaces(allPlaces);
-    setCarriers(allCarriers);
+    // setPlaces(allPlaces);
+    // setCarriers(allCarriers);
     const matchedflights = matchFlights(quotesA, quotesB);
     setMatched(matchedflights);
-    setLoading(false);
+    dispatch(isLoading());
+    // setLoading(false);
   };
 
   const matchFlights = (quotes, quotes2) => {
@@ -124,17 +136,18 @@ function App() {
       <header className="App-header"></header>
       <body className="App-body">
         <h1>Search for a place to meet</h1>
+
         <SearchForm
           searchFlights={searchFlights}
           getPlace={getPlace}
         ></SearchForm>
         <div>
-          {loading ? (
+          {loading2 ? (
             <img src={logo} className="App-logo" alt="logo" />
           ) : (
             <FlightList
               matchedFlights={matched}
-              places={places}
+              places={places2}
               carriers={carriers}
               getPlace={getPlace}
             ></FlightList>
