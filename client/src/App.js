@@ -7,17 +7,11 @@ import FlightList from './Containers/FlightList/flightList';
 import { pickBy } from 'lodash';
 import helpers from './helpers';
 import { useSelector, useDispatch } from 'react-redux';
-// import { isLoading, getplaces } from './Actions';
 import { isLoading, getPlaces, getCarriers } from './Actions';
 function App() {
-  // const [loading, setLoading] = useState(false);
   const [matched, setMatched] = useState([]);
-  // const [places, setPlaces] = useState({});
-  const [carriers, setCarriers] = useState({});
   // Redux items
   const loading2 = useSelector((state) => state.isLoading);
-  const places2 = useSelector((state) => state.places);
-  const carriers2 = useSelector((state) => state.carriers);
   const dispatch = useDispatch();
 
   const getPlace = async (query) => {
@@ -39,51 +33,19 @@ function App() {
     return res.Places[0].PlaceId;
   };
 
-  const searchFlights = async (from1, from2, departDate, returnDate) => {
-    // setLoading(true);
-    dispatch(isLoading());
-    const search1 = ApiClient.getFlights(from1, departDate, returnDate).then(
-      (data) => {
-        const quote = {
-          quotes: data.Quotes,
-          places: data.Places,
-          carriers: data.Carriers,
-        };
-        return quote;
-      }
-    );
-    const search2 = ApiClient.getFlights(from2, departDate, returnDate).then(
-      (data) => {
-        const quote = {
-          quotes: data.Quotes,
-          places: data.Places,
-          carriers: data.Carriers,
-        };
-        return quote;
-      }
-    );
-    const quotesA = await search1;
-    const quotesB = await search2;
-    // const allPlaces = helpers.createDict(
-    //   quotesA.places,
-    //   quotesB.places,
-    //   'PlaceId'
-    // );
-    // dispatch is a redux function that invokes all reducers passing the action.
-    dispatch(getPlaces(quotesA.places, quotesB.places));
-    dispatch(getCarriers(quotesA.carriers, quotesB.carriers));
-    // const allCarriers = helpers.createDict(
-    //   quotesA.carriers,
-    //   quotesB.carriers,
-    //   'CarrierId'
-    // );
+  // const getFlights = (from, departDate, returnDate) {
 
-    // setPlaces(allPlaces);
-    // setCarriers(allCarriers);
-    const matchedflights = matchFlights(quotesA, quotesB);
-    setMatched(matchedflights);
+  // }
+
+  const searchFlights = async (from1, from2, departDate, returnDate) => {
     dispatch(isLoading());
-    // setLoading(false);
+    const quotesA = await ApiClient.getFlights(from1, departDate, returnDate);
+    const quotesB = await ApiClient.getFlights(from2, departDate, returnDate);
+    dispatch(getPlaces(quotesA.places, quotesB.places)); // dispatch is a redux function that gets the named reducer and sets the state.
+    dispatch(getCarriers(quotesA.carriers, quotesB.carriers));
+    // const matchedflights = matchFlights(quotesA, quotesB);
+    setMatched(matchFlights(quotesA, quotesB)); // as this is passed through props fine to leave outside redux.
+    dispatch(isLoading());
   };
 
   const matchFlights = (quotes, quotes2) => {
@@ -145,12 +107,7 @@ function App() {
           {loading2 ? (
             <img src={logo} className="App-logo" alt="logo" />
           ) : (
-            <FlightList
-              matchedFlights={matched}
-              places={places2}
-              carriers={carriers}
-              getPlace={getPlace}
-            ></FlightList>
+            <FlightList matchedFlights={matched}></FlightList>
           )}
         </div>
       </body>

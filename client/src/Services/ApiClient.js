@@ -19,7 +19,14 @@ export default {
           'x-rapidapi-key': process.env.REACT_APP_API_KEY,
         },
       }
-    );
+    ).then((data) => {
+      const quote = {
+        quotes: data.Quotes,
+        places: data.Places,
+        carriers: data.Carriers,
+      };
+      return quote;
+    });
   },
   getPlace: (query) => {
     return fetchRequest(`${process.env.REACT_APP_API_PLACE_URL}${query}`, {

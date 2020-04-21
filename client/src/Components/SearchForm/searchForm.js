@@ -17,6 +17,8 @@ const SearchForm = ({ searchFlights, getPlace }) => {
     startDate: null,
     endDate: null,
   });
+  const { startDate, endDate } = dateRange;
+  const { from1, from2 } = state;
 
   const handleOnDateChange = (startDate, endDate) =>
     setdateRange(startDate, endDate);
@@ -44,8 +46,6 @@ const SearchForm = ({ searchFlights, getPlace }) => {
       alert('Please fill in all fields');
     }
   };
-  const { startDate, endDate } = dateRange;
-  const { from1, from2 } = state;
   return (
     <div className="form-container">
       <form className="form" onSubmit={handleSubmit}>

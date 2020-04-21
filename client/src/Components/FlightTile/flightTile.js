@@ -3,7 +3,6 @@ import './flightTile.css';
 import { useSelector } from 'react-redux';
 
 const FlightTile = ({ flight1, flight2, location }) => {
-  console.log(flight1);
   const bookingUrl = 'https://www.skyscanner.net/transport/flights/';
   const places = useSelector((state) => state.places);
   const carriers = useSelector((state) => state.carriers);
