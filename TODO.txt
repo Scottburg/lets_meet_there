@@ -1,0 +1,3 @@
+- Change Redux names as per https://redux.js.org/style-guide/style-guide#write-action-types-as-domaineventname
+
+- Deploy to Heroku 
