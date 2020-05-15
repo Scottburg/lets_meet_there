@@ -12,11 +12,11 @@ Create a rapidapi.com account and subscribe to the skyscanner api https://rapida
 
 This will give you an API key (see screenshot below)
 
-![image-20200422090013551](readme_img\image-20200422090013551.png)
+![image-20200422090013551](./readme_img/image-20200422090013551.png)
 
 Now create an .env file in the client directory .
 
-![image-20200422090250556](readme_img\image-20200422090250556.png)
+![image-20200422090250556](./readme_img/image-20200422090250556.png)
 
 Adapt the example.env file to a .env in the same location, putting your api key in the REACT_APP_API_KEY as a string.
 
