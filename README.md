@@ -1,5 +1,7 @@
 ﻿# Lets Meet There
 
+The live site is at https://lets-meet-there.netlify.app/
+
 Lets Meet There is a flight searching app. Starting from two locations and particular dates, it allows you to find locations where you could meet up based on the available flights.
 
 The app is created in React with Redux and runs using the skyscanner Api (through rapidapi.com)
