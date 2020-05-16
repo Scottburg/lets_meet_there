@@ -1,12 +1,12 @@
 export const isLoading = () => {
   return {
-    type: 'ISLOADING',
+    type: 'home/isLoading',
   };
 };
 
 export const getPlaces = (quotesA, quotesB) => {
   return {
-    type: 'GETPLACES',
+    type: 'home/getPlaces',
     quotesA: quotesA,
     quotesB: quotesB,
   };
@@ -14,7 +14,7 @@ export const getPlaces = (quotesA, quotesB) => {
 
 export const getCarriers = (quotesA, quotesB) => {
   return {
-    type: 'GETCARRIERS',
+    type: 'home/getCarriers',
     quotesA: quotesA,
     quotesB: quotesB,
   };
