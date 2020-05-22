@@ -6,9 +6,21 @@ Lets Meet There is a flight searching app. Starting from two locations and parti
 
 The app is created in React with Redux and runs using the Skyscanner Api (through rapidapi.com)
 
-A demo of the app can be found at https://youtu.be/zdKWPUNMw30
-
 ### <u>SETUP</u>
+
+
+
+```
+<details>
+  <summary>Click to expand!</summary>
+  
+  ## Heading
+  1. A numbered
+  2. list
+     * With some
+     * Sub bullets
+</details>
+```
 
 Create a rapidapi.com account and subscribe to the skyscanner api https://rapidapi.com/skyscanner/api/skyscanner-flight-search
 
