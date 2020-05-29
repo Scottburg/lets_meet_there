@@ -8,12 +8,10 @@ The app is created in React with Redux and runs using the Skyscanner Api (throug
 
 ### <u>SETUP</u>
 
-
-
 ```
 <details>
   <summary>Click to expand!</summary>
-  
+
   ## Heading
   1. A numbered
   2. list
@@ -38,7 +36,7 @@ Adapt the example.env file to a .env in the same location, putting your api key 
 `REACT_APP_API_URL = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/EUR/en-US/"`
 `REACT_APP_API_PLACE_URL = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query="`
 
-Now in the console, go to the client folder and enter the commands:
+In the console, enter the commands:
 
 `npm install`
 
