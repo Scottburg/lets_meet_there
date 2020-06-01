@@ -4,26 +4,27 @@ button:focus {
 
 .flightTile {
   display: flex;
-  align-content: center;
+  flex-direction: column;
   color: darkgrey;
   background-color: mintcream;
   margin: 20px;
   border: 1px solid wheat;
   border-radius: 15px;
   box-shadow: 0 1px 1px 3px rgba(240, 240, 240, 0.5);
-  width: 80vw;
+  width: 85vw;
 }
 .flightTileMain {
   display: flex;
   align-content: center;
   color: darkgrey;
   background-color: mintcream;
-  margin: 20px;
+  margin: 10px;
   width: 80vw;
 }
 .flightTileExpand {
   display: flex;
-  align-content: center;
+  align-content: space-around;
+  justify-content: space-between;
   margin: 20px;
   width: 80vw;
 }
@@ -33,12 +34,26 @@ button:focus {
   /* border: 1px solid black; */
   width: 40%;
 }
+.flight1Details {
+  display: flex;
+  justify-content: space-around;
+  /* border: 1px solid black; */
+  width: 40%;
+}
 .flight2 {
   display: flex;
   justify-content: flex-end;
 
   /* border: 1px solid black; */
   width: 40%;
+}
+.flight2Details {
+  display: flex;
+  justify-content: space-around;
+
+  /* border: 1px solid black; */
+  width: 40%;
+  margin-right: 5px;
 }
 .bothFlights {
   display: flex;
@@ -51,16 +66,25 @@ button:focus {
 }
 .tripDetails {
   color: rgb(82, 79, 79);
+  font-size: 0.8em;
 }
-
-.outbound {
+.extendTitles {
   font-size: 0.8em;
   justify-content: center;
   display: flex;
   flex-direction: column;
 }
+.outbound {
+  font-size: 0.7em;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.moreDetails {
+  font-size: 0.6em;
+}
 .inbound {
-  font-size: 0.8em;
+  font-size: 0.7em;
   justify-content: center;
   display: flex;
   flex-direction: column;

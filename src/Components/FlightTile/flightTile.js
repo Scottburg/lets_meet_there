@@ -22,7 +22,7 @@ const FlightTile = ({ flight1, flight2, location }) => {
       <div className="flightTileMain">
         <div className="flight1">
           <div className="tripDetails">
-            <h3>{places[flight1.OutboundLeg.OriginId].CityName}</h3>€
+            <h4>{places[flight1.OutboundLeg.OriginId].CityName}</h4>€
             {flight1.MinPrice}
             <div>{flight1.Direct ? 'Direct Flight' : 'Indirect Flight'}</div>
             <a
@@ -41,73 +41,28 @@ const FlightTile = ({ flight1, flight2, location }) => {
               Book
             </a>
           </div>
-          {/* <div className="outbound">
-          <div className="heading">
-            {' '}
-            Out{' '}
-            <span role="img" aria-label="plane">
-              🛫
-            </span>
-          </div>
-          <div>{carriers[flight1.OutboundLeg.CarrierIds[0]].Name}</div>
-          <div>{places[flight1.OutboundLeg.OriginId].Name}</div>
-          <div>{flight1.OutboundLeg.DepartureDate.slice(0, 10)}</div>
-        </div>
-        <div className="inbound">
-          <div className="heading">
-            {' '}
-            Return{' '}
-            <span role="img" aria-label="plane">
-              🛫
-            </span>
-          </div>
-          <div>{carriers[flight1.InboundLeg.CarrierIds[0]].Name}</div>
-          <div>{places[flight1.InboundLeg.OriginId].Name}</div>
-          <div>{flight1.InboundLeg.DepartureDate.slice(0, 10)}</div>
-        </div> */}
         </div>
         <div className="bothFlights">
           <h3>{places[location].CityName}</h3>
           <h4>{places[location].CountryName}</h4>
           <h4>€{flight2.MinPrice + flight1.MinPrice}</h4>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
+          <div className="moreDetails">
+            {expanded ? 'Less Detail' : 'More Detail'}
+            <IconButton
+              className={clsx(classes.expand, {
+                [classes.expandOpen]: expanded,
+              })}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
+              <ExpandMoreIcon />
+            </IconButton>
+          </div>
         </div>
         <div className="flight2">
-          {/* <div className="outbound">
-          <div className="heading">
-            {' '}
-            Out{' '}
-            <span role="img" aria-label="plane">
-              🛫
-            </span>
-          </div>
-          <div>{carriers[flight2.OutboundLeg.CarrierIds[0]].Name}</div>
-          <div>{places[flight2.OutboundLeg.OriginId].Name}</div>
-          <div>{flight2.OutboundLeg.DepartureDate.slice(0, 10)}</div>
-        </div>
-        <div className="inbound">
-          <div className="heading">
-            {' '}
-            Return
-            <span role="img" aria-label="plane">
-              🛫
-            </span>{' '}
-          </div>
-          <div>{carriers[flight2.InboundLeg.CarrierIds[0]].Name}</div>
-          <div>{places[flight2.InboundLeg.OriginId].Name}</div>
-          <div>{flight2.InboundLeg.DepartureDate.slice(0, 10)}</div>
-        </div> */}
           <div className="tripDetails">
-            <h3>{places[flight2.OutboundLeg.OriginId].CityName}</h3>
+            <h4>{places[flight2.OutboundLeg.OriginId].CityName}</h4>
             <div>€{flight2.MinPrice}</div>
             <div>{flight2.Direct ? 'Direct Flight' : 'Indirect Flight'}</div>
             <a
@@ -130,7 +85,31 @@ const FlightTile = ({ flight1, flight2, location }) => {
       </div>
       {expanded ? (
         <div className="flightTileExpand">
-          {carriers[flight1.InboundLeg.CarrierIds[0]].Name}
+          <div className="flight1Details">
+            <div className="outbound">
+              <div className="heading"> Out </div>
+              <div>{carriers[flight1.OutboundLeg.CarrierIds[0]].Name}</div>
+              <div>{places[flight1.OutboundLeg.OriginId].Name}</div>
+            </div>
+            <div className="inbound">
+              <div className="heading"> Return </div>
+              <div>{carriers[flight1.InboundLeg.CarrierIds[0]].Name}</div>
+              <div>{places[flight1.InboundLeg.OriginId].Name}</div>
+            </div>
+          </div>
+
+          <div className="flight2Details">
+            <div className="outbound">
+              <div className="heading"> Out </div>
+              <div>{carriers[flight2.OutboundLeg.CarrierIds[0]].Name}</div>
+              <div>{places[flight2.OutboundLeg.OriginId].Name}</div>
+            </div>
+            <div className="inbound">
+              <div className="heading"> Return</div>
+              <div>{carriers[flight2.InboundLeg.CarrierIds[0]].Name}</div>
+              <div>{places[flight2.InboundLeg.OriginId].Name}</div>
+            </div>
+          </div>
         </div>
       ) : null}
     </div>
