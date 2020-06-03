@@ -6,7 +6,7 @@ Lets Meet There is a flight searching app. Starting from two locations and parti
 
 The app is created in React with Redux and runs using the Skyscanner Api (through rapidapi.com)
 
-<div align='center'><img src="readme_img/galaxyScreen1.jpg" width="250" ><span></span><img src="readme_img/galaxyScreen2.jpg" width="250"> </div>
+<div align='center'><img src="readme_img/galaxyScreen1.jpg" width="250" ><span> </span><img src="readme_img/galaxyScreen2.jpg" width="250"> </div>
 
 ### <u>SETUP</u>
 
