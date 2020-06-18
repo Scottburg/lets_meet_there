@@ -6,6 +6,11 @@ import SearchForm from './searchForm';
 import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 
+it('render correctly text component', () => {  
+  const searchForm = renderer.create(<SearchForm />).toJSON();
+  expect(searchForm).toMatchSnapshot();
+});
+
 it('display correct text', () => {  
   const searchForm = render(<SearchForm />);
   searchForm.findAllByText('Lets Meet There').then(data => data);

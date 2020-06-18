@@ -12,7 +12,7 @@ export default ({ matchedFlights }) => {
             flight1={el[1][0][0]}
             flight2={el[2][0][0]}
             location={el[0]}
-          ></FlightTile>
+          />
         ))}
       </div>
     </div>

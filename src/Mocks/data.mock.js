@@ -75,3 +75,54 @@ export const flightTwo = {
   QuoteDateTime: "2020-06-15T19:17:00",
   QuoteId: 10
 }
+
+export const flightListMock = [[
+  66328,
+  [
+    {
+      QuoteId: 59,
+      MinPrice: 177,
+      Direct: false,
+      OutboundLeg: {
+        CarrierIds: [
+          1090
+        ],
+        OriginId: 82398,
+        DestinationId: 66328,
+        DepartureDate: '2020-06-26T00:00:00'
+      },
+      InboundLeg: {
+        CarrierIds: [
+          1090
+        ],
+        OriginId: 66328,
+        DestinationId: 82398,
+        DepartureDate: '2020-06-29T00:00:00'
+      },
+      QuoteDateTime: '2020-06-18T10:10:00'
+    }
+  ], [
+    {
+      QuoteId: 9,
+      MinPrice: 26,
+      Direct: true,
+      OutboundLeg: {
+        CarrierIds: [
+          1090
+        ],
+        OriginId: 42414,
+        DestinationId: 66328,
+        DepartureDate: '2020-06-26T00:00:00'
+      },
+      InboundLeg: {
+        CarrierIds: [
+          1090
+        ],
+        OriginId: 66328,
+        DestinationId: 42414,
+        DepartureDate: '2020-06-29T00:00:00'
+      },
+      QuoteDateTime: '2020-06-18T16:38:00'
+    }
+  ]
+]];
