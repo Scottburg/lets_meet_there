@@ -1,3 +1,5 @@
+
+
 let fetchRequest = (url, options) => {
   return fetch(url, options)
     .then((res) => (res.status <= 400 ? res : Promise.reject(res)))
@@ -10,13 +12,13 @@ let fetchRequest = (url, options) => {
 export default {
   getFlights: (origin, outbound, inbound) => {
     return fetchRequest(
-      `${process.env.REACT_APP_API_URL}${origin}/anywhere/${outbound}/${inbound}`,
+      `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/EUR/en-US/${origin}/anywhere/${outbound}/${inbound}`,
       {
         method: 'GET',
         headers: {
           'x-rapidapi-host':
-            'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
-          'x-rapidapi-key': process.env.REACT_APP_API_KEY,
+          'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
+          'x-rapidapi-key': "f9f3db2cf1mshbc0937b057b9cbfp120b46jsn33afb62f37b4",
         },
       }
     ).then((data) => {
@@ -29,12 +31,13 @@ export default {
     });
   },
   getPlace: (query) => {
-    return fetchRequest(`${process.env.REACT_APP_API_PLACE_URL}${query}`, {
+    
+    return fetchRequest(`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=${query}`, {
       method: 'GET',
       headers: {
         'x-rapidapi-host':
           'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
-        'x-rapidapi-key': process.env.REACT_APP_API_KEY,
+        'x-rapidapi-key': "f9f3db2cf1mshbc0937b057b9cbfp120b46jsn33afb62f37b4",
       },
     });
   },
