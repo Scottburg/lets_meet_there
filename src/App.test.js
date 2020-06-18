@@ -11,5 +11,5 @@ test('renders learn react link', () => {
 
   const { getByText } = render(<Provider store={store}><App /></Provider>);
   const linkElement = getByText('Search for a place to meet');
-  expect(linkElement).toBeInTheDocument();
+  expect(linkElement).toBeInTheDocument(true);
 });
