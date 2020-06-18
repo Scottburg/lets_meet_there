@@ -30,7 +30,7 @@ function App() {
   };
 
   return (
-    <body className="App-body">
+    <div className="App-body">
       <div className="App">
         <header className="App-header"></header>
         <h1>Search for a place to meet</h1>
@@ -47,7 +47,7 @@ function App() {
           )}
         </div>
       </div>
-    </body>
+    </div>
   );
 }
 
