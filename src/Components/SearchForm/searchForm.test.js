@@ -52,8 +52,6 @@ it('form should have submit function', () => {
     className: "form",
     id: "formWrapper",
   });
-
-  expect(searchForm.state().value).toEqual('')
 });
 
 it('should have a submit button', () => {
