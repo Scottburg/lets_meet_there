@@ -49,7 +49,7 @@ const SearchForm = ({ searchFlights, getPlace }) => {
   return (
     <div className="form-container">
       <div className="form">
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form" id="formWrapper" onSubmit={handleSubmit}>
           <div className="from1">
             <div className="formTitles">From</div>
             <label htmlFor="from1"></label>
@@ -94,7 +94,7 @@ const SearchForm = ({ searchFlights, getPlace }) => {
             />
           </div>
           <div className="buttonDiv">
-            <button type="submit"> Lets Meet There!</button>
+            <button type="submit">Lets Meet There!</button>
           </div>
         </form>
       </div>
