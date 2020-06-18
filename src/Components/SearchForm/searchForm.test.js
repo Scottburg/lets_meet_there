@@ -6,11 +6,6 @@ import SearchForm from './searchForm';
 import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 
-// it('render correctly text component', () => {  
-//   const searchForm = renderer.create(<SearchForm />).toJSON();
-//   expect(searchForm).toMatchSnapshot();
-// });
-
 it('display correct text', () => {  
   const searchForm = render(<SearchForm />);
   searchForm.findAllByText('Lets Meet There').then(data => data);
@@ -29,7 +24,6 @@ it('input fields should have correct props', () => {
     className: 'inputboxes',
     name: 'from1',
     placeholder: 'E.g. London',
-    type: 'text',
     value: '',
   });
 
@@ -39,7 +33,6 @@ it('input fields should have correct props', () => {
     className: 'inputboxes',
     name: 'from2',
     placeholder: 'E.g. Barcelona',
-    type: 'text',
     value: '',
   });
 });
