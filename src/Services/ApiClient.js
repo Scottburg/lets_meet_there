@@ -31,7 +31,6 @@ export default {
     });
   },
   getPlace: (query) => {
-    
     return fetchRequest(`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=${query}`, {
       method: 'GET',
       headers: {
