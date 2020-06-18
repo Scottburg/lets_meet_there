@@ -52,5 +52,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/index.js",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>src/index.js",
+      "!<rootDir>src/Reducers/index.js"
+    ]
   }
 }
