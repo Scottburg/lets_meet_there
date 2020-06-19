@@ -1,53 +1,53 @@
-import React, { useState } from 'react';
-import logo from './assets/Plane.svg';
-import ApiClient from './Services/ApiClient';
+import React, { useState, useEffect } from 'react';
+import {Route, Switch, NavLink, Redirect} from 'react-router-dom';
+import Home from './Containers/HomePage/HomePage.component';
 import './App.css';
-import SearchForm from './Components/SearchForm/searchForm';
-import FlightList from './Containers/FlightList/flightList';
-import helpers from './helpers';
-import { useSelector, useDispatch } from 'react-redux';
-import { isLoading, getPlaces, getCarriers } from './Actions';
+import SignIn from './Components/SignIn/SignIn.component';
+import { auth, createUserProfileDocument } from './Services/firebase.utils';
+import ProfilePage from './Containers/ProfilePage/ProfilePage.component';
+
+
 function App() {
-  const [matched, setMatched] = useState([]);
-  // Redux items
-  const loading = useSelector((state) => state.isLoading);
-  const dispatch = useDispatch();
 
-  const getPlace = async (query) => {
-    return ApiClient.getPlace(query).then((res) => {
-      return helpers.placeId(res, query);
-    });
-  };
+  const [currentUser, setCurrentUser] = useState();
 
-  const searchFlights = async (from1, from2, departDate, returnDate) => {
-    dispatch(isLoading());
-    const quotesA = await ApiClient.getFlights(from1, departDate, returnDate);
-    const quotesB = await ApiClient.getFlights(from2, departDate, returnDate);
-    dispatch(getPlaces(quotesA.places, quotesB.places)); // dispatch is a redux function that gets the named reducer and sets the state.
-    dispatch(getCarriers(quotesA.carriers, quotesB.carriers));
-    setMatched(helpers.matchFlights(quotesA, quotesB)); // as this is passed through props fine to leave outside redux.
-    dispatch(isLoading());
-  };
+  let unsubscribeFromAuth = null;
+
+  useEffect(() => {
+    unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if(userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        userRef.onSnapshot(snapShot => {
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data()
+          })
+        });
+      }
+      setCurrentUser(userAuth);
+    })
+
+    return () => unsubscribeFromAuth();
+  }, []);
+
+  
+  const handleSignOut = () => {
+    auth.signOut();
+  }
+
+
 
   return (
-    <div className="App-body">
-      <div className="App">
-        <header className="App-header"></header>
-        <h1>Search for a place to meet</h1>
-
-        <SearchForm
-          searchFlights={searchFlights}
-          getPlace={getPlace}
-        ></SearchForm>
-        <div>
-          {loading ? (
-            <img src={logo} className="App-logo" alt="logo" />
-          ) : (
-            <FlightList matchedFlights={matched}></FlightList>
-          )}
-        </div>
-      </div>
-    </div>
+    <>
+      {currentUser ? <button onClick={handleSignOut}>Sign Out</button> : <NavLink to={"/signin"}>Sign In</NavLink>}
+      <NavLink to={"/"}>Home</NavLink>
+      {currentUser && <NavLink to={"/profile"}>Home</NavLink>}
+      <Switch >
+        <Route path="/signin" exact render={() => !currentUser ? <SignIn /> : <Redirect to='/profile' />} />
+        <Route path='/profile'  exact render={() => currentUser ? <ProfilePage user={currentUser} /> : <Redirect to='/signin' />} />
+        <Route path="/" exact render={() => <Home currentUser={currentUser} />} />
+      </Switch>
+    </>
   );
 }
 
