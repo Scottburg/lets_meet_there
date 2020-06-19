@@ -9,6 +9,8 @@ let fetchRequest = (url, options) => {
     });
 };
 
+
+
 export default {
   getFlights: (origin, outbound, inbound, fetch) => {
     return !fetch ? fetchRequest(
@@ -40,4 +42,24 @@ export default {
       },
     }) : fetch();
   },
+  getFavFlights: async (origin, destination, outbound, inbound, fetch) => {
+    return !fetch ? fetchRequest(
+      `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/EUR/en-US/${origin}/${destination}/${outbound}/${inbound}`,
+      {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-host':
+          'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
+          'x-rapidapi-key': "f9f3db2cf1mshbc0937b057b9cbfp120b46jsn33afb62f37b4",
+        },
+      }
+    ).then((data) => {
+      const quote = {
+        quotes: data.Quotes,
+        places: data.Places,
+        carriers: data.Carriers,
+      };
+      return quote;
+    }) : fetch();
+  }
 };

@@ -19,3 +19,11 @@ export const getCarriers = (quotesA, quotesB) => {
     quotesB: quotesB,
   };
 };
+
+
+export const addToFavourites = (requestData) => {
+  return {
+    type: 'addToFavourites',
+    payload: requestData
+  }
+}

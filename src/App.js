@@ -41,7 +41,7 @@ function App() {
     <>
       {currentUser ? <button onClick={handleSignOut}>Sign Out</button> : <NavLink to={"/signin"}>Sign In</NavLink>}
       <NavLink to={"/"}>Home</NavLink>
-      {currentUser && <NavLink to={"/profile"}>Home</NavLink>}
+      {currentUser && <NavLink to={"/profile"}>Profile</NavLink>}
       <Switch >
         <Route path="/signin" exact render={() => !currentUser ? <SignIn /> : <Redirect to='/profile' />} />
         <Route path='/profile'  exact render={() => currentUser ? <ProfilePage user={currentUser} /> : <Redirect to='/signin' />} />
