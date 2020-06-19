@@ -33,7 +33,9 @@ const toTitleCase = (str) => {
 
 export default {
   createDict: (arrOfObj1, arrOfObj2, key) => {
+
     let combined = [...arrOfObj1, ...arrOfObj2];
+    
 
     let combined2 = Array.from(
       new Set(combined.map((a) => a[key])) // creates a new array of just the placeIDs and converts it to a set (no duplicates)
@@ -45,8 +47,9 @@ export default {
   },
   matchFlights: (quotes, quotes2) => {
     const unionSet = {};
-
+  
     for (let i = 0; i < quotes.quotes.length; i++) {
+
       unionSet[quotes.quotes[i].OutboundLeg.DestinationId]
         ? unionSet[quotes.quotes[i].OutboundLeg.DestinationId][0][0].push(
             quotes.quotes[i]
