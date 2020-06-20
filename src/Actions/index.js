@@ -20,7 +20,6 @@ export const getCarriers = (quotesA, quotesB) => {
   };
 };
 
-
 export const addUser = (user) => {
   return {
     type: 'addUser',

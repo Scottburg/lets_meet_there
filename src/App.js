@@ -1,17 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
-import {Route, Switch, NavLink, Redirect} from 'react-router-dom';
-import Home from './Containers/HomePage/HomePage.component';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import './App.css';
-import SignIn from './Components/SignIn/SignIn.component';
-import { auth, createUserProfileDocument } from './Services/firebase.utils';
-import ProfilePage from './Containers/ProfilePage/ProfilePage.component';
-
+import { SiteHeader } from 'Components';
+import { Home, ProfilePage } from 'Containers';
+import { auth, createUserProfileDocument } from 'Services/firebase.utils';
 
 function App() {
-
   const [currentUser, setCurrentUser] = useState();
-
 
   let unsubscribeFromAuth = null;
 
@@ -34,29 +29,34 @@ function App() {
 
     return () => unsubscribeFromAuth();
   }, []);
-  
+
   const handleSignOut = () => {
     auth.signOut();
   }
 
-
   return (
-    <>
-      {
-        currentUser ? <button onClick={handleSignOut}>Sign Out</button> 
-        : <NavLink to={"/signin"}>Sign In</NavLink>
-      }
+    <React.Fragment>
 
-      <NavLink to={"/"}>Home</NavLink>
-
-      {currentUser && <NavLink to={"/profile"}>Profile</NavLink>}
-
-      <Switch >
-        <Route path="/signin" exact render={() => !currentUser ? <SignIn /> : <Redirect to='/profile' />} />
-        <Route path='/profile'  exact render={() => currentUser ? <ProfilePage user={currentUser} /> : <Redirect to='/signin' />} />
-        <Route path="/" exact render={() => <Home />} />
+      <SiteHeader 
+        user={currentUser} 
+        signOut={handleSignOut} 
+      />
+      
+      <Switch>
+        <Route 
+          path="/" 
+          exact 
+          render={function () {
+            return <Home currentUser={currentUser} />
+          }}
+        />
+        <Route
+          path='/profile'
+          exact
+          render={() => currentUser ? <ProfilePage user={currentUser} /> : <Redirect to='/' />} 
+        />
       </Switch>
-    </>
+    </React.Fragment>
   );
 }
 
