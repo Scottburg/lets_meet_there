@@ -4,8 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import { createStore } from 'redux';
-import allReducer from './Reducers'; // can use just the folder name if you're after the index.js file in it.
-import { Provider } from 'react-redux'; // you need this to wrap the app us in redux and access the state.
+import allReducer from './Reducers';
+import { Provider } from 'react-redux'; 
 
 const store = createStore(
   allReducer,

@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import './HomePage.styles.scss';
-import logo from '../../assets/Plane.svg';
-import ApiClient from '../../Services/ApiClient';
-import './HomePage.styles.scss';
-import SearchForm from '../../Components/SearchForm/searchForm';
-import FlightList from '../FlightList/flightList';
-import helpers from '../../helpers';
 import { useSelector, useDispatch } from 'react-redux';
+import ApiClient from '../../Services/ApiClient';
+import { SearchForm } from '../../Components';
+import { FlightList } from '../../Containers';
+import helpers from '../../helpers';
 import { isLoading, getPlaces, getCarriers } from '../../Actions';
+import { Wrapper, Hero, Title } from './Styles';
 
 export default function HomePage() {
 
@@ -31,24 +29,24 @@ export default function HomePage() {
     setMatched(helpers.matchFlights(quotesA, quotesB)); // as this is passed through props fine to leave outside redux.
     dispatch(isLoading());
   };
-  return (
-    <div className="App-body">
-      <div className="App">
-        <header className="App-header"></header>
-        <h1>Search for a place to meet</h1>
 
+  return (
+
+    <Wrapper>
+      <Hero>
+        <Title>Search for a place to meet</Title>
         <SearchForm
           searchFlights={searchFlights}
           getPlace={getPlace}
-        ></SearchForm>
-        <div>
-          {loading ? (
-            <img src={logo} className="App-logo" alt="logo" />
-          ) : (
-            <FlightList matchedFlights={matched}></FlightList>
-          )}
-        </div>
-      </div>
-    </div>
+        />
+
+        {<div>
+          {!loading 
+            ? <FlightList matchedFlights={matched}></FlightList>
+            : null
+          }
+        </div>}
+      </Hero>
+    </Wrapper>
   )
 }

@@ -1,10 +1,6 @@
 import React from 'react';
-import './ProfilePage.styles.scss';
+import './Profile.styles.scss';
 import { firestore } from '../../Services/firebase.utils';
-
-
-
-
 
 
 export default function ProfilePage({user}) {
