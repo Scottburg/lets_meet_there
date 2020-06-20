@@ -24,8 +24,8 @@ function Flight ({ flight, places, city, favLocation }) {
         inbound={ inbound }
         outbound={ outbound }
         flight={ flight }
-        city={ city }
-        favCity={ favLocation.city }
+        city={ city && city }
+        favCity={ favLocation && favLocation.city }
       />
 
     </StyledFlight>

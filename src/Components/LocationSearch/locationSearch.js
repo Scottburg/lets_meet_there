@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
 import './locationSearch.css';
 
-export default function LocationSearch({ onChange, name }) {
+export default function LocationSearch({ onChange, name, field }) {
 
   const [location, setLocation] = useState('');
 
@@ -16,7 +16,7 @@ export default function LocationSearch({ onChange, name }) {
   
     geocodeByAddress(location)
       .then((results) => { 
-        onChange(name, results[0].formatted_address) })
+        onChange(field.name, results[0].formatted_address) })
       .catch(error => console.log(`Error fetching location`, error))
  
   };
@@ -27,7 +27,7 @@ export default function LocationSearch({ onChange, name }) {
 
   const renderInput = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
     <div className="autocomplete-root">
-      <input className="form-control" {...getInputProps()} />
+      <input className="form-control" {...field} {...getInputProps()} />
       <div className="autocomplete-dropdown-container">
 
         {suggestions.map(suggestion => (

@@ -1,14 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
-import './ProfilePage.styles.scss';
-import ApiClient from '../../Services/ApiClient';
-import FlightTile from '../../Components/FlightTile/flightTile';
-import { firestore } from '../../Services/firebase.utils';
+import ApiClient from 'Services/ApiClient';
+import { Trip } from 'Components';
+import { firestore } from 'Services/firebase.utils';
 
 export default function ProfilePage({user}) {
 
-
-  
   const [favData, setFavData] = useState();
   const getCityName = (flightData, flightList) => {
     return flightData.places.filter(place => place.PlaceId === flightList[0].OutboundLeg.OriginId) 
@@ -40,7 +37,7 @@ export default function ProfilePage({user}) {
         const userCityName = getCityName(userFlightData, userFlightList)[0].CityName
         const friendCityName = getCityName(friendFlightData, friendFlightList)[0].CityName
         const locationDetails = getLocation(userFlightData, userFlightList);
-        return <FlightTile 
+        return <Trip 
             key={Math.random() * 1000}
             favourites={true} 
             flight1={userFlightList[0]} 

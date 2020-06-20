@@ -71,23 +71,23 @@ const Trip = ({ yourFlight, friendsFlight, location, favourites, userCity, frien
 
       <Flight 
         flight={ yourFlight } 
-        city={ userCity }
-        favLocation={ favLocation }
+        city={ userCity && userCity }
+        favLocation={ favLocation && favLocation }
         places={ yourFlightPlaces }
       />
       
       <FlightSummary 
         location={ meetingLocation } 
-        favLocation={ favLocation }
+        favLocation={ favLocation && favLocation }
       />
 
       {user ? favouritesButton : null }
 
       <Flight 
         flight={ friendsFlight }
-        favLocation={ favLocation }
+        favLocation={ favLocation && favLocation }
         places={ friendsFlightPlaces }
-        city={ friendCity }
+        city={ friendCity && friendCity }
       />
 
     </StyledTrip>

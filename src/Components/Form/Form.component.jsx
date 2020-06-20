@@ -17,10 +17,10 @@ function Form (props) {
     returnDate: null,
   });
 
-  function handleChange (e, googleLocation) {
+  function handleChange (name, googleLocation) {
     let parsedLoc = googleLocation.split(', ');
     const fields = {...formData};
-    fields[e.target.name] = parsedLoc[0];
+    fields[name] = parsedLoc[0];
     
     setFormData(fields);
     isFormValid(formData)
@@ -58,7 +58,7 @@ function Form (props) {
     return fields.map ( function (field) {
       return (
         <LocationSearch 
-          {...field} 
+          field={ field } 
           onChange={handleChange} 
         /> 
       )
