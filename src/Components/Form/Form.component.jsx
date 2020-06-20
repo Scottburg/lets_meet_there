@@ -5,7 +5,7 @@ import moment from 'moment';
 import 'react-dates/initialize';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
-
+import LocationSearch from '../LocationSearch/locationSearch';
 
 function Form (props) {
   const [focus, setFocus] = useState(null);
@@ -17,9 +17,10 @@ function Form (props) {
     returnDate: null,
   });
 
-  function handleChange (e) {
+  function handleChange (e, googleLocation) {
+    let parsedLoc = googleLocation.split(', ');
     const fields = {...formData};
-    fields[e.target.name] = e.target.value;
+    fields[e.target.name] = parsedLoc[0];
     
     setFormData(fields);
     isFormValid(formData)
@@ -56,7 +57,7 @@ function Form (props) {
   function renderFields (fields) {
     return fields.map ( function (field) {
       return (
-        <FormInput 
+        <LocationSearch 
           {...field} 
           onChange={handleChange} 
         /> 
