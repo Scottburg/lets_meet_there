@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import { addToFavourites } from '../../Actions/index';
 import { firestore } from '../../Services/firebase.utils';
 
 const FlightTile = ({ flight1, flight2, location, favourites, userCity, friendCity, favLocation, removeFromFavouritesHandler, searchDetailsForRemoveHandler}) => {

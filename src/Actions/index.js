@@ -21,13 +21,6 @@ export const getCarriers = (quotesA, quotesB) => {
 };
 
 
-export const addToFavourites = (requestData) => {
-  return {
-    type: 'addToFavourites',
-    payload: requestData
-  }
-}
-
 export const addUser = (user) => {
   return {
     type: 'addUser',

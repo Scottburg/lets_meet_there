@@ -22,10 +22,7 @@ export default function ProfilePage({user}) {
       const {userRequest} = request
       if (userRequest.origin === origin && userRequest.destination === destination && userRequest.outboundDate === outboundDate && userRequest.inboundDate === inboundDate) return false
       return true;
-      //return userRequest.origin !== origin && userRequest.destination !== destination && userRequest.outboundDate !== outboundDate && userRequest.inboundDate !== inboundDate
     });
-
-    console.log(filteredData)
     const userRef = await firestore.doc(`users/${user.id}`);
     userRef.update({ favourites: JSON.stringify([...filteredData]) });
   }
@@ -43,6 +40,7 @@ export default function ProfilePage({user}) {
         const friendCityName = getCityName(friendFlightData, friendFlightList)[0].CityName
         const locationDetails = getLocation(userFlightData, userFlightList);
         return <FlightTile 
+            key={Math.random() * 1000}
             favourites={true} 
             flight1={userFlightList[0]} 
             flight2={friendFlightList[0]} 
@@ -56,7 +54,7 @@ export default function ProfilePage({user}) {
   }
 
   useEffect(() => {
-    if (user.favourites && user.favourites.length > 0){ favListData().then(data => {
+    if (user.favourites ){ favListData().then(data => {
       setFavData(data);
     });}
   },[user.favourites])
