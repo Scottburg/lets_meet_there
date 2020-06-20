@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { addToFavourites } from '../../Actions/index';
 import { firestore } from '../../Services/firebase.utils';
 
-const FlightTile = ({ flight1, flight2, location, favourites}) => {
+const FlightTile = ({ flight1, flight2, location, favourites, userCity, friendCity, favLocation}) => {
   const bookingUrl = 'https://www.skyscanner.net/transport/flights/';
   const places = useSelector((state) => state.places);
   const carriers = useSelector((state) => state.carriers);
@@ -19,6 +19,7 @@ const FlightTile = ({ flight1, flight2, location, favourites}) => {
   function handleExpandClick() {
     setExpanded(!expanded);
   }
+
 
   const addToFavouritesHandler = async (e) => {
     const requestData = {
@@ -49,18 +50,13 @@ const FlightTile = ({ flight1, flight2, location, favourites}) => {
       <div className="flightTileMain">
         <div className="flight1">
           <div className="tripDetails">
-            <h4>{places[flight1.OutboundLeg.OriginId].CityName}</h4>€
+            <h4>{userCity ? userCity : places[flight1.OutboundLeg.OriginId].CityName}</h4>€
             {flight1.MinPrice}
             <div>{flight1.Direct ? 'Direct Flight' : 'Indirect Flight'}</div>
             <a
-              href={`${bookingUrl}${places[
+              href={`${bookingUrl}${userCity ? userCity.slice(0,4) : places[
                 flight1.OutboundLeg.OriginId
-              ].CityName.slice(0, 4)}/${places[location].CityName.slice(
-                0,
-                4
-              )}/${flight1.OutboundLeg.DepartureDate.slice(
-                0,
-                10
+              ].CityName.slice(0, 4)}/${favLocation ? favLocation.city.slice(0,4) : places[location].CityName.slice(0,4)}/${flight1.OutboundLeg.DepartureDate.slice(0,10
               )}/${flight1.InboundLeg.DepartureDate.slice(0, 10)}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -71,8 +67,8 @@ const FlightTile = ({ flight1, flight2, location, favourites}) => {
         </div>
         <div className="bothFlights">
           {!favourites ? <button onClick={addToFavouritesHandler}>Add To Favourites</button> : <button onClick={removeFromFavouritesHandler}>Remove From Favourites</button>}
-          <h3>{places[location].CityName}</h3>
-          <h4>{places[location].CountryName}</h4>
+          <h3>{favLocation ? favLocation.city : places[location].CityName}</h3>
+          <h4>{favLocation ? favLocation.country : places[location].CountryName}</h4>
           <h4>€{flight2.MinPrice + flight1.MinPrice}</h4>
           <div className="moreDetails">
             {expanded ? 'Less Detail' : 'More Detail'}
@@ -90,19 +86,13 @@ const FlightTile = ({ flight1, flight2, location, favourites}) => {
         </div>
         <div className="flight2">
           <div className="tripDetails">
-            <h4>{places[flight2.OutboundLeg.OriginId].CityName}</h4>
+            <h4>{favLocation ? favLocation.city : places[flight2.OutboundLeg.OriginId].CityName}</h4>
             <div>€{flight2.MinPrice}</div>
             <div>{flight2.Direct ? 'Direct Flight' : 'Indirect Flight'}</div>
             <a
-              href={`${bookingUrl}${places[
-                flight2.OutboundLeg.OriginId
-              ].CityName.slice(0, 4)}/${places[location].CityName.slice(
-                0,
-                4
-              )}/${flight2.OutboundLeg.DepartureDate.slice(
-                0,
-                10
-              )}/${flight2.InboundLeg.DepartureDate.slice(0, 10)}`}
+              href={`${bookingUrl}${userCity ? userCity.slice(0,4) : 
+                places[flight2.OutboundLeg.OriginId].CityName.slice(0, 4)}/${favLocation ? favLocation.city.slice(0,4) : 
+                places[location].CityName.slice(0,4)}/${flight2.OutboundLeg.DepartureDate.slice(0,10)}/${flight2.InboundLeg.DepartureDate.slice(0, 10)}`}
               target="_blank"
               rel="noopener noreferrer"
             >
