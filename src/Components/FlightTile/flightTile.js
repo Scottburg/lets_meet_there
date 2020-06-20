@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './flightTile.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import clsx from 'clsx';
@@ -8,18 +8,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import { addToFavourites } from '../../Actions/index';
 import { firestore } from '../../Services/firebase.utils';
 
-const FlightTile = ({ flight1, flight2, location, favourites, userCity, friendCity, favLocation}) => {
+const FlightTile = ({ flight1, flight2, location, favourites, userCity, friendCity, favLocation, removeFromFavouritesHandler, searchDetailsForRemoveHandler}) => {
   const bookingUrl = 'https://www.skyscanner.net/transport/flights/';
   const places = useSelector((state) => state.places);
   const carriers = useSelector((state) => state.carriers);
   const [expanded, setExpanded] = useState(false);
   const classes = useStyles();
-  const dispatch = useDispatch();
   const {user} = useSelector(state => state.user);
   function handleExpandClick() {
     setExpanded(!expanded);
   }
-
 
   const addToFavouritesHandler = async (e) => {
     const requestData = {
@@ -38,12 +36,9 @@ const FlightTile = ({ flight1, flight2, location, favourites, userCity, friendCi
     }
     const userRef = await firestore.doc(`users/${user.id}`);
     userRef.update({ favourites: JSON.stringify([...user.favourites, requestData]) });
-    dispatch(addToFavourites(requestData));
   }
 
-  const removeFromFavouritesHandler = (e) => {
 
-  };
 
   return (
     <div className="flightTile">
@@ -66,7 +61,13 @@ const FlightTile = ({ flight1, flight2, location, favourites, userCity, friendCi
           </div>
         </div>
         <div className="bothFlights">
-          {!favourites ? <button onClick={addToFavouritesHandler}>Add To Favourites</button> : <button onClick={removeFromFavouritesHandler}>Remove From Favourites</button>}
+          {!favourites ? <button onClick={addToFavouritesHandler}>Add To Favourites</button> : 
+          <button onClick={() => removeFromFavouritesHandler (
+            searchDetailsForRemoveHandler.origin, 
+            searchDetailsForRemoveHandler.destination, 
+            searchDetailsForRemoveHandler.outboundDate, 
+            searchDetailsForRemoveHandler.inboundDate
+          )}>Remove From Favourites</button>}
           <h3>{favLocation ? favLocation.city : places[location].CityName}</h3>
           <h4>{favLocation ? favLocation.country : places[location].CountryName}</h4>
           <h4>€{flight2.MinPrice + flight1.MinPrice}</h4>
@@ -86,7 +87,7 @@ const FlightTile = ({ flight1, flight2, location, favourites, userCity, friendCi
         </div>
         <div className="flight2">
           <div className="tripDetails">
-            <h4>{favLocation ? favLocation.city : places[flight2.OutboundLeg.OriginId].CityName}</h4>
+            <h4>{friendCity ? friendCity : places[flight2.OutboundLeg.OriginId].CityName}</h4>
             <div>€{flight2.MinPrice}</div>
             <div>{flight2.Direct ? 'Direct Flight' : 'Indirect Flight'}</div>
             <a

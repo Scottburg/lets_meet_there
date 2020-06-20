@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './ProfilePage.styles.scss';
 import ApiClient from '../../Services/ApiClient';
 import FlightTile from '../../Components/FlightTile/flightTile';
-
+import { firestore } from '../../Services/firebase.utils';
 
 export default function ProfilePage({user}) {
 
@@ -15,6 +15,19 @@ export default function ProfilePage({user}) {
 
   const getLocation = (flightData, flightList) => {
     return flightData.places.filter(place => place.PlaceId === flightList[0].OutboundLeg.DestinationId)
+  }
+
+  const removeFromFavouritesHandler = async (origin, destination, outboundDate, inboundDate) => {
+    const filteredData = user.favourites.filter(request => {
+      const {userRequest} = request
+      if (userRequest.origin === origin && userRequest.destination === destination && userRequest.outboundDate === outboundDate && userRequest.inboundDate === inboundDate) return false
+      return true;
+      //return userRequest.origin !== origin && userRequest.destination !== destination && userRequest.outboundDate !== outboundDate && userRequest.inboundDate !== inboundDate
+    });
+
+    console.log(filteredData)
+    const userRef = await firestore.doc(`users/${user.id}`);
+    userRef.update({ favourites: JSON.stringify([...filteredData]) });
   }
   
 
@@ -29,7 +42,6 @@ export default function ProfilePage({user}) {
         const userCityName = getCityName(userFlightData, userFlightList)[0].CityName
         const friendCityName = getCityName(friendFlightData, friendFlightList)[0].CityName
         const locationDetails = getLocation(userFlightData, userFlightList);
-        console.log(locationDetails)
         return <FlightTile 
             favourites={true} 
             flight1={userFlightList[0]} 
@@ -37,6 +49,8 @@ export default function ProfilePage({user}) {
             favLocation={{city: locationDetails[0].CityName, country: locationDetails[0].CountryName}} 
             userCity={userCityName} 
             friendCity={friendCityName} 
+            removeFromFavouritesHandler={removeFromFavouritesHandler}
+            searchDetailsForRemoveHandler= {userRequest}
           />
       }))
   }

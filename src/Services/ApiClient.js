@@ -10,7 +10,7 @@ let fetchRequest = (url, options) => {
 };
 
 
-
+ 
 export default {
   getFlights: (origin, outbound, inbound, fetch) => {
     return !fetch ? fetchRequest(
