@@ -27,3 +27,10 @@ export const addToFavourites = (requestData) => {
     payload: requestData
   }
 }
+
+export const addUser = (user) => {
+  return {
+    type: 'addUser',
+    payload: user
+  }
+}

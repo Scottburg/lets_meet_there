@@ -6,6 +6,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { addToFavourites } from '../../Actions/index';
+import { firestore } from '../../Services/firebase.utils';
 
 const FlightTile = ({ flight1, flight2, location, favourites}) => {
   const bookingUrl = 'https://www.skyscanner.net/transport/flights/';
@@ -14,11 +15,12 @@ const FlightTile = ({ flight1, flight2, location, favourites}) => {
   const [expanded, setExpanded] = useState(false);
   const classes = useStyles();
   const dispatch = useDispatch();
+  const {user} = useSelector(state => state.user);
   function handleExpandClick() {
     setExpanded(!expanded);
   }
 
-  const addToFavouritesHandler = (e) => {
+  const addToFavouritesHandler = async (e) => {
     const requestData = {
       userRequest: {
         origin: places[flight1.OutboundLeg.OriginId].CityId,
@@ -33,6 +35,8 @@ const FlightTile = ({ flight1, flight2, location, favourites}) => {
         inboundDate: flight2.InboundLeg.DepartureDate.slice(0, 10)
       }
     }
+    const userRef = await firestore.doc(`users/${user.id}`);
+    userRef.update({ favourites: JSON.stringify([...user.favourites, requestData]) });
     dispatch(addToFavourites(requestData));
   }
 
