@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import './App.css';
@@ -23,7 +22,6 @@ function App() {
             id: snapShot.id,
             ...userData
           })
-          
         });
       }
       setCurrentUser(userAuth);
