@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import './App.css';
-import { SiteHeader, SignIn } from 'Components';
-import { Home } from 'Containers';
+import { SiteHeader } from 'Components';
+import { Home, ProfilePage } from 'Containers';
 import { auth, createUserProfileDocument } from 'Services/firebase.utils';
 
 function App() {
@@ -15,10 +16,14 @@ function App() {
       if(userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot(snapShot => {
+          
+          const userData = snapShot.data();
+          userData.favourites = JSON.parse(userData.favourites)
           setCurrentUser({
             id: snapShot.id,
-            ...snapShot.data()
+            ...userData
           })
+          
         });
       }
       setCurrentUser(userAuth);
@@ -26,6 +31,7 @@ function App() {
 
     return () => unsubscribeFromAuth();
   }, []);
+
   const handleSignOut = () => {
     auth.signOut();
   }
@@ -38,15 +44,7 @@ function App() {
         signOut={handleSignOut} 
       />
       
-      <Switch >
-        <Route 
-          path="/signin" 
-          exact 
-          render={function () {
-            if (currentUser) return <SignIn />;
-            return <Redirect to='/home' />
-          }}
-        />
+      <Switch>
         <Route 
           path="/" 
           exact 
@@ -54,7 +52,11 @@ function App() {
             return <Home currentUser={currentUser} />
           }}
         />
-
+        <Route
+          path='/profile'
+          exact
+          render={() => currentUser ? <ProfilePage user={currentUser} /> : <Redirect to='/' />} 
+        />
       </Switch>
     </React.Fragment>
   );

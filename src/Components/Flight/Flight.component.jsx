@@ -2,7 +2,7 @@ import React from 'react';
 import { BookingLink } from 'Components';
 import { StyledFlight } from './Styles.js';
 
-function Flight ({ flight, places }) {
+function Flight ({ flight, places, city, favLocation }) {
   const { inbound, outbound } = places;
   
   function flightType () {
@@ -11,8 +11,12 @@ function Flight ({ flight, places }) {
   
   return (
     <StyledFlight>
-      {inbound.origin.Name + '->' + inbound.destination.Name }
-      {outbound.origin.Name + '->' + outbound.destination.Name }
+      { city ? city : outbound.origin.Name + '->' }
+      { favLocation ? favLocation.city :  outbound.destination.Name }
+
+      { favLocation ? favLocation.city : inbound.origin.Name + '->' }
+      { city ? city : inbound.destination.Name }
+
       {flightType()}
       {flight.MinPrice}
 
@@ -20,6 +24,8 @@ function Flight ({ flight, places }) {
         inbound={ inbound }
         outbound={ outbound }
         flight={ flight }
+        city={ city }
+        favCity={ favLocation.city }
       />
 
     </StyledFlight>

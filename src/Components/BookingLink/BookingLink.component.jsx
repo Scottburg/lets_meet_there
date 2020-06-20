@@ -2,12 +2,12 @@ import React from 'react';
 import { StyledBookingLink } from './Styles';
 require('dotenv').config();
 
-function BookingLink ({inbound, outbound, flight}) {
+function BookingLink ({inbound, outbound, flight, city, favCity}) {
 
   function bookingParams () {
     const bookingDetails = [
-      trim(outbound.origin.CityName, 0, 4),
-      trim(inbound.origin.CityName, 0, 4),
+      trim(city ? city : outbound.originCityName, 0, 4),
+      trim(favCity ? favCity : inbound.origin.CityName, 0, 4),
       trim(flight.OutboundLeg.DepartureDate, 0, 10),
       trim(flight.InboundLeg.DepartureDate, 0, 10)
     ]
