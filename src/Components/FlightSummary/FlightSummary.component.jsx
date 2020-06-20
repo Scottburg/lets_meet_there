@@ -1,10 +1,12 @@
 import React from 'react';
 import { StyledFlightSummary } from './Styles.js';
 
-function FlightSummary ({ summary }) {
+function FlightSummary ({ location }) {
 
   return (
     <StyledFlightSummary>
+      {location.city}
+      {location.country}
     </StyledFlightSummary>
   );
   

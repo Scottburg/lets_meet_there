@@ -6,27 +6,25 @@ function BookingLink ({inbound, outbound, flight}) {
 
   function bookingParams () {
     const bookingDetails = [
-      trimCity(outbound.origin.CityName),
-      trimCity(inbound.origin.CityName),
-      trimDate(flight.OutboundLeg.DepartureDate),
-      trimDate(flight.InboundLeg.DepartureDate)
+      trim(outbound.origin.CityName, 0, 4),
+      trim(inbound.origin.CityName, 0, 4),
+      trim(flight.OutboundLeg.DepartureDate, 0, 10),
+      trim(flight.InboundLeg.DepartureDate, 0, 10)
     ]
 
     return [...bookingDetails].join('/');
   }
 
-  function trimDate (date) {
-    return date.slice(0,10);
-  }
-
-  function trimCity (city) {
-    return city.slice(0,4);
+  function trim (string, start, end) {
+    return string.slice(start, end);
   }
 
   return (
     <StyledBookingLink
       href={ process.env.REACT_APP_BOOKING_URL + bookingParams() }
       rel="noopener noreferrer"
+      aria-label="Book Flights"
+      title="Book Flights"
       target="_blank"
     >
       Book Your Flights

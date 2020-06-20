@@ -1,6 +1,6 @@
 import React from 'react';
 import './flightList.css';
-import { Trip } from '../../Components';
+import { Trip } from 'Components';
 
 function FlightList ({ matchedFlights }) {
   return (

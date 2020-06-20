@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { signInWithGoogle } from '../../Services/firebase.utils';
-import { FormInput, Button } from '../../Components';
+import { signInWithGoogle } from 'Services/firebase.utils';
+import { FormInput, Button } from 'Components';
 import { StyledSignIn } from './Styles';
 
 const SignIn = ({ emailSignInStart, googleSignInStart }) => {

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ApiClient from '../../Services/ApiClient';
-import { SearchForm } from '../../Components';
-import { FlightList } from '../../Containers';
-import helpers from '../../helpers';
-import { isLoading, getPlaces, getCarriers } from '../../Actions';
+import ApiClient from 'Services/ApiClient';
+import { SearchForm } from 'Components';
+import { FlightList } from 'Containers';
+import helpers from 'helpers';
+import { isLoading, getPlaces, getCarriers } from 'Actions';
 import { Wrapper, Hero, Title } from './Styles';
 
 export default function HomePage() {

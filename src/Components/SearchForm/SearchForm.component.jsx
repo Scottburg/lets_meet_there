@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyledSearchForm } from './Styles';
-import { Form } from '../../Components';
+import { Form } from 'Components';
 import { database } from 'firebase';
 
 function SearchForm ({ searchFlights, getPlace }) {
@@ -12,7 +12,7 @@ function SearchForm ({ searchFlights, getPlace }) {
         await getPlace(formData.location),
         await getPlace(formData.destination),
         formData.startDate,
-        formData.returnDate
+        formData.endDate
       ];
       return await searchFlights(...flightData);
     } catch (err) {
@@ -39,19 +39,7 @@ function SearchForm ({ searchFlights, getPlace }) {
       name: 'destination',
       type: 'text',
       placeholder: 'Barcelona...'
-    },
-    {
-      key: 'startDate',
-      title: 'Start Date',
-      name: 'startDate',
-      type: 'date'
-    },
-    {
-      key: 'returnDate',
-      title: 'Return Date',
-      name: 'returnDate',
-      type: 'date'
-    },
+    }
   ]
 
   return (
@@ -61,6 +49,7 @@ function SearchForm ({ searchFlights, getPlace }) {
         title="Search for Flights" 
         fields={formFields}
         hasError={hasError}
+        showDateRange={true}
         onSubmit={fetchFlightResults}
       />
     </StyledSearchForm>

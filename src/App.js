@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import './App.css';
-import { SiteHeader, SignIn } from './Components';
-import { Home, Profile } from './Containers';
-import { auth, createUserProfileDocument } from './Services/firebase.utils';
+import { SiteHeader, SignIn } from 'Components';
+import { Home } from 'Containers';
+import { auth, createUserProfileDocument } from 'Services/firebase.utils';
 
 function App() {
   const [currentUser, setCurrentUser] = useState();
@@ -44,16 +44,8 @@ function App() {
           exact 
           render={function () {
             if (currentUser) return <SignIn />;
-            return <Redirect to='/profile' />
+            return <Redirect to='/home' />
           }}
-        />
-        <Route 
-          path='/profile' 
-          exact 
-          render={function () {
-            if (currentUser) return <Profile user={currentUser} />
-            return <Redirect to='/signin' />
-          }} 
         />
         <Route 
           path="/" 

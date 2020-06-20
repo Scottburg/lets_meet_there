@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button } from '../../Components';
+import { Button } from 'Components';
 import { StyledSiteHeader } from './Styles.js';
 
 function SiteHeader ({user, signOut}) {

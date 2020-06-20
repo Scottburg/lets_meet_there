@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { StyledTrip } from './Styles.js';
-import { Flight, FlightSummary } from '../../Components';
+import { Flight, FlightSummary } from 'Components';
 
 const Trip = ({ yourFlight, friendsFlight, location }) => {
   const places = useSelector((state) => state.places);
   const carriers = useSelector((state) => state.carriers);
   const [expanded, setExpanded] = useState(false);
 
-  const destination = {
+  const meetingLocation = {
     city: places[location].CityName,
     country: places[location].CountryName
   }
@@ -44,7 +44,7 @@ const Trip = ({ yourFlight, friendsFlight, location }) => {
       />
       
       <FlightSummary 
-        destination={ destination } 
+        location={ meetingLocation } 
       />
 
       <Flight 
