@@ -18,6 +18,7 @@ const FlightTile = ({ flight1, flight2, location, favourites, userCity, friendCi
     setExpanded(!expanded);
   }
 
+
   const addToFavouritesHandler = async (e) => {
     const requestData = {
       userRequest: {
@@ -37,7 +38,14 @@ const FlightTile = ({ flight1, flight2, location, favourites, userCity, friendCi
     userRef.update({ favourites: JSON.stringify([...user.favourites, requestData]) });
   }
 
-
+  const favouritesButton = !favourites ? <button onClick={addToFavouritesHandler}>Add To Favourites</button> :
+    <button onClick={() => removeFromFavouritesHandler (
+      searchDetailsForRemoveHandler.origin, 
+      searchDetailsForRemoveHandler.destination, 
+      searchDetailsForRemoveHandler.outboundDate, 
+      searchDetailsForRemoveHandler.inboundDate
+    )}>Remove From Favourites</button>
+  ;
 
   return (
     <div className="flightTile">
@@ -60,13 +68,8 @@ const FlightTile = ({ flight1, flight2, location, favourites, userCity, friendCi
           </div>
         </div>
         <div className="bothFlights">
-          {!favourites ? <button onClick={addToFavouritesHandler}>Add To Favourites</button> : 
-          <button onClick={() => removeFromFavouritesHandler (
-            searchDetailsForRemoveHandler.origin, 
-            searchDetailsForRemoveHandler.destination, 
-            searchDetailsForRemoveHandler.outboundDate, 
-            searchDetailsForRemoveHandler.inboundDate
-          )}>Remove From Favourites</button>}
+          {user ? favouritesButton : null }
+          
           <h3>{favLocation ? favLocation.city : places[location].CityName}</h3>
           <h4>{favLocation ? favLocation.country : places[location].CountryName}</h4>
           <h4>€{flight2.MinPrice + flight1.MinPrice}</h4>
