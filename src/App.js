@@ -1,20 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import {Route, Switch, NavLink, Redirect} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import Home from './Containers/HomePage/HomePage.component';
 import './App.css';
 import SignIn from './Components/SignIn/SignIn.component';
 import { auth, createUserProfileDocument } from './Services/firebase.utils';
 import ProfilePage from './Containers/ProfilePage/ProfilePage.component';
-import { addUser } from './Actions/index';
 
 
 function App() {
 
   const [currentUser, setCurrentUser] = useState();
 
-  const dispatch = useDispatch();
 
   let unsubscribeFromAuth = null;
 
@@ -30,8 +27,6 @@ function App() {
             id: snapShot.id,
             ...userData
           })
-          
-          dispatch(addUser({...userData, id: snapShot.id}))
         });
       }
       setCurrentUser(userAuth);
