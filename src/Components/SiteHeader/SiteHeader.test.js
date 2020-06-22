@@ -22,7 +22,9 @@ describe('Site Header', () => {
 
   test('renders home link', () => {
     const { getByText } = render(
-      <Router><SiteHeader /></Router>
+      <Router>
+        <SiteHeader />
+      </Router>
     );
     const link = getByText('Home');
     expect(link).toBeInTheDocument();
@@ -30,7 +32,9 @@ describe('Site Header', () => {
 
   test('renders profile and signout when logged in', () => {
     const { getByText } = render(
-      <Router><SiteHeader user={true} /></Router>
+      <Router>
+        <SiteHeader user={true} />
+      </Router>
     );
     const link = getByText('Profile');
     expect(link).toBeInTheDocument();
