@@ -5,6 +5,7 @@ const mocks = {
   origin: 'LOND-sky',
   outbound: '2020-08-23',
   inbound: '2020-08-27',
+  destination: 'LOND-sky',
   mockFetchGetFlights: jest.fn().mockReturnValue(Promise.resolve({
 
       Quotes: [
@@ -92,6 +93,23 @@ describe('get flights fetch tests', () => {
   
 })
 
+// get fav flights
 
+describe('get fav flights fetch tests', () => {
+  it('should should call the inner fetch function', () => {
+    return ApiClient.getFavFlights(mocks.origin, mocks.destination, mocks.outbound, mocks.inbound ,mocks.mockFetchGetFlights).then(data => {
+      expect(mocks.mockFetchGetFlights.mock.calls.length).toBe(1);
+    })
+  })
+
+  it('should have a price/direct and carrierId property', () => {
+    return ApiClient.getFavFlights(mocks.origin, mocks.destination, mocks.outbound, mocks.inbound ,mocks.mockFetchGetFlights).then(data => {
+        expect(data.Quotes[0].MinPrice).toBeDefined();
+        expect(data.Quotes[0].Direct).toBeDefined();
+        expect(data.Quotes[0].OutboundLeg.CarrierIds.length).toBeGreaterThan(0);
+        expect(data.Quotes[0].InboundLeg.CarrierIds.length).toBeGreaterThan(0);
+    })
+  })
+})
 
 

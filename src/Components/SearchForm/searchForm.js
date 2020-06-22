@@ -4,12 +4,14 @@ import 'react-dates/initialize';
 import { DateRangePicker } from 'react-dates';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-dates/lib/css/_datepicker.css';
+import LocationSearch from '../LocationSearch/locationSearch';
 
 const SearchForm = ({ searchFlights, getPlace }) => {
   const initialState = {
     from1: '',
     from2: '',
   };
+
   const [state, setState] = useState(initialState);
   const [focus, setFocus] = useState(null);
 
@@ -17,19 +19,20 @@ const SearchForm = ({ searchFlights, getPlace }) => {
     startDate: null,
     endDate: null,
   });
+
   const { startDate, endDate } = dateRange;
   const { from1, from2 } = state;
 
   const handleOnDateChange = (startDate, endDate) =>
     setdateRange(startDate, endDate);
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setState((prevState) => ({ ...prevState, [name]: value }));
+  
+  const handleChange = (name, googleLocation) => {
+    let parsedLoc = googleLocation.split(', ');
+    setState((prevState) => ({ ...prevState, [name]: parsedLoc[0] }));
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); 
     const { from1, from2 } = state;
     if (from1 && from2 && dateRange) {
       try {
@@ -46,6 +49,7 @@ const SearchForm = ({ searchFlights, getPlace }) => {
       alert('Please fill in all fields');
     }
   };
+  
   return (
     <div className="form-container">
       <div className="form">
@@ -53,26 +57,26 @@ const SearchForm = ({ searchFlights, getPlace }) => {
           <div className="from1">
             <div className="formTitles">From</div>
             <label htmlFor="from1"></label>
-            <input
+            <LocationSearch 
               className="inputboxes"
               type="text"
               name="from1"
               onChange={handleChange}
               value={from1}
-              placeholder="E.g. London"
-            />
+            >
+            </LocationSearch>
           </div>
           <div className="from2">
             <div className="formTitles">And</div>
             <label htmlFor="from2"></label>
-            <input
+            <LocationSearch
               className="inputboxes"
               type="text"
               name="from2"
               onChange={handleChange}
               value={from2}
-              placeholder="E.g. Barcelona"
-            />
+            >
+            </LocationSearch>
           </div>
           <div className="datePicker">
             <DateRangePicker
