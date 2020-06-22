@@ -6,8 +6,6 @@ export let fetchRequest = (url, options, testFetch) => {
       console.log(err);
     }) : testFetch(url, options)
 };
-
-
  
 export default {
   getFlights: (origin, outbound, inbound, fetch) => {

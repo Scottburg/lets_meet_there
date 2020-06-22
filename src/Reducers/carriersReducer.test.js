@@ -16,6 +16,10 @@ describe('carriersReducer', () => {
     })
   })
 
+  it('it should return empty state if no action defined', () => {
+    expect(carriersReducer({}, {})).toEqual({});
+  })
+
   it('it should only return one carrier if duplicated both quote inputs', () => {
     expect(carriersReducer({}, {
       type: 'home/getCarriers',

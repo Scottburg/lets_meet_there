@@ -1,13 +1,41 @@
 import React from 'react';
 import App from './App';
-import { ProfilePage } from 'Containers';
+import { ProfilePage, Home } from 'Containers';
 import { Provider } from 'react-redux';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import { createStore, applyMiddleware } from 'redux'; 
-import { shallow, configure } from "enzyme";
+import { shallow, configure, mount } from "enzyme";
+import { MemoryRouter } from 'react-router';
+import { BrowserRouter as Router, browserHistory, Route } from 'react-router-dom';
 import { render } from "@testing-library/react";
 import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
+
+
+const mocks = {
+  user: {
+    displayName: "Andrew",
+    favourites: [{
+      userRequest: {
+        origin: "LOND",
+        destination: "DUSS",
+        outboundDate: "2020-06-23",
+        inboundDate: "2020-06-25"
+      },
+      friendRequest: {
+        origin: "BERL",
+        destination: "DUSS",
+        outboundDate: "2020-06-23",
+        inboundDate: "2020-06-25"
+      }
+    }]
+  },
+  noDataUser: {
+    displayName: "Andrew",
+    favourites: []
+  }
+}
+
 
 describe('App', () => {
   let store;
@@ -28,25 +56,31 @@ describe('App', () => {
     });
   });
 
-  describe('App - on start', () => {
-    test("React test", () => {
-      let a = false;
-      function Test() {
-        React.useEffect(() => {
-          a = true;
-        });
-        return <div>Hello World</div>;
-      }
-      const { rerender } = render(<Test />);
-      rerender(<Test />);
-      expect(a).toBe(true);
-    });
-  });
-
-  describe('First React component test with Enzyme', () => {
+  describe('It renders without crashing', () => {
     test('renders without crashing', () => {
       shallow(<App />);
      });
   });
 
+  test('/ path should render home container', () => {
+    const wrapper = mount (
+      <MemoryRouter initialEntries={[ '/' ]}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </MemoryRouter>
+    );
+    expect(wrapper.find(Home)).toHaveLength(1);
+  });
+
+  test('/profile should render profile container', async () => {
+    const wrapper = mount(
+      <MemoryRouter initialEntries={['/profile']}>
+        <Provider store={store}> 
+          <Route path="/profile" render={() => <ProfilePage user={mocks.user} />} />
+        </Provider>
+      </MemoryRouter>
+    );
+    expect(wrapper.find(ProfilePage).html());
+  });
 });
