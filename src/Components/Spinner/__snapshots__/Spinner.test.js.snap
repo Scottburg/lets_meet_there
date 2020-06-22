@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test the Spinner should match snapshot and render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="spinner-overlay"
+  >
+    <div
+      class="spinner-container"
+    />
+  </div>
+</DocumentFragment>
+`;

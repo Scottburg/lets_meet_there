@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ApiClient from 'Services/ApiClient';
-import { SearchForm } from 'Components';
+import { SearchForm, Spinner } from 'Components';
 import { FlightList } from 'Containers';
 import helpers from 'helpers';
 import { isLoading, getPlaces, getCarriers } from 'Actions';
@@ -31,7 +31,6 @@ export default function HomePage({currentUser}) {
   };
 
   return (
-
     <Wrapper>
       <Hero>
         <Title>Search for a place to meet</Title>
@@ -43,7 +42,7 @@ export default function HomePage({currentUser}) {
         {<div>
           {!loading 
             ? <FlightList user={currentUser} matchedFlights={matched}></FlightList>
-            : null
+            : <Spinner />
           }
         </div>}
       </Hero>

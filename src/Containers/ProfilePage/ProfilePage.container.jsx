@@ -1,17 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
 import ApiClient from 'Services/ApiClient';
-import { Trip } from 'Components';
+import { Trip, Spinner } from 'Components';
 import { firestore } from 'Services/firebase.utils';
 
 export default function ProfilePage({user}) {
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const [favData, setFavData] = useState();
   const getCityName = (flightData, flightList) => {
+    console.log(flightList)
     return flightData.places.filter(place => place.PlaceId === flightList[0].OutboundLeg.OriginId) 
   }
 
   const getLocation = (flightData, flightList) => {
+    console.log(flightList)
     return flightData.places.filter(place => place.PlaceId === flightList[0].OutboundLeg.DestinationId)
   }
 
@@ -29,7 +33,7 @@ export default function ProfilePage({user}) {
   function favListData() {
       return Promise.all(user.favourites.map(async requestData => {
         const {userRequest, friendRequest} = requestData;
-  
+        setIsLoading(true)
         const userFlightData = await ApiClient.getFavFlights(userRequest.origin, userRequest.destination, userRequest.outboundDate, userRequest.inboundDate )
         const friendFlightData = await ApiClient.getFavFlights(friendRequest.origin, friendRequest.destination, friendRequest.outboundDate, friendRequest.inboundDate)
         const userFlightList = userFlightData.quotes.sort((a,b) => a.MinPrice - b.MinPrice);
@@ -37,6 +41,7 @@ export default function ProfilePage({user}) {
         const userCityName = getCityName(userFlightData, userFlightList)[0].CityName
         const friendCityName = getCityName(friendFlightData, friendFlightList)[0].CityName
         const locationDetails = getLocation(userFlightData, userFlightList);
+
         return <Trip 
             key={Math.random() * 1000}
             favourites={true} 
@@ -54,14 +59,20 @@ export default function ProfilePage({user}) {
 
   useEffect(() => {
     if (user.favourites ){ favListData().then(data => {
+      setIsLoading(false)
       setFavData(data);
     });}
   },[user.favourites])
+
+  const ui = <>
+              {user && user.displayName}
+              {user && user.favourites.length ? favData : <p id="noQuotes">You have no quotes favourited</p>}
+             </>
+  
   
   return (
     <div>
-      {user && user.displayName}
-      {favData ? favData : <p>You have no quotes favourited</p>}
+      {isLoading ? <Spinner /> : ui}
     </div>
   )
 }

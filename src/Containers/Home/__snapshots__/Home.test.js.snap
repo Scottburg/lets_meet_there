@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test the Spinner should match snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="sc-fzozJi gJiFqy"
+  >
+    <section
+      class="sc-fzoLsD kGNGgW"
+    >
+      <section
+        class="sc-fzpans jgULOI"
+      >
+        Search for a place to meet
+      </section>
+      <div>
+        <div>
+          <div
+            class="tile_Container"
+          />
+        </div>
+      </div>
+    </section>
+  </section>
+</DocumentFragment>
+`;
