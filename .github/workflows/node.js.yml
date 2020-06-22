@@ -29,17 +29,17 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-
-    - name: Codecov
-      uses: codecov/codecov-action@v1.0.7
-      with:
-        token: 29e846ed-c4d3-4a64-b50c-9b900262ae7c
   
     - name: Install dependencies
       run: npm install
 
     - name: Run the tests and generate coverage report
       run: npm test -- --coverage --updateSnapshot
+    
+    - name: Codecov
+      uses: codecov/codecov-action@v1.0.7
+      with:
+        token: 29e846ed-c4d3-4a64-b50c-9b900262ae7c
 
     - name: Build
       run: npm run build
