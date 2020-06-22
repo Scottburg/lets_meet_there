@@ -20,6 +20,4 @@ describe('test the Spinner', () => {
     expect(title).toBeInTheDocument()
   })
 
-
-
 })

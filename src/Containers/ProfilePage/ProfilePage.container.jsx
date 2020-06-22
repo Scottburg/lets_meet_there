@@ -3,21 +3,12 @@ import React, {useState, useEffect} from 'react';
 import ApiClient from 'Services/ApiClient';
 import { Trip, Spinner } from 'Components';
 import { firestore } from 'Services/firebase.utils';
+import helpers from '../../helpers';
 
 export default function ProfilePage({user}) {
 
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false)
   const [favData, setFavData] = useState();
-  const getCityName = (flightData, flightList) => {
-    console.log(flightList)
-    return flightData.places.filter(place => place.PlaceId === flightList[0].OutboundLeg.OriginId) 
-  }
-
-  const getLocation = (flightData, flightList) => {
-    console.log(flightList)
-    return flightData.places.filter(place => place.PlaceId === flightList[0].OutboundLeg.DestinationId)
-  }
 
   const removeFromFavouritesHandler = async (origin, destination, outboundDate, inboundDate) => {
     const filteredData = user.favourites.filter(request => {
@@ -38,9 +29,9 @@ export default function ProfilePage({user}) {
         const friendFlightData = await ApiClient.getFavFlights(friendRequest.origin, friendRequest.destination, friendRequest.outboundDate, friendRequest.inboundDate)
         const userFlightList = userFlightData.quotes.sort((a,b) => a.MinPrice - b.MinPrice);
         const friendFlightList = friendFlightData.quotes.sort((a,b) => a.MinPrice - b.MinPrice);
-        const userCityName = getCityName(userFlightData, userFlightList)[0].CityName
-        const friendCityName = getCityName(friendFlightData, friendFlightList)[0].CityName
-        const locationDetails = getLocation(userFlightData, userFlightList);
+        const userCityName = helpers.getCityName(userFlightData, userFlightList)[0].CityName
+        const friendCityName = helpers.getCityName(friendFlightData, friendFlightList)[0].CityName
+        const locationDetails = helpers.getLocation(userFlightData, userFlightList);
 
         return <Trip 
             key={Math.random() * 1000}
@@ -58,7 +49,7 @@ export default function ProfilePage({user}) {
   }
 
   useEffect(() => {
-    if (user.favourites ){ favListData().then(data => {
+    if (user.favourites && user.favourites.length ){ favListData().then(data => {
       setIsLoading(false)
       setFavData(data);
     });}
