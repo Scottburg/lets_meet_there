@@ -19,10 +19,3 @@ export const getCarriers = (quotesA, quotesB) => {
     quotesB: quotesB,
   };
 };
-
-export const addUser = (user) => {
-  return {
-    type: 'addUser',
-    payload: user
-  }
-}

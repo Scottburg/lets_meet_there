@@ -4,15 +4,14 @@ import { StyledTrip } from './Styles.js';
 import { Flight, FlightSummary } from 'Components';
 import { firestore } from '../../Services/firebase.utils';
 
-const Trip = ({ yourFlight, friendsFlight, location, favourites, userCity, friendCity, favLocation, removeFromFavouritesHandler, searchDetailsForRemoveHandler }) => {
+const Trip = ({ yourFlight, friendsFlight, location, favourites, userCity, friendCity, favLocation, removeFromFavouritesHandler, searchDetailsForRemoveHandler, user }) => {
   const places = useSelector((state) => state.places);
   const carriers = useSelector((state) => state.carriers);
   const [expanded, setExpanded] = useState(false);
-  const {user} = useSelector(state => state.user);
 
   const meetingLocation = {
-    city: places[location].CityName,
-    country: places[location].CountryName
+    city: favLocation ? favLocation.city : places[location].CityName,
+    country: favLocation ? favLocation.country : places[location].CountryName
   }
 
   const addToFavouritesHandler = async (e) => {
@@ -46,23 +45,23 @@ const Trip = ({ yourFlight, friendsFlight, location, favourites, userCity, frien
 
   const yourFlightPlaces = {
     inbound: {
-      origin: places[yourFlight.InboundLeg.OriginId],
-      destination: places[yourFlight.InboundLeg.DestinationId]
+      origin: favLocation ? favLocation.city : places[yourFlight.InboundLeg.OriginId],
+      destination: userCity ? userCity : places[yourFlight.InboundLeg.DestinationId]
     },
     outbound: {
-      origin: places[yourFlight.OutboundLeg.OriginId],
-      destination: places[yourFlight.OutboundLeg.DestinationId]
+      origin: userCity ? userCity : places[yourFlight.OutboundLeg.OriginId],
+      destination: favLocation ? favLocation.city : places[yourFlight.OutboundLeg.DestinationId]
     }
   }
 
   const friendsFlightPlaces = {
     inbound: {
-      origin: places[friendsFlight.InboundLeg.OriginId],
-      destination: places[friendsFlight.InboundLeg.DestinationId]
+      origin: favLocation ? favLocation.city :  places[friendsFlight.InboundLeg.OriginId],
+      destination: friendCity ? friendCity : places[friendsFlight.InboundLeg.DestinationId]
     },
     outbound: {
-      origin: places[friendsFlight.OutboundLeg.OriginId],
-      destination: places[friendsFlight.OutboundLeg.DestinationId]
+      origin: friendCity ? friendCity : places[friendsFlight.OutboundLeg.OriginId],
+      destination: favLocation ? favLocation.city :  places[friendsFlight.OutboundLeg.DestinationId]
     }
   }
 

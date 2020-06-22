@@ -4,7 +4,8 @@ import { StyledFlight } from './Styles.js';
 
 function Flight ({ flight, places, city, favLocation }) {
   const { inbound, outbound } = places;
-  
+
+  console.log(places)
   function flightType () {
     return flight.Direct ? 'Direct' : 'InDirect';
   }

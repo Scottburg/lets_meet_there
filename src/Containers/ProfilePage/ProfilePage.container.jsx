@@ -40,13 +40,14 @@ export default function ProfilePage({user}) {
         return <Trip 
             key={Math.random() * 1000}
             favourites={true} 
-            flight1={userFlightList[0]} 
-            flight2={friendFlightList[0]} 
+            yourFlight={userFlightList[0]} 
+            friendsFlight={friendFlightList[0]} 
             favLocation={{city: locationDetails[0].CityName, country: locationDetails[0].CountryName}} 
             userCity={userCityName} 
             friendCity={friendCityName} 
             removeFromFavouritesHandler={removeFromFavouritesHandler}
             searchDetailsForRemoveHandler= {userRequest}
+            user={user}
           />
       }))
   }
