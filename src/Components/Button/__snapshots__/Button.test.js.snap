@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Booking Link snapshot renders 1`] = `
+<button
+  className="sc-AxjAm fDEmJb"
+  type="submit"
+>
+  Submit
+</button>
+`;

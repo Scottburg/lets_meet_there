@@ -19,7 +19,7 @@ function Flight ({ flight, places, city, favLocation }) {
 
       {flightType()}
       {flight.MinPrice}
-
+      
       <BookingLink 
         inbound={ inbound }
         outbound={ outbound }

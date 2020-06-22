@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Booking Link snapshot renders 1`] = `
+<a
+  aria-label="Book Flights"
+  className="sc-AxjAm fDEmJb"
+  href="https://www.skyscanner.net/transport/flights/Lond/Rome/2020-06-24/2020-06-27"
+  rel="noopener noreferrer"
+  target="_blank"
+  title="Book Flights"
+>
+  Book Your Flights
+</a>
+`;
+
+exports[`Booking Link snapshot renders 2`] = `
+<a
+  aria-label="Book Flights"
+  className="sc-AxjAm fDEmJb"
+  href="https://www.skyscanner.net/transport/flights/Barc/Barc/2020-06-24/2020-06-27"
+  rel="noopener noreferrer"
+  target="_blank"
+  title="Book Flights"
+>
+  Book Your Flights
+</a>
+`;

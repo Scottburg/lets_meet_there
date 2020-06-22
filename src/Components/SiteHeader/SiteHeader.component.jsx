@@ -2,20 +2,25 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button } from 'Components';
 import { StyledSiteHeader } from './Styles.js';
-import { signInWithGoogle } from '../../Services/firebase.utils';
+import { signInWithGoogle, auth } from '../../Services/firebase.utils';
 
-function SiteHeader ({user, signOut, history}) {
 
-  const handleSignIn = () => {
-    signInWithGoogle();
-  }
-
+function SiteHeader ({user}) {
   return (
     <StyledSiteHeader>
       <NavLink to="/" >Home</NavLink>
       {user 
-        ? <> <Button onClick={signOut}>Sign Out</Button> <NavLink to="/profile" >Profile</NavLink> </>
-        : <Button onClick={handleSignIn}>Sign In with Google</Button> 
+        ? <React.Fragment>
+            <Button key="signout" onClick={(e) => auth.signOut()}>
+              Sign Out
+            </Button> 
+            <NavLink to="/profile">
+              Profile
+            </NavLink>
+          </React.Fragment>
+        : <Button id="signin" onClick={(e) => signInWithGoogle()}>
+            Sign In with Google
+          </Button> 
       }
     </StyledSiteHeader>
   )
