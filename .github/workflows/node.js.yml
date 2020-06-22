@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
     
     env:
       NODE_PATH: src/
@@ -37,8 +37,8 @@ jobs:
     - name: Run the tests and generate coverage report
       run: npm test -- --coverage --updateSnapshot
     
-    - name: Secret Scan
-      uses: max/secret-scan@1.0.0
+    - name: Trufflehog Actions Scan
+      uses: edplato/trufflehog-actions-scan@v0.9i-beta
 
     - name: Codecov
       uses: codecov/codecov-action@v1.0.7
