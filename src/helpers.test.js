@@ -156,9 +156,24 @@ describe('something here', () => {
 });
 
 //getCityName 
-
 describe('tests for getCityName', () => {
   it('should return the city name', () => {
-    helpers.getCityName(flightData, flightData.Quotes).toBe('London')
+    expect(helpers.getCityName(flightData, flightData.Quotes)[0].CityName).toEqual('Berlin')
+  })
+})
+
+//get Location tests
+describe('tests for getLocation', () => {
+  it('should return the location object', () => {
+    expect(helpers.getLocation(flightData, flightData.Quotes)[0]).toEqual({
+      PlaceId: 82398,
+      IataCode: 'STN',
+      Name: 'London Stansted',
+      Type: 'Station',
+      SkyscannerCode: 'STN',
+      CityName: 'London',
+      CityId: 'LOND',
+      CountryName: 'United Kingdom'
+    })
   })
 })
