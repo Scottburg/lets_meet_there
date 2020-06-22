@@ -88,4 +88,11 @@ export default {
     }
     return res.Places[0].PlaceId;
   },
+  getCityName: (flightData, flightList) => {
+    return flightData.places.filter(place => place.PlaceId === flightList[0].OutboundLeg.OriginId) 
+  },
+
+  getLocation: (flightData, flightList) => {
+    return flightData.places.filter(place => place.PlaceId === flightList[0].OutboundLeg.DestinationId)
+  }
 };
