@@ -17,6 +17,9 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+    
+    env:
+      NODE_PATH: src/
 
     steps:
     - name: Checkout repository
