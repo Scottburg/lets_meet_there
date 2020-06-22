@@ -158,14 +158,14 @@ describe('something here', () => {
 //getCityName 
 describe('tests for getCityName', () => {
   it('should return the city name', () => {
-    expect(helpers.getCityName(flightData, flightData.Quotes)[0].CityName).toEqual('Berlin')
+    expect(helpers.getCityName(flightData, flightData.Quotes[0].OutboundLeg.OriginId)[0].CityName).toEqual('Berlin')
   })
 })
 
 //get Location tests
 describe('tests for getLocation', () => {
   it('should return the location object', () => {
-    expect(helpers.getLocation(flightData, flightData.Quotes)[0]).toEqual({
+    expect(helpers.getLocation(flightData, flightData.Quotes[0].OutboundLeg.DestinationId)[0]).toEqual({
       PlaceId: 82398,
       IataCode: 'STN',
       Name: 'London Stansted',

@@ -29,9 +29,9 @@ export default function ProfilePage({user}) {
         const friendFlightData = await ApiClient.getFavFlights(friendRequest.origin, friendRequest.destination, friendRequest.outboundDate, friendRequest.inboundDate)
         const userFlightList = userFlightData.quotes.sort((a,b) => a.MinPrice - b.MinPrice);
         const friendFlightList = friendFlightData.quotes.sort((a,b) => a.MinPrice - b.MinPrice);
-        const userCityName = helpers.getCityName(userFlightData, userFlightList)[0].CityName
-        const friendCityName = helpers.getCityName(friendFlightData, friendFlightList)[0].CityName
-        const locationDetails = helpers.getLocation(userFlightData, userFlightList);
+        const userCityName = helpers.getCityName(userFlightData, userFlightList[0].OutboundLeg.OriginId)[0].CityName
+        const friendCityName = helpers.getCityName(friendFlightData, friendFlightList[0].OutboundLeg.OriginId)[0].CityName
+        const locationDetails = helpers.getLocation(userFlightData, userFlightList[0].OutboundLeg.DestinationId);
 
         return <Trip 
             key={Math.random() * 1000}
