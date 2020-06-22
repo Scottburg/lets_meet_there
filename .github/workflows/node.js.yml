@@ -33,9 +33,13 @@ jobs:
     - name: Run the tests and generate coverage report
       run: npm test -- --coverage
       
-    - name: Code Climate Coverage Action
+    - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v2.6.0
-
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      with:
+        coverageCommand: npm test -- --coverage
+        
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
 
