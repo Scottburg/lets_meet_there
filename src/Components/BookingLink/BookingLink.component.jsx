@@ -3,7 +3,7 @@ import { StyledBookingLink } from './Styles';
 require('dotenv').config();
 
 function BookingLink ({inbound, outbound, flight, city, favCity}) {
-
+  
   function bookingParams () {
     const bookingDetails = [
       trim(city ? city : outbound.origin.CityName, 0, 4),

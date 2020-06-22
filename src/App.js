@@ -39,12 +39,14 @@ function App() {
     <React.Fragment>
 
       <SiteHeader 
+        key='siteheader'
         user={currentUser} 
         signOut={handleSignOut} 
       />
       
       <Switch>
         <Route 
+          key='home'
           path="/" 
           exact 
           render={function () {
@@ -52,6 +54,7 @@ function App() {
           }}
         />
         <Route
+          key='profile'
           path='/profile'
           exact
           render={() => currentUser ? <ProfilePage user={currentUser} /> : <Redirect to='/' />} 
