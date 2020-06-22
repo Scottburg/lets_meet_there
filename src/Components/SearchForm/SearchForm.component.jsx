@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StyledSearchForm } from './Styles';
 import { Form } from 'Components';
-import { database } from 'firebase';
 
 function SearchForm ({ searchFlights, getPlace }) {
   const [hasError, setHasError] = useState(false);

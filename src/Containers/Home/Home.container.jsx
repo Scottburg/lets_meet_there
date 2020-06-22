@@ -7,7 +7,7 @@ import helpers from 'helpers';
 import { isLoading, getPlaces, getCarriers } from 'Actions';
 import { Wrapper, Hero, Title } from './Styles';
 
-export default function HomePage() {
+export default function HomePage({currentUser}) {
 
   const [matched, setMatched] = useState([]);
   // Redux items
@@ -42,7 +42,7 @@ export default function HomePage() {
 
         {<div>
           {!loading 
-            ? <FlightList matchedFlights={matched}></FlightList>
+            ? <FlightList user={currentUser} matchedFlights={matched}></FlightList>
             : null
           }
         </div>}

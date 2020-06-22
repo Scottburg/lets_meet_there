@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyledForm, } from './Styles';
-import { Button, FormInput } from 'Components';
+import { Button } from 'Components';
 import moment from 'moment';
 import 'react-dates/initialize';
 import { DateRangePicker } from 'react-dates';
