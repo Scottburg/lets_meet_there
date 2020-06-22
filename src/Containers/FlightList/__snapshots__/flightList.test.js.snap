@@ -5,9 +5,11 @@ exports[`Flight Tile Matches snapshot 1`] = `
   <div
     className="tile_Container"
   >
-    <FlightTile
-      location={66328}
-    />
+    <React.Fragment>
+      <Trip
+        location={66328}
+      />
+    </React.Fragment>
   </div>
 </div>
 `;

@@ -6,8 +6,7 @@ import { Home, ProfilePage } from 'Containers';
 import { auth, createUserProfileDocument } from 'Services/firebase.utils';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState();
-
+  const [currentUser, setCurrentUser] = useState(false);
   let unsubscribeFromAuth = null;
 
   useEffect(() => {
@@ -33,7 +32,6 @@ function App() {
   const handleSignOut = () => {
     auth.signOut();
   }
-
 
   return (
     <React.Fragment>
