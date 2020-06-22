@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Flight snapshot renders (favourite) 1`] = `
+<div
+  className="sc-AxheI dVkpdt"
+>
+  Barcelona
+  Larnaca
+  Larnaca-&gt;
+  Barcelona
+  Direct
+  278
+  <a
+    aria-label="Book Flights"
+    className="sc-AxmLO dTodBP"
+    href="https://www.skyscanner.net/transport/flights/Barc/Larn/2020-06-24/2020-06-27"
+    rel="noopener noreferrer"
+    target="_blank"
+    title="Book Flights"
+  >
+    Book Your Flights
+  </a>
+</div>
+`;
+
+exports[`Flight snapshot renders 1`] = `
+<div
+  className="sc-AxheI dVkpdt"
+>
+  Barcelona-&gt;
+  Larnaca
+  Larnaca-&gt;
+  Barcelona
+  Direct
+  278
+  <a
+    aria-label="Book Flights"
+    className="sc-AxmLO dTodBP"
+    href="https://www.skyscanner.net/transport/flights/Barc/Larn/2020-06-24/2020-06-27"
+    rel="noopener noreferrer"
+    target="_blank"
+    title="Book Flights"
+  >
+    Book Your Flights
+  </a>
+</div>
+`;

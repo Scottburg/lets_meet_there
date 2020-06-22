@@ -23,4 +23,3 @@ exports[`test the Spinner should match snapshot 1`] = `
     </section>
   </section>
 </DocumentFragment>
-`;
