@@ -12,6 +12,7 @@ function Form (props) {
   const [formData, setFormData] = useState({});
   const [isFormComplete, setIsFormComplete] = useState(false);
 
+
   const [formDates, setFormDates] = useState({
     startDate: null,
     returnDate: null,
@@ -49,8 +50,6 @@ function Form (props) {
       }
 
       props.onSubmit(formCriteria);
-      setFormData({}); // Clear the prev form value
-      setFormDates({}); // Clear the prev form value
     }
   }
 
@@ -60,6 +59,8 @@ function Form (props) {
         <LocationSearch 
           field={ field } 
           onChange={handleChange} 
+          formData={formData}
+          value={formData[field.name]}
         /> 
       )
     })
