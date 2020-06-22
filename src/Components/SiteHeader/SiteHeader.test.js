@@ -1,7 +1,6 @@
 import React from 'react';
-import { SiteHeader } from 'Components';
+import SiteHeader from '../../Components/SiteHeader';
 import { NavLink, BrowserRouter as Router } from 'react-router-dom';
-import { Button } from 'Components';
 import { shallow, mount, configure } from "enzyme";
 import ShallowRenderer from 'react-test-renderer/shallow';
 import { render } from '@testing-library/react';
