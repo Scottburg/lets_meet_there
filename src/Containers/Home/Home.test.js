@@ -1,35 +1,23 @@
-import React from 'react';
-import { Home } from 'Containers';
+import React from 'react'
+import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import ShallowRenderer from 'react-test-renderer/shallow';
-import { createStore, applyMiddleware } from 'redux'; 
+import configureStore from 'redux-mock-store';
+import { Home } from 'Containers';
 
-describe('Home Container', () => {
-  let store;
+const mockStore = configureStore([]);
 
-  beforeEach(() => {
-    store = createStore(() => [], {}, applyMiddleware());
+const store = mockStore()
+
+describe('test the Spinner', () => {
+  it('should match snapshot', () => {
+    const { asFragment } = render(<Provider store={store}><Home /></Provider>)
+    expect(asFragment(<Home />)).toMatchSnapshot()
   })
 
-  test('snapshot matches (user: false)', () => {
-    const renderer = new ShallowRenderer()
-    const result = renderer.render(
-      <Provider store={store}>
-        <Home currentUser={null} />
-      </Provider>
-    )
-    expect(result).toMatchSnapshot()
-  });
+  it('should render correctly', () => {
+    const { getByText } = render(<Provider store={store}><Home /></Provider>)
+    const title = getByText('Search for a place to meet');
+    expect(title).toBeInTheDocument()
+  })
 
-  test('snapshot matches (user: true)', () => {
-    const renderer = new ShallowRenderer()
-    const result = renderer.render(
-      <Provider store={store}>
-        <Home user={true} />
-      </Provider>
-    )
-    expect(result).toMatchSnapshot()
-  });
-
-});
-
+})

@@ -6,6 +6,7 @@ import Form from './Form/Form.component';
 import Flight from './Flight/Flight.component';
 import FlightSummary from './FlightSummary/FlightSummary.component';
 import BookingLink from './BookingLink/BookingLink.component';
+import Spinner from './Spinner/Spinner.component.jsx';
 
 export {
   SiteHeader,
@@ -15,5 +16,6 @@ export {
   Flight,
   FlightSummary,
   Button,
-  Form
+  Form,
+  Spinner
 }
