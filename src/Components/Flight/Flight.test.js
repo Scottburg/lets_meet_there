@@ -148,5 +148,5 @@ describe('Flight', () => {
     )
     expect(component.text()).toMatch('InDirect');
   });
-  
+
 });

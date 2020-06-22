@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import './App.css';
 import { SiteHeader } from 'Components';
 import { Home, ProfilePage } from 'Containers';
@@ -7,6 +7,7 @@ import { auth, createUserProfileDocument } from 'Services/firebase.utils';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
+
   let unsubscribeFromAuth = null;
 
   useEffect(() => {
@@ -14,7 +15,6 @@ function App() {
       if(userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot(snapShot => {
-          
           const userData = snapShot.data();
           userData.favourites = JSON.parse(userData.favourites)
           setCurrentUser({
@@ -29,17 +29,12 @@ function App() {
     return () => unsubscribeFromAuth();
   }, []);
 
-  const handleSignOut = () => {
-    auth.signOut();
-  }
-
   return (
     <React.Fragment>
 
       <SiteHeader 
         key='siteheader'
         user={currentUser} 
-        signOut={handleSignOut} 
       />
       
       <Switch>
@@ -47,16 +42,16 @@ function App() {
           key='home'
           path="/" 
           exact 
-          render={function () {
-            return <Home currentUser={currentUser} />
-          }}
-        />
+        >
+          <Home currentUser={currentUser} />
+        </Route>
         <Route
           key='profile'
           path='/profile'
           exact
-          render={() => currentUser ? <ProfilePage user={currentUser} /> : <Redirect to='/' />} 
-        />
+        >
+          <ProfilePage user={currentUser} />
+        </Route>
       </Switch>
     </React.Fragment>
   );
