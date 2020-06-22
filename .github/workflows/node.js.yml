@@ -32,6 +32,8 @@ jobs:
         
     - name: Code Climate Coverage Action
       uses: paambaati/codeclimate-action@v2.6.0
+      with:
+        coverageCommand: npm test -- --coverage
 
     - name: Codecov
       uses: codecov/codecov-action@v1.0.7
