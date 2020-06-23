@@ -1,4 +1,6 @@
-﻿# Lets Meet There
+﻿[![DeepScan grade](https://deepscan.io/api/teams/8977/projects/12567/branches/193376/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=8977&pid=12567&bid=193376)
+
+# Lets Meet There
 
 The live site is at https://lets-meet-there.netlify.app/
 
