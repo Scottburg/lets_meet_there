@@ -54,6 +54,10 @@ describe('Component: Form', () => {
     expect(wrapper.containsMatchingElement(<Button>Submit</Button>)).toEqual(true);
   });
 
+  // test('it should submit the form when clicked', () => {
+  //   expect(wrapper.containsMatchingElement(<Button>Submit</Button>)).toEqual(true);
+  // });
+
 });
 
 
