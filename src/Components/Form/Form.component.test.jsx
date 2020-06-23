@@ -15,6 +15,8 @@ beforeAll(() => {
 
 describe('Component: Form', () => {
 
+  //TODO test the return data from submit
+
   const formFields = [
     {
       key: 'location',
@@ -53,10 +55,6 @@ describe('Component: Form', () => {
   test('it should have a submit button', () => {
     expect(wrapper.containsMatchingElement(<Button>Submit</Button>)).toEqual(true);
   });
-
-  // test('it should submit the form when clicked', () => {
-  //   expect(wrapper.containsMatchingElement(<Button>Submit</Button>)).toEqual(true);
-  // });
 
 });
 
