@@ -11,7 +11,7 @@ function SiteHeader ({user}) {
       <NavLink to="/" >Home</NavLink>
       {user 
         ? <React.Fragment>
-            <Button key="signout" onClick={(e) => auth.signOut()}>
+            <Button is="signOut" key="signout" onClick={(e) => auth.signOut()}>
               Sign Out
             </Button> 
             <NavLink to="/profile">

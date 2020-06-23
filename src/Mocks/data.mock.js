@@ -19,16 +19,16 @@ export const quotes = [{
     CarrierIds: [
       1090
     ],
-    OriginId: 42414,
-    DestinationId: 81495,
+    OriginId: 65698,
+    DestinationId: 65698,
     DepartureDate: '2020-06-26T00:00:00'
   },
   InboundLeg: {
     CarrierIds: [
       1755
     ],
-    OriginId: 81495,
-    DestinationId: 42414,
+    OriginId: 65698,
+    DestinationId: 65698,
     DepartureDate: '2020-06-29T00:00:00'
   },
   QuoteDateTime: '2020-06-17T21:12:00'
@@ -43,14 +43,14 @@ export const flightOne = {
   InboundLeg: {
     CarrierIds: [1324],
     DepartureDate: "2020-06-27T00:00:00",
-    DestinationId: 1165698,
-    OriginId: 40920,
+    DestinationId: 65698,
+    OriginId: 65698,
   },
   MinPrice: 213,
   OutboundLeg: {
     CarrierIds: [1324],
     DepartureDate: "2020-06-25T00:00:00",
-    DestinationId: 40920,
+    DestinationId: 65698,
     OriginId: 65698,
   },
   QuoteDateTime: "2020-06-17T23:03:00",
@@ -62,14 +62,14 @@ export const flightTwo = {
   InboundLeg: {
     CarrierIds: [1324],
     DepartureDate: "2020-06-27T00:00:00",
-    DestinationId: 42414,
-    OriginId: 40920
+    DestinationId: 65698,
+    OriginId: 65698
   },
   MinPrice: 192,
   OutboundLeg: {
     CarrierIds: [1324],
     DepartureDate: "2020-06-25T00:00:00",
-    DestinationId: 40920,
+    DestinationId: 65698,
     OriginId: 65698
   },
   QuoteDateTime: "2020-06-15T19:17:00",
@@ -87,16 +87,16 @@ export const flightListMock = [[
         CarrierIds: [
           1090
         ],
-        OriginId: 82398,
-        DestinationId: 66328,
+        OriginId: 65698,
+        DestinationId: 65698,
         DepartureDate: '2020-06-26T00:00:00'
       },
       InboundLeg: {
         CarrierIds: [
           1090
         ],
-        OriginId: 66328,
-        DestinationId: 82398,
+        OriginId: 65698,
+        DestinationId: 65698,
         DepartureDate: '2020-06-29T00:00:00'
       },
       QuoteDateTime: '2020-06-18T10:10:00'
@@ -110,19 +110,34 @@ export const flightListMock = [[
         CarrierIds: [
           1090
         ],
-        OriginId: 42414,
-        DestinationId: 66328,
+        OriginId: 65698,
+        DestinationId: 65698,
         DepartureDate: '2020-06-26T00:00:00'
       },
       InboundLeg: {
         CarrierIds: [
           1090
         ],
-        OriginId: 66328,
-        DestinationId: 42414,
+        OriginId: 65698,
+        DestinationId: 65698,
         DepartureDate: '2020-06-29T00:00:00'
       },
       QuoteDateTime: '2020-06-18T16:38:00'
     }
   ]
 ]];
+
+export const favLocation = {
+  city: 'Berlin',
+  country: 'Germany'
+}
+
+export const userCity = 'Berlin';
+export const friendCity = 'Berlin';
+
+export const searchDetailsForRemoveHandler = {
+  origin: '',
+  destination: '',
+  outboundDate: '',
+  inboundDate: ''
+}

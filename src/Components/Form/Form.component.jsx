@@ -75,7 +75,7 @@ function Form (props) {
   }
 
   return (
-    <StyledForm onSubmit={(e) => handleSubmit(e)}>
+    <StyledForm data-testid="form" onSubmit={(e) => handleSubmit(e)}>
       {props.hasError ? 'Error' : null}
 
       {renderFields(props.fields)}

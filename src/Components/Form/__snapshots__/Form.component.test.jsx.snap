@@ -3,6 +3,7 @@
 exports[`Component: Form it should render correctly 1`] = `
 <form
   className="sc-AxjAm fDEmJb"
+  data-testid="form"
   onSubmit={[Function]}
 >
   <div>

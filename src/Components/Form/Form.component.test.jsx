@@ -6,6 +6,7 @@ import Form from './Form.component';
 import LocationSearch from '../LocationSearch/locationSearch';
 import Button from '../Button/Button.component';
 import { setupGoogleMock } from '../../Mocks/googleMapsApiMock';
+import { render } from '@testing-library/react';
 
 configure({adapter: new Adapter()});
 
@@ -55,6 +56,17 @@ describe('Component: Form', () => {
   test('it should have a submit button', () => {
     expect(wrapper.containsMatchingElement(<Button>Submit</Button>)).toEqual(true);
   });
+
+  test('it should fire on submit', () => {
+    const mockFunction = jest.fn();
+    const {getByText, getByTestId} = render (<Form fields={formFields}/>);
+
+    const btn = getByText('Submit');
+    const form = getByTestId('form');
+    form.onsubmit = mockFunction;
+    btn.click();
+    expect(mockFunction).toHaveBeenCalled();
+  })
 
 });
 

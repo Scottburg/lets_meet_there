@@ -1,11 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component: SearchForm it should render correctly 1`] = `
-<form
+<div
   className="sc-AxjAm fDEmJb"
 >
   <form
     className="sc-AxhUy elBAgh"
+    data-testid="form"
     onSubmit={[Function]}
   >
     <div>
@@ -162,5 +163,5 @@ exports[`Component: SearchForm it should render correctly 1`] = `
       Submit
     </button>
   </form>
-</form>
+</div>
 `;

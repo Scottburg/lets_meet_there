@@ -13,141 +13,146 @@ exports[`test the Spinner should match snapshot 1`] = `
       >
         Search for a place to meet
       </section>
-      <form
+      <div
         class="sc-AxirZ dqVvws"
       >
-        <div>
-          <div
-            class="autocomplete-root"
-          >
-            <input
-              aria-autocomplete="list"
-              aria-expanded="false"
-              autocomplete="off"
-              class="form-control"
-              name="location"
-              placeholder="London..."
-              role="combobox"
-              title="Location"
-              type="text"
-              value=""
-            />
-            <div
-              class="autocomplete-dropdown-container"
-            />
-          </div>
-        </div>
-        <div>
-          <div
-            class="autocomplete-root"
-          >
-            <input
-              aria-autocomplete="list"
-              aria-expanded="false"
-              autocomplete="off"
-              class="form-control"
-              name="destination"
-              placeholder="Barcelona..."
-              role="combobox"
-              title="Destination"
-              type="text"
-              value=""
-            />
-            <div
-              class="autocomplete-dropdown-container"
-            />
-          </div>
-        </div>
-        <div
-          class="DateRangePicker DateRangePicker_1"
+        <form
+          class="sc-AxhUy elBAgh"
+          data-testid="form"
         >
           <div>
             <div
-              class="DateRangePickerInput DateRangePickerInput_1 DateRangePickerInput__withBorder DateRangePickerInput__withBorder_2 DateRangePickerInput__showClearDates DateRangePickerInput__showClearDates_3"
+              class="autocomplete-root"
             >
+              <input
+                aria-autocomplete="list"
+                aria-expanded="false"
+                autocomplete="off"
+                class="form-control"
+                name="location"
+                placeholder="London..."
+                role="combobox"
+                title="Location"
+                type="text"
+                value=""
+              />
               <div
-                class="DateInput DateInput_1"
-              >
-                <input
-                  aria-describedby="DateInput__screen-reader-message-startDate"
-                  aria-label="Start Date"
-                  autocomplete="off"
-                  class="DateInput_input DateInput_input_1"
-                  id="startDate"
-                  name="startDate"
-                  placeholder="Start Date"
-                  type="text"
-                  value=""
-                />
-                <p
-                  class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
-                  id="DateInput__screen-reader-message-startDate"
-                >
-                  Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
-                </p>
-              </div>
-              <div
-                aria-hidden="true"
-                class="DateRangePickerInput_arrow DateRangePickerInput_arrow_1"
-                role="presentation"
-              >
-                <svg
-                  class="DateRangePickerInput_arrow_svg DateRangePickerInput_arrow_svg_1"
-                  focusable="false"
-                  viewBox="0 0 1000 1000"
-                >
-                  <path
-                    d="M694 242l249 250c12 11 12 21 1 32L694 773c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210-210H68c-13 0-23-10-23-23s10-23 23-23h806L662 275c-21-22 11-54 32-33z"
-                  />
-                </svg>
-              </div>
-              <div
-                class="DateInput DateInput_1"
-              >
-                <input
-                  aria-describedby="DateInput__screen-reader-message-endDate"
-                  aria-label="End Date"
-                  autocomplete="off"
-                  class="DateInput_input DateInput_input_1"
-                  id="endDate"
-                  name="endDate"
-                  placeholder="End Date"
-                  type="text"
-                  value=""
-                />
-                <p
-                  class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
-                  id="DateInput__screen-reader-message-endDate"
-                >
-                  Navigate backward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
-                </p>
-              </div>
-              <button
-                aria-label="Clear Dates"
-                class="DateRangePickerInput_clearDates DateRangePickerInput_clearDates_1 DateRangePickerInput_clearDates_default DateRangePickerInput_clearDates_default_2 DateRangePickerInput_clearDates__hide DateRangePickerInput_clearDates__hide_3"
-                type="button"
-              >
-                <svg
-                  class="DateRangePickerInput_clearDates_svg DateRangePickerInput_clearDates_svg_1"
-                  focusable="false"
-                  viewBox="0 0 12 12"
-                >
-                  <path
-                    d="M11.53.47a.75.75 0 0 0-1.061 0l-4.47 4.47L1.529.47A.75.75 0 1 0 .468 1.531l4.47 4.47-4.47 4.47a.75.75 0 1 0 1.061 1.061l4.47-4.47 4.47 4.47a.75.75 0 1 0 1.061-1.061l-4.47-4.47 4.47-4.47a.75.75 0 0 0 0-1.061z"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </button>
+                class="autocomplete-dropdown-container"
+              />
             </div>
           </div>
-        </div>
-        <button
-          class="sc-AxhCb lnpmzE"
-          type="submit"
-        >
-          Submit
-        </button>
-      </form>
+          <div>
+            <div
+              class="autocomplete-root"
+            >
+              <input
+                aria-autocomplete="list"
+                aria-expanded="false"
+                autocomplete="off"
+                class="form-control"
+                name="destination"
+                placeholder="Barcelona..."
+                role="combobox"
+                title="Destination"
+                type="text"
+                value=""
+              />
+              <div
+                class="autocomplete-dropdown-container"
+              />
+            </div>
+          </div>
+          <div
+            class="DateRangePicker DateRangePicker_1"
+          >
+            <div>
+              <div
+                class="DateRangePickerInput DateRangePickerInput_1 DateRangePickerInput__withBorder DateRangePickerInput__withBorder_2 DateRangePickerInput__showClearDates DateRangePickerInput__showClearDates_3"
+              >
+                <div
+                  class="DateInput DateInput_1"
+                >
+                  <input
+                    aria-describedby="DateInput__screen-reader-message-startDate"
+                    aria-label="Start Date"
+                    autocomplete="off"
+                    class="DateInput_input DateInput_input_1"
+                    id="startDate"
+                    name="startDate"
+                    placeholder="Start Date"
+                    type="text"
+                    value=""
+                  />
+                  <p
+                    class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
+                    id="DateInput__screen-reader-message-startDate"
+                  >
+                    Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
+                  </p>
+                </div>
+                <div
+                  aria-hidden="true"
+                  class="DateRangePickerInput_arrow DateRangePickerInput_arrow_1"
+                  role="presentation"
+                >
+                  <svg
+                    class="DateRangePickerInput_arrow_svg DateRangePickerInput_arrow_svg_1"
+                    focusable="false"
+                    viewBox="0 0 1000 1000"
+                  >
+                    <path
+                      d="M694 242l249 250c12 11 12 21 1 32L694 773c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210-210H68c-13 0-23-10-23-23s10-23 23-23h806L662 275c-21-22 11-54 32-33z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="DateInput DateInput_1"
+                >
+                  <input
+                    aria-describedby="DateInput__screen-reader-message-endDate"
+                    aria-label="End Date"
+                    autocomplete="off"
+                    class="DateInput_input DateInput_input_1"
+                    id="endDate"
+                    name="endDate"
+                    placeholder="End Date"
+                    type="text"
+                    value=""
+                  />
+                  <p
+                    class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
+                    id="DateInput__screen-reader-message-endDate"
+                  >
+                    Navigate backward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
+                  </p>
+                </div>
+                <button
+                  aria-label="Clear Dates"
+                  class="DateRangePickerInput_clearDates DateRangePickerInput_clearDates_1 DateRangePickerInput_clearDates_default DateRangePickerInput_clearDates_default_2 DateRangePickerInput_clearDates__hide DateRangePickerInput_clearDates__hide_3"
+                  type="button"
+                >
+                  <svg
+                    class="DateRangePickerInput_clearDates_svg DateRangePickerInput_clearDates_svg_1"
+                    focusable="false"
+                    viewBox="0 0 12 12"
+                  >
+                    <path
+                      d="M11.53.47a.75.75 0 0 0-1.061 0l-4.47 4.47L1.529.47A.75.75 0 1 0 .468 1.531l4.47 4.47-4.47 4.47a.75.75 0 1 0 1.061 1.061l4.47-4.47 4.47 4.47a.75.75 0 1 0 1.061-1.061l-4.47-4.47 4.47-4.47a.75.75 0 0 0 0-1.061z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <button
+            class="sc-AxhCb lnpmzE"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
       <div>
         <div>
           <div

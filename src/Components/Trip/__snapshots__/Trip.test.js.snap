@@ -1,0 +1,431 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Trip snapshot matches 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <section
+        class="sc-AxjAm fDEmJb"
+      >
+        <div
+          class="sc-AxheI dVkpdt"
+        >
+          London Heathrow-&gt;
+          London Heathrow
+          London Heathrow-&gt;
+          London Heathrow
+          InDirect
+          213
+          <a
+            aria-label="Book Flights"
+            class="sc-AxmLO dTodBP"
+            href="https://www.skyscanner.net/transport/flights/Lond/Lond/2020-06-25/2020-06-27"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="Book Flights"
+          >
+            Book Your Flights
+          </a>
+        </div>
+        <div
+          class="sc-Axmtr kkOJu"
+        >
+          London
+          United Kingdom
+        </div>
+        <div
+          class="sc-AxheI dVkpdt"
+        >
+          London Heathrow-&gt;
+          London Heathrow
+          London Heathrow-&gt;
+          London Heathrow
+          InDirect
+          192
+          <a
+            aria-label="Book Flights"
+            class="sc-AxmLO dTodBP"
+            href="https://www.skyscanner.net/transport/flights/Lond/Lond/2020-06-25/2020-06-27"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="Book Flights"
+          >
+            Book Your Flights
+          </a>
+        </div>
+      </section>
+    </div>
+    <div>
+      <section
+        class="sc-AxjAm fDEmJb"
+      >
+        <div
+          class="sc-AxheI dVkpdt"
+        >
+          London Heathrow-&gt;
+          London Heathrow
+          London Heathrow-&gt;
+          London Heathrow
+          InDirect
+          213
+          <a
+            aria-label="Book Flights"
+            class="sc-AxmLO dTodBP"
+            href="https://www.skyscanner.net/transport/flights/Lond/Lond/2020-06-25/2020-06-27"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="Book Flights"
+          >
+            Book Your Flights
+          </a>
+        </div>
+        <div
+          class="sc-Axmtr kkOJu"
+        >
+          London
+          United Kingdom
+        </div>
+        <div
+          class="sc-AxheI dVkpdt"
+        >
+          London Heathrow-&gt;
+          London Heathrow
+          London Heathrow-&gt;
+          London Heathrow
+          InDirect
+          192
+          <a
+            aria-label="Book Flights"
+            class="sc-AxmLO dTodBP"
+            href="https://www.skyscanner.net/transport/flights/Lond/Lond/2020-06-25/2020-06-27"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="Book Flights"
+          >
+            Book Your Flights
+          </a>
+        </div>
+      </section>
+    </div>
+  </body>,
+  "container": <div>
+    <section
+      class="sc-AxjAm fDEmJb"
+    >
+      <div
+        class="sc-AxheI dVkpdt"
+      >
+        London Heathrow-&gt;
+        London Heathrow
+        London Heathrow-&gt;
+        London Heathrow
+        InDirect
+        213
+        <a
+          aria-label="Book Flights"
+          class="sc-AxmLO dTodBP"
+          href="https://www.skyscanner.net/transport/flights/Lond/Lond/2020-06-25/2020-06-27"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Book Flights"
+        >
+          Book Your Flights
+        </a>
+      </div>
+      <div
+        class="sc-Axmtr kkOJu"
+      >
+        London
+        United Kingdom
+      </div>
+      <div
+        class="sc-AxheI dVkpdt"
+      >
+        London Heathrow-&gt;
+        London Heathrow
+        London Heathrow-&gt;
+        London Heathrow
+        InDirect
+        192
+        <a
+          aria-label="Book Flights"
+          class="sc-AxmLO dTodBP"
+          href="https://www.skyscanner.net/transport/flights/Lond/Lond/2020-06-25/2020-06-27"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Book Flights"
+        >
+          Book Your Flights
+        </a>
+      </div>
+    </section>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Trip snapshot matches 2`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <section
+        class="sc-AxjAm fDEmJb"
+      >
+        <div
+          class="sc-AxheI dVkpdt"
+        >
+          London Heathrow-&gt;
+          London Heathrow
+          London Heathrow-&gt;
+          London Heathrow
+          InDirect
+          213
+          <a
+            aria-label="Book Flights"
+            class="sc-AxmLO dTodBP"
+            href="https://www.skyscanner.net/transport/flights/Lond/Lond/2020-06-25/2020-06-27"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="Book Flights"
+          >
+            Book Your Flights
+          </a>
+        </div>
+        <div
+          class="sc-Axmtr kkOJu"
+        >
+          London
+          United Kingdom
+        </div>
+        <div
+          class="sc-AxheI dVkpdt"
+        >
+          London Heathrow-&gt;
+          London Heathrow
+          London Heathrow-&gt;
+          London Heathrow
+          InDirect
+          192
+          <a
+            aria-label="Book Flights"
+            class="sc-AxmLO dTodBP"
+            href="https://www.skyscanner.net/transport/flights/Lond/Lond/2020-06-25/2020-06-27"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="Book Flights"
+          >
+            Book Your Flights
+          </a>
+        </div>
+      </section>
+    </div>
+    <div>
+      <section
+        class="sc-AxjAm fDEmJb"
+      >
+        <div
+          class="sc-AxheI dVkpdt"
+        >
+          Berlin
+          Berlin
+          Berlin
+          Berlin
+          InDirect
+          213
+          <a
+            aria-label="Book Flights"
+            class="sc-AxmLO dTodBP"
+            href="https://www.skyscanner.net/transport/flights/Berl/Berl/2020-06-25/2020-06-27"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="Book Flights"
+          >
+            Book Your Flights
+          </a>
+        </div>
+        <div
+          class="sc-Axmtr kkOJu"
+        >
+          Berlin
+          Germany
+        </div>
+        <div
+          class="sc-AxheI dVkpdt"
+        >
+          Berlin
+          Berlin
+          Berlin
+          Berlin
+          InDirect
+          192
+          <a
+            aria-label="Book Flights"
+            class="sc-AxmLO dTodBP"
+            href="https://www.skyscanner.net/transport/flights/Berl/Berl/2020-06-25/2020-06-27"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="Book Flights"
+          >
+            Book Your Flights
+          </a>
+        </div>
+      </section>
+    </div>
+  </body>,
+  "container": <div>
+    <section
+      class="sc-AxjAm fDEmJb"
+    >
+      <div
+        class="sc-AxheI dVkpdt"
+      >
+        Berlin
+        Berlin
+        Berlin
+        Berlin
+        InDirect
+        213
+        <a
+          aria-label="Book Flights"
+          class="sc-AxmLO dTodBP"
+          href="https://www.skyscanner.net/transport/flights/Berl/Berl/2020-06-25/2020-06-27"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Book Flights"
+        >
+          Book Your Flights
+        </a>
+      </div>
+      <div
+        class="sc-Axmtr kkOJu"
+      >
+        Berlin
+        Germany
+      </div>
+      <div
+        class="sc-AxheI dVkpdt"
+      >
+        Berlin
+        Berlin
+        Berlin
+        Berlin
+        InDirect
+        192
+        <a
+          aria-label="Book Flights"
+          class="sc-AxmLO dTodBP"
+          href="https://www.skyscanner.net/transport/flights/Berl/Berl/2020-06-25/2020-06-27"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Book Flights"
+        >
+          Book Your Flights
+        </a>
+      </div>
+    </section>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

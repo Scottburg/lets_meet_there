@@ -50,5 +50,6 @@ describe('test the profile page load', () => {
     const noQuotes = queryByText('You have no quotes favourited');
     expect(noQuotes).not.toBeInTheDocument();
   })
+
 })
 
