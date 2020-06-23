@@ -1,6 +1,9 @@
 ﻿[![DeepScan grade](https://deepscan.io/api/teams/8977/projects/12567/branches/193376/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=8977&pid=12567&bid=193376)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/e01823a7516241ada22c1d05ac45f06a)](https://www.codacy.com/manual/Ben-Towler/lets_meet_there?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Ben-Towler/lets_meet_there&amp;utm_campaign=Badge_Grade)
 ![CI/CD](https://github.com/Ben-Towler/lets_meet_there/workflows/CI/CD/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/be5048d81531f757dba3/maintainability)](https://codeclimate.com/github/Ben-Towler/lets_meet_there/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/be5048d81531f757dba3/test_coverage)](https://codeclimate.com/github/Ben-Towler/lets_meet_there/test_coverage)
+[![codecov](https://codecov.io/gh/Ben-Towler/lets_meet_there/branch/master/graph/badge.svg)](https://codecov.io/gh/Ben-Towler/lets_meet_there)
 
 # Lets Meet There
 
