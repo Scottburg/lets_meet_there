@@ -3,6 +3,11 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Home from '../Home/Home.container';
+import { setupGoogleMock } from '../../Mocks/googleMapsApiMock';
+
+beforeAll(() => {
+  setupGoogleMock();
+});
 
 const mockStore = configureStore([]);
 
