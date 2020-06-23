@@ -46,6 +46,22 @@ const mocks = {
   }))
 }
 
+describe('fetchRequest tests', () => {
+  it('should run a fetch request', () => {
+    return fetchRequest('testUrl', {}, mocks.mockFetch).then(data => {
+      expect(mocks.mockFetch.mock.calls.length).toBe(1);
+      expect(mocks.mockFetch).toBeCalledWith('testUrl', {});
+    });
+    
+  })
+
+  it('should run the fetch request with the correct URL and options object', () => {
+    return fetchRequest('testUrl', {}, mocks.mockFetch).then(data => {
+      expect(mocks.mockFetch).toBeCalledWith('testUrl', {});
+    });
+  })
+})
+
 // getPlace api tests
 
 describe('get places fetch tests', () => {
