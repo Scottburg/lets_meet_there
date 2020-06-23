@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Form it should render correctly 1`] = `
+<form
+  className="sc-AxjAm fDEmJb"
+  onSubmit={[Function]}
+>
+  <div>
+    <div
+      className="autocomplete-root"
+    >
+      <input
+        aria-autocomplete="list"
+        aria-expanded={false}
+        autoComplete="off"
+        className="form-control"
+        disabled={false}
+        name="location"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="London..."
+        role="combobox"
+        title="Location"
+        type="text"
+        value=""
+      />
+      <div
+        className="autocomplete-dropdown-container"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      className="autocomplete-root"
+    >
+      <input
+        aria-autocomplete="list"
+        aria-expanded={false}
+        autoComplete="off"
+        className="form-control"
+        disabled={false}
+        name="destination"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Barcelona..."
+        role="combobox"
+        title="Destination"
+        type="text"
+        value=""
+      />
+      <div
+        className="autocomplete-dropdown-container"
+      />
+    </div>
+  </div>
+  <button
+    className="sc-AxgMl ewSVZr"
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
+`;

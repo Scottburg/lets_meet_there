@@ -45,6 +45,8 @@ function Form (props) {
       }
 
       if (props.showDateRange) {
+        console.log('formDates.startDate', formDates.startDate);
+        console.log('formDates.endDate', formDates.endDate);
         formCriteria.startDate = formatDate(formDates.startDate);
         formCriteria.endDate = formatDate(formDates.endDate);
       }
@@ -57,6 +59,7 @@ function Form (props) {
     return fields.map ( function (field) {
       return (
         <LocationSearch 
+          key={field.name}
           field={ field } 
           onChange={handleChange} 
           formData={formData}
