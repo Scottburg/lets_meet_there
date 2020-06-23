@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: LocationSearch it should render correctly 1`] = `
+<div>
+  <div
+    className="autocomplete-root"
+  >
+    <input
+      aria-autocomplete="list"
+      aria-expanded={false}
+      autoComplete="off"
+      className="form-control"
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      role="combobox"
+      type="text"
+      value=""
+    />
+    <div
+      className="autocomplete-dropdown-container"
+    />
+  </div>
+</div>
+`;

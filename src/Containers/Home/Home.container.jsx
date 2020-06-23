@@ -34,10 +34,10 @@ export default function HomePage({currentUser}) {
     <Wrapper>
       <Hero>
         <Title>Search for a place to meet</Title>
-        {/* <SearchForm
+        <SearchForm
           searchFlights={searchFlights}
           getPlace={getPlace}
-        /> */}
+        />
 
         {<div>
           {!loading 

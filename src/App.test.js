@@ -8,7 +8,13 @@ import { shallow, configure, mount } from "enzyme";
 import { Route } from 'react-router-dom';
 import { MemoryRouter } from 'react-router';
 import Adapter from 'enzyme-adapter-react-16';
+import { setupGoogleMock } from './Mocks/googleMapsApiMock';
+
 configure({adapter: new Adapter()});
+
+beforeAll(() => {
+  setupGoogleMock();
+});
 
 const mocks = {
   user: {
