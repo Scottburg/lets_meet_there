@@ -16,6 +16,10 @@ describe('carriersReducer', () => {
     })
   })
 
+  it('it should return empty state if no action defined', () => {
+    expect(carriersReducer({}, {})).toEqual({});
+  })
+
   it('it should only return one carrier if duplicated both quote inputs', () => {
     expect(carriersReducer({}, {
       type: 'home/getCarriers',
@@ -23,4 +27,5 @@ describe('carriersReducer', () => {
       quotesB: [{Name: "United Arab Emirates",CarrierId: 837}]
     })).toEqual({837: {CarrierId: 837, Name: "United Arab Emirates"}})
   })
+
 })

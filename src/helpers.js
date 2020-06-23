@@ -1,4 +1,5 @@
 import { pickBy } from 'lodash';
+import ApiClient from './Services/ApiClient';
 
 const ArrToDict = (array, key) => {
   const initialValue = {};
@@ -88,4 +89,11 @@ export default {
     }
     return res.Places[0].PlaceId;
   },
+  getCityName: (flightData, OriginId) => {
+    return flightData.places.filter(place => place.PlaceId === OriginId) 
+  },
+
+  getLocation: (flightData, destinationId) => {
+    return flightData.places.filter(place => place.PlaceId === destinationId)
+  }
 };

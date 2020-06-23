@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Site Header snapshot matches 1`] = `
+<ForwardRef(styled.header)>
+  <ForwardRef
+    to="/"
+  >
+    Home
+  </ForwardRef>
+  <Button
+    id="signin"
+    onClick={[Function]}
+  >
+    Sign In with Google
+  </Button>
+</ForwardRef(styled.header)>
+`;
