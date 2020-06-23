@@ -1,4 +1,4 @@
 import styled from "styled-components";
 
-export const StyledSearchForm = styled.form`
+export const StyledSearchForm = styled.div`
 `;
