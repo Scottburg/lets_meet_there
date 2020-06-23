@@ -7,7 +7,6 @@ import { auth, createUserProfileDocument } from 'Services/firebase.utils';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
-
   let unsubscribeFromAuth = null;
 
   useEffect(() => {
@@ -31,12 +30,7 @@ function App() {
 
   return (
     <React.Fragment>
-
-      <SiteHeader 
-        key='siteheader'
-        user={currentUser} 
-      />
-      
+      <SiteHeader key='siteheader' user={currentUser} />
       <Switch>
         <Route 
           key='home'
