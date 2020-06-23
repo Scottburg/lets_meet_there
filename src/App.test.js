@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import { createStore, applyMiddleware } from 'redux'; 
 import { shallow, configure, mount } from "enzyme";
+import { Route } from 'react-router-dom';
 import { MemoryRouter } from 'react-router';
 import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});

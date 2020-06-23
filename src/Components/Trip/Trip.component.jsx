@@ -41,7 +41,6 @@ const Trip = ({ yourFlight, friendsFlight, location, favourites, userCity, frien
     )}>Remove From Favourites</button>
   ;
 
-
   const yourFlightPlaces = {
     inbound: {
       origin: favLocation ? favLocation.city : places[yourFlight.InboundLeg.OriginId],
