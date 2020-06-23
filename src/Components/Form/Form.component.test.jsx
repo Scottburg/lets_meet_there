@@ -5,7 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import Form from './Form.component';
 import LocationSearch from '../LocationSearch/locationSearch';
 import Button from '../Button/Button.component';
-import { setupGoogleMock } from './__mocks__/googleMapsApiMock';
+import { setupGoogleMock } from '../../Mocks/googleMapsApiMock';
 
 configure({adapter: new Adapter()});
 
