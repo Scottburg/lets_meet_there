@@ -32,8 +32,7 @@ const mocks = {
     displayName: "Andrew",
     favourites: []
   }
-}
-
+};
 
 describe('App', () => {
   let store;

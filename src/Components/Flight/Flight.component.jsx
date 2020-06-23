@@ -31,6 +31,6 @@ function Flight ({ flight, places, city, favLocation }) {
     </StyledFlight>
   );
 
-};
+}
 
 export default Flight;

@@ -32,7 +32,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         createdAt,
         favourites: list,
         ...additionalData
-      })
+      });
     } catch (e) {
       console.log('error creating user');
     }

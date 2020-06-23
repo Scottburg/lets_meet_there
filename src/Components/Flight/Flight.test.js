@@ -147,7 +147,7 @@ describe('Flight', () => {
         city='Barcelona'
         favCity='Barcelona'
       />
-    )
+    );
     expect(component.text()).toMatch('Direct');
   });
 
@@ -159,7 +159,7 @@ describe('Flight', () => {
         city='Barcelona'
         favCity='Barcelona'
       />
-    )
+    );
     expect(component.text()).toMatch('InDirect');
   });
 
