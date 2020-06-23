@@ -8,29 +8,10 @@ exports[`Site Header snapshot matches 1`] = `
     Home
   </ForwardRef>
   <Button
+    id="signin"
     onClick={[Function]}
   >
     Sign In with Google
   </Button>
-</ForwardRef(styled.header)>
-`;
-
-exports[`Site Header snapshot matches 2`] = `
-<ForwardRef(styled.header)>
-  <ForwardRef
-    to="/"
-  >
-    Home
-  </ForwardRef>
-  <React.Fragment>
-    <Button>
-      Sign Out
-    </Button>
-    <ForwardRef
-      to="/profile"
-    >
-      Profile
-    </ForwardRef>
-  </React.Fragment>
 </ForwardRef(styled.header)>
 `;

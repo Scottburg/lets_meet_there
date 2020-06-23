@@ -55,6 +55,13 @@ describe('fetchRequest tests', () => {
       expect(mocks.mockFetch.mock.calls.length).toBe(1);
       expect(mocks.mockFetch).toBeCalledWith('testUrl', {});
     });
+    
+  })
+
+  it('should run the fetch request with the correct URL and options object', () => {
+    return fetchRequest('testUrl', {}, mocks.mockFetch).then(data => {
+      expect(mocks.mockFetch).toBeCalledWith('testUrl', {});
+    });
   })
 })
 

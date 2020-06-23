@@ -4,6 +4,7 @@ const quote2 = require('./testData/matchFlightDataQuote2.json');
 const {filteredSet} = require('./testData/matchFlightDataFilteredSet');
 const res1 = require('./testData/placeIdRes.json');
 const res2 = require('./testData/placeIdRes2.json');
+const res4 = require('./testData/placeIdRes3.json');
 
 // test createDict
 const arrOfObj1 = [
@@ -11,6 +12,8 @@ const arrOfObj1 = [
   {PlaceId: 838, Name: "Afghanistan", Type: "Country", SkyscannerCode: "AF"},
   {PlaceId: 839, Name: "Antigua and Barbuda", Type: "Country", SkyscannerCode: "AG"}
 ];
+
+
 
 const arrOfObj2 = [
   {PlaceId: 837, Name: "United Arab Emirates", Type: "Country", SkyscannerCode: "AE"},
@@ -138,6 +141,14 @@ describe('something here', () => {
 
   test('should return the PlaceId if the full query name is found', () => {
     expect(helpers.placeId(res1, query1)).toBe(result1);
+  });
+  
+  test('should return the PlaceId if the full query name is found', () => {
+    expect(helpers.placeId(res1, query1)).toBe(result1);
+  });
+
+  test('should return the PlaceId if the full query name is found', () => {
+    expect(helpers.placeId(res4, query1)).toBe('LOND-sky');
   });
 
   const query2 = 'LOND';

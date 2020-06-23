@@ -6,19 +6,17 @@ export let fetchRequest = (url, options, testFetch) => {
       console.log(err);
     }) : testFetch(url, options)
 };
-
-
  
 export default {
-  getFlights: (origin, outbound, inbound, fetch) => {
-    return !fetch ? fetchRequest(
-      `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/EUR/en-US/${origin}/anywhere/${outbound}/${inbound}`,
+  getFlights: (origin, outbound, inbound, testFetch) => {
+    return !testFetch ? fetchRequest(
+      `${process.env.REACT_APP_BROWSE_QUOTES}${origin}/anywhere/${outbound}/${inbound}`,
       {
         method: 'GET',
         headers: {
           'x-rapidapi-host':
           'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
-          'x-rapidapi-key': "f9f3db2cf1mshbc0937b057b9cbfp120b46jsn33afb62f37b4",
+          'x-rapidapi-key': process.env.REACT_APP_API_KEY,
         },
       }
     ).then((data) => {
@@ -28,27 +26,27 @@ export default {
         carriers: data.Carriers,
       };
       return quote;
-    }) : fetch();
+    }) : testFetch();
   },
-  getPlace: (query, fetch) => {
-    return !fetch ? fetchRequest(`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=${query}`, {
+  getPlace: (query, testFetch) => {
+    return !testFetch ? fetchRequest(`${process.env.REACT_APP_AUTOSUGGEST}${query}`, {
       method: 'GET',
       headers: {
         'x-rapidapi-host':
           'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
-        'x-rapidapi-key': "f9f3db2cf1mshbc0937b057b9cbfp120b46jsn33afb62f37b4",
+        'x-rapidapi-key': process.env.REACT_APP_API_KEY,
       },
-    }) : fetch();
+    }) : testFetch();
   },
-  getFavFlights: async (origin, destination, outbound, inbound, fetch) => {
-    return !fetch ? fetchRequest(
-      `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/EUR/en-US/${origin}/${destination}/${outbound}/${inbound}`,
+  getFavFlights: async (origin, destination, outbound, inbound, testFetch) => {
+    return !testFetch ? fetchRequest(
+      `${process.env.REACT_APP_BROWSE_QUOTES}${origin}/${destination}/${outbound}/${inbound}`,
       {
         method: 'GET',
         headers: {
           'x-rapidapi-host':
           'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
-          'x-rapidapi-key': "f9f3db2cf1mshbc0937b057b9cbfp120b46jsn33afb62f37b4",
+          'x-rapidapi-key': process.env.REACT_APP_API_KEY,
         },
       }
     ).then((data) => {
@@ -58,6 +56,6 @@ export default {
         carriers: data.Carriers,
       };
       return quote;
-    }) : fetch();
+    }) : testFetch();
   }
 };

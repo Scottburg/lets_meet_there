@@ -69,4 +69,14 @@ describe('placesReducer', () => {
       Type: "Country"
     }})
   })
+
+  it('it should return original state if no action matches', () => {
+    expect(placesReducer({}, {
+      type: '',
+      quotesA: [mocks.ua],
+      quotesB: [mocks.ua]
+    })).toEqual({})
+  })
+
+  
 })

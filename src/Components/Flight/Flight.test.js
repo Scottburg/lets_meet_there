@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Flight } from 'Components';
+import Flight from './Flight.component';
 import { shallow, render, configure } from "enzyme";
 import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
@@ -125,6 +125,20 @@ describe('Flight', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  test('snapshot renders (favourite location)', () => {
+    const component = renderer.create(
+    <Flight 
+      flight={flight}
+      places={places}
+      city='Barcelona'
+      favCity='Barcelona'
+      favLocation={{city: 'Barcelona'}}
+    />
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   test('Flight Direct', () => {
     const component = render (
       <Flight 
@@ -148,5 +162,5 @@ describe('Flight', () => {
     )
     expect(component.text()).toMatch('InDirect');
   });
-  
+
 });
