@@ -8,8 +8,8 @@ export let fetchRequest = (url, options, testFetch) => {
 };
  
 export default {
-  getFlights: (origin, outbound, inbound, fetch) => {
-    return !fetch ? fetchRequest(
+  getFlights: (origin, outbound, inbound, testFetch) => {
+    return !testFetch ? fetchRequest(
       `${process.env.REACT_APP_BROWSE_QUOTES}${origin}/anywhere/${outbound}/${inbound}`,
       {
         method: 'GET',
@@ -25,19 +25,19 @@ export default {
         carriers: data.Carriers,
       };
       return quote;
-    }) : fetch();
+    }) : testFetch();
   },
-  getPlace: (query, fetch) => {
-    return !fetch ? fetchRequest(`${process.env.REACT_APP_AUTOSUGGEST}${query}`, {
+  getPlace: (query, testFetch) => {
+    return !testFetch ? fetchRequest(`${process.env.REACT_APP_AUTOSUGGEST}${query}`, {
       method: 'GET',
       headers: {
         'x-rapidapi-host': process.env.REACT_APP_API_HOST,
         'x-rapidapi-key': process.env.REACT_APP_API_KEY,
       },
-    }) : fetch();
+    }) : testFetch();
   },
-  getFavFlights: async (origin, destination, outbound, inbound, fetch) => {
-    return !fetch ? fetchRequest(
+  getFavFlights: async (origin, destination, outbound, inbound, testFetch) => {
+    return !testFetch ? fetchRequest(
       `${process.env.REACT_APP_BROWSE_QUOTES}${origin}/${destination}/${outbound}/${inbound}`,
       {
         method: 'GET',
@@ -53,6 +53,6 @@ export default {
         carriers: data.Carriers,
       };
       return quote;
-    }) : fetch();
+    }) : testFetch();
   }
 };

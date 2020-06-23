@@ -188,3 +188,4 @@ describe('tests for getLocation', () => {
     })
   })
 })
+
