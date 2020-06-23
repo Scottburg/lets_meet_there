@@ -4,24 +4,24 @@ import ProfilePage from '../ProfilePage/ProfilePage.container';
  
 const mocks = {
   user: {
-    displayName: "Andrew",
+    displayName: 'Andrew',
     favourites: [{
       userRequest: {
-        origin: "LOND",
-        destination: "DUSS",
-        outboundDate: "2020-06-23",
-        inboundDate: "2020-06-25"
+        origin: 'LOND',
+        destination: 'DUSS',
+        outboundDate: '2020-06-23',
+        inboundDate: '2020-06-25'
       },
       friendRequest: {
-        origin: "BERL",
-        destination: "DUSS",
-        outboundDate: "2020-06-23",
-        inboundDate: "2020-06-25"
+        origin: 'BERL',
+        destination: 'DUSS',
+        outboundDate: '2020-06-23',
+        inboundDate: '2020-06-25'
       }
     }]
   },
   noDataUser: {
-    displayName: "Andrew",
+    displayName: 'Andrew',
     favourites: []
   }
 };

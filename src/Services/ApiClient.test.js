@@ -1,4 +1,4 @@
-import ApiClient from './ApiClient';
+import ApiClient, {fetchRequest} from './ApiClient';
 
 const mocks = {
   query: 'london',
@@ -9,38 +9,38 @@ const mocks = {
   mockFetchGetFlights: jest.fn().mockReturnValue(Promise.resolve({
     Quotes: [
       {
-        "QuoteId": 1,
-        "MinPrice": 575.0,
-        "Direct": false,
-        "OutboundLeg": {
-          "CarrierIds": [
+        'QuoteId': 1,
+        'MinPrice': 575.0,
+        'Direct': false,
+        'OutboundLeg': {
+          'CarrierIds': [
               1755
           ],
-          "OriginId": 65655,
-          "DestinationId": 40099,
-          "DepartureDate": "2020-08-23T00:00:00"
+          'OriginId': 65655,
+          'DestinationId': 40099,
+          'DepartureDate': '2020-08-23T00:00:00'
         },
-        "InboundLeg": {
-          "CarrierIds": [
+        'InboundLeg': {
+          'CarrierIds': [
               1755
           ],
-          "OriginId": 40099,
-          "DestinationId": 65698,
-          "DepartureDate": "2020-08-27T00:00:00"
+          'OriginId': 40099,
+          'DestinationId': 65698,
+          'DepartureDate': '2020-08-27T00:00:00'
         },
-        "QuoteDateTime": "2020-06-17T06:19:00"
+        'QuoteDateTime': '2020-06-17T06:19:00'
       }
     ]
   })),
   mockFetchGetPlace: jest.fn().mockReturnValue(Promise.resolve({
     Places: [
       {
-        "PlaceId": "LOND-sky",
-        "PlaceName": "London",
-        "CountryId": "UK-sky",
-        "RegionId": "",
-        "CityId": "LOND-sky",
-        "CountryName": "United Kingdom"
+        'PlaceId': 'LOND-sky',
+        'PlaceName': 'London',
+        'CountryId': 'UK-sky',
+        'RegionId': '',
+        'CityId': 'LOND-sky',
+        'CountryName': 'United Kingdom'
       },
     ]
   }))
