@@ -1,8 +1,7 @@
 import React from 'react';
 import { SiteHeader } from 'Components';
-import { NavLink, BrowserRouter as Router } from 'react-router-dom';
-import { Button } from 'Components';
-import { shallow, mount, configure } from "enzyme";
+import { BrowserRouter as Router } from 'react-router-dom';
+import { configure } from "enzyme";
 import ShallowRenderer from 'react-test-renderer/shallow';
 import { render } from '@testing-library/react';
 import Adapter from 'enzyme-adapter-react-16';
