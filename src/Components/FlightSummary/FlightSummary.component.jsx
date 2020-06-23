@@ -10,6 +10,6 @@ function FlightSummary ({ location }) {
     </StyledFlightSummary>
   );
   
-};
+}
 
 export default FlightSummary;

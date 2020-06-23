@@ -25,7 +25,7 @@ function Form (props) {
     
     setFormData(fields);
     isFormValid(formData)
-  };
+  }
   
   function isFormValid (fields) {
     for (let i = 0; i < fields.length - 1; i++) {
@@ -102,8 +102,3 @@ function Form (props) {
 }
 
 export default Form;
-
-
-
-// focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-// onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,

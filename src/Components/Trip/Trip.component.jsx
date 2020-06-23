@@ -11,7 +11,7 @@ const Trip = ({ yourFlight, friendsFlight, location, favourites, userCity, frien
   const meetingLocation = {
     city: favLocation ? favLocation.city : places[location].CityName,
     country: favLocation ? favLocation.country : places[location].CountryName
-  }
+  };
 
   const addToFavouritesHandler = async (e) => {
     const requestData = {

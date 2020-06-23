@@ -1,6 +1,5 @@
 import ApiClient from './ApiClient';
 
-
 const mocks = {
   query: 'london',
   origin: 'LOND-sky',

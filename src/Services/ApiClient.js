@@ -3,7 +3,7 @@ export let fetchRequest = (url, options, testFetch) => {
     .then((res) => (res.status <= 400 ? res : Promise.reject(res)))
     .then((res) => res.json())
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     }) : testFetch(url, options)
 };
  
@@ -14,8 +14,7 @@ export default {
       {
         method: 'GET',
         headers: {
-          'x-rapidapi-host':
-          'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
+          'x-rapidapi-host': process.env.REACT_APP_API_HOST,
           'x-rapidapi-key': process.env.REACT_APP_API_KEY,
         },
       }
@@ -32,8 +31,7 @@ export default {
     return !fetch ? fetchRequest(`${process.env.REACT_APP_AUTOSUGGEST}${query}`, {
       method: 'GET',
       headers: {
-        'x-rapidapi-host':
-          'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
+        'x-rapidapi-host': process.env.REACT_APP_API_HOST,
         'x-rapidapi-key': process.env.REACT_APP_API_KEY,
       },
     }) : fetch();
@@ -44,8 +42,7 @@ export default {
       {
         method: 'GET',
         headers: {
-          'x-rapidapi-host':
-          'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
+          'x-rapidapi-host': process.env.REACT_APP_API_HOST,
           'x-rapidapi-key': process.env.REACT_APP_API_KEY,
         },
       }
