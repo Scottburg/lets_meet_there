@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Flight } from 'Components';
+import Flight from './Flight.component';
 import { shallow, render, configure } from "enzyme";
 import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
