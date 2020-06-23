@@ -74,7 +74,7 @@ describe('Booking Link', () => {
       },
       QuoteDateTime: '2020-06-21T20:05:00'
     }
-  })
+  });
 
   test('snapshot renders', () => {
     const component = renderer.create(

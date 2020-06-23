@@ -47,5 +47,5 @@ export default function HomePage({currentUser}) {
         </div>}
       </Hero>
     </Wrapper>
-  )
-}
+  );
+};

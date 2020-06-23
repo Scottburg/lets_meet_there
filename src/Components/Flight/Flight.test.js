@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Flight from './Flight.component';
-import { shallow, render, configure } from "enzyme";
+import { Flight } from 'Components';
+import { render, configure } from "enzyme";
 import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 
@@ -147,7 +147,7 @@ describe('Flight', () => {
         city='Barcelona'
         favCity='Barcelona'
       />
-    )
+    );
     expect(component.text()).toMatch('Direct');
   });
 
@@ -159,7 +159,7 @@ describe('Flight', () => {
         city='Barcelona'
         favCity='Barcelona'
       />
-    )
+    );
     expect(component.text()).toMatch('InDirect');
   });
 

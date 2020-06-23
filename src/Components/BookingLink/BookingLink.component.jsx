@@ -10,8 +10,7 @@ function BookingLink ({inbound, outbound, flight, city, favCity}) {
       trim(favCity ? favCity : inbound.origin.CityName, 0, 4),
       trim(flight.OutboundLeg.DepartureDate, 0, 10),
       trim(flight.InboundLeg.DepartureDate, 0, 10)
-    ]
-
+    ];
     return [...bookingDetails].join('/');
   }
 

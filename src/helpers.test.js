@@ -136,8 +136,8 @@ test('should return an array of arrays, sorted by quote price', () => {
 
 // test placeId
 describe('something here', () => {
-  const query1 = 'LONDON'
-  const result1 = 'LOND-sky' //some number here 
+  const query1 = 'LONDON';
+  const result1 = 'LOND-sky'; //some number here 
 
   test('should return the PlaceId if the full query name is found', () => {
     expect(helpers.placeId(res1, query1)).toBe(result1);

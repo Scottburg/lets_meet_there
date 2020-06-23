@@ -2,13 +2,11 @@
 
 exports[`test the profile page load should match snapshot and render correctly 1`] = `
 <DocumentFragment>
-  <div>
-    Andrew
-    <p
-      id="noQuotes"
-    >
-      You have no quotes favourited
-    </p>
-  </div>
+  Andrew
+  <p
+    id="noQuotes"
+  >
+    You have no quotes favourited
+  </p>
 </DocumentFragment>
 `;
