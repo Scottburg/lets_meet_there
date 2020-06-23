@@ -7,7 +7,6 @@ import { firestore } from '../../Services/firebase.utils';
 const Trip = ({ yourFlight, friendsFlight, location, favourites, userCity, friendCity, favLocation, removeFromFavouritesHandler, searchDetailsForRemoveHandler, user }) => {
   const places = useSelector((state) => state.places);
   const carriers = useSelector((state) => state.carriers);
-  const [expanded, setExpanded] = useState(false);
 
   const meetingLocation = {
     city: favLocation ? favLocation.city : places[location].CityName,

@@ -6,7 +6,6 @@ import { firestore } from 'Services/firebase.utils';
 import helpers from '../../helpers';
 
 export default function ProfilePage({user}) {
-
   const [isLoading, setIsLoading] = useState(false)
   const [favData, setFavData] = useState();
 
@@ -49,21 +48,24 @@ export default function ProfilePage({user}) {
   }
 
   useEffect(() => {
-    if (user.favourites && user.favourites.length ){ favListData().then(data => {
-      setIsLoading(false)
-      setFavData(data);
-    });}
-  },[user.favourites])
+    if (user.favourites && user.favourites.length ){ 
+      favListData().then(data => {
+        setIsLoading(false)
+        setFavData(data);
+      })
+    }
+  },[]);
 
-  const ui = <>
+  return (
+    <React.Fragment>
+      {
+        isLoading 
+          ? <Spinner /> 
+          : <React.Fragment>
               {user && user.displayName}
               {user && user.favourites.length ? favData : <p id="noQuotes">You have no quotes favourited</p>}
-             </>
-  
-  
-  return (
-    <div>
-      {isLoading ? <Spinner /> : ui}
-    </div>
+            </React.Fragment>
+      }
+    </React.Fragment>
   )
 }

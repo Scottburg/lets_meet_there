@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { Flight } from 'Components';
-import { shallow, render, configure } from "enzyme";
+import { render, configure } from "enzyme";
 import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 

@@ -6,11 +6,8 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 import { createStore, applyMiddleware } from 'redux'; 
 import { shallow, configure, mount } from "enzyme";
 import { MemoryRouter } from 'react-router';
-import { BrowserRouter as Router, browserHistory, Route } from 'react-router-dom';
-import { render } from "@testing-library/react";
 import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
-
 
 const mocks = {
   user: {
