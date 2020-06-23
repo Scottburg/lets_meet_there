@@ -24,31 +24,31 @@ const mocks = {
     displayName: "Andrew",
     favourites: []
   }
-}
+};
 
 describe('test the profile page load', () => {
   it('should match snapshot and render correctly', () => {
-    const { asFragment } = render(<ProfilePage user={mocks.noDataUser} />)
+    const { asFragment } = render(<ProfilePage user={mocks.noDataUser} />);
     
-    expect(asFragment(<ProfilePage />)).toMatchSnapshot()
+    expect(asFragment(<ProfilePage />)).toMatchSnapshot();
   })
   
   it('should display user display name', () => {
-    const { queryByText } = render(<ProfilePage user={mocks.noDataUser} />)
+    const { queryByText } = render(<ProfilePage user={mocks.noDataUser} />);
     const display = queryByText('Andrew');
-    expect(display).toBeInTheDocument()
+    expect(display).toBeInTheDocument();
   })
   
   it('should tell the user when there are no favourite quotes', () => {
-    const { queryByText } = render(<ProfilePage user={mocks.noDataUser} />)
+    const { queryByText } = render(<ProfilePage user={mocks.noDataUser} />);
     const noQuotes = queryByText('You have no quotes favourited');
-    expect(noQuotes).toBeInTheDocument()
+    expect(noQuotes).toBeInTheDocument();
   })
 
   it('should render differently when favourite data exists', () => {
-    const { queryByText } = render(<ProfilePage user={mocks.user} />)
+    const { queryByText } = render(<ProfilePage user={mocks.user} />);
     const noQuotes = queryByText('You have no quotes favourited');
-    expect(noQuotes).not.toBeInTheDocument()
+    expect(noQuotes).not.toBeInTheDocument();
   })
 })
 

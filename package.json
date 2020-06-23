@@ -61,10 +61,17 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
-      "!**/index.js",
+      "!src/Services/firebase.utils.js",
+      "!src/Components/index.js",
+      "!src/Reducers/index.js",
+      "!src/Mocks/hooks.js",
+      "!src/Actions/index.js",
+      "!src/index.js",
+      "!src/Containers/index.js",
       "!<rootDir>/node_modules/",
       "!<rootDir>src/index.js",
       "!<rootDir>src/Reducers/index.js"
     ]
   }
 }
+

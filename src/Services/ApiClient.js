@@ -1,10 +1,10 @@
-let fetchRequest = (url, options) => {
-  return fetch(url, options)
+export let fetchRequest = (url, options, testFetch) => {
+  return !testFetch ? fetch(url, options)
     .then((res) => (res.status <= 400 ? res : Promise.reject(res)))
     .then((res) => res.json())
     .catch((err) => {
       console.log(err);
-    });
+    }) : testFetch(url, options)
 };
 
 

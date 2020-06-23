@@ -10,14 +10,14 @@ const store = mockStore()
 
 describe('test the Spinner', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<Provider store={store}><Home /></Provider>)
-    expect(asFragment(<Home />)).toMatchSnapshot()
+    const { asFragment } = render(<Provider store={store}><Home /></Provider>);
+    expect(asFragment(<Home />)).toMatchSnapshot();
   })
 
   it('should render correctly', () => {
-    const { getByText } = render(<Provider store={store}><Home /></Provider>)
+    const { getByText } = render(<Provider store={store}><Home /></Provider>);
     const title = getByText('Search for a place to meet');
-    expect(title).toBeInTheDocument()
+    expect(title).toBeInTheDocument();
   })
 
 })

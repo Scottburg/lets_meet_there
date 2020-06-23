@@ -6,7 +6,7 @@ function FlightList ({ matchedFlights, user }) {
     <div>
       <div className="tile_Container">
         {matchedFlights.map((flight) => (
-          <React.Fragment>
+          <React.Fragment key={flight[0] + 1}>
             <Trip
               user={user}
               key={flight[0]}

@@ -156,9 +156,25 @@ describe('something here', () => {
 });
 
 //getCityName 
+describe('tests for getCityName', () => {
+  it('should return the city name', () => {
+    expect(helpers.getCityName(flightData, flightData.Quotes[0].OutboundLeg.OriginId)[0].CityName).toEqual('Berlin')
+  })
+})
 
-// describe('tests for getCityName', () => {
-//   it('should return the city name', () => {
-//     helpers.getCityName(flightData, flightData.Quotes[0]).toBe('London')
-//   })
-// })
+//get Location tests
+describe('tests for getLocation', () => {
+  it('should return the location object', () => {
+    expect(helpers.getLocation(flightData, flightData.Quotes[0].OutboundLeg.DestinationId)[0]).toEqual({
+      PlaceId: 82398,
+      IataCode: 'STN',
+      Name: 'London Stansted',
+      Type: 'Station',
+      SkyscannerCode: 'STN',
+      CityName: 'London',
+      CityId: 'LOND',
+      CountryName: 'United Kingdom'
+    })
+  })
+})
+

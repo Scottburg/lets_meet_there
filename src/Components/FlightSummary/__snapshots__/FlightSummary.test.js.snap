@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Flight Summary snapshot renders 1`] = `
+<div
+  className="sc-AxjAm fDEmJb"
+>
+  Barcelona
+</div>
+`;
