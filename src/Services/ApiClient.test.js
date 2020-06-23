@@ -43,7 +43,9 @@ const mocks = {
         'CountryName': 'United Kingdom'
       },
     ]
-  }))
+  })),
+  mockFetch: jest.fn().mockReturnValue(Promise.resolve({}))
+
 }
 
 describe('fetchRequest tests', () => {
