@@ -10,18 +10,6 @@ The app is created in React with Redux and runs using the Skyscanner Api (throug
 
 ### <u>SETUP</u>
 
-```
-<details>
-  <summary>Click to expand!</summary>
-
-  ## Heading
-  1. A numbered
-  2. list
-     * With some
-     * Sub bullets
-</details>
-```
-
 Create a rapidapi.com account and subscribe to the skyscanner api https://rapidapi.com/skyscanner/api/skyscanner-flight-search
 
 This will give you an API key (see screenshot below)
