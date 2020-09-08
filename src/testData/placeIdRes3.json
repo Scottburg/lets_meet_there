@@ -1,0 +1,12 @@
+{
+  "Places": [
+    {
+      "PlaceId": "LOND-sky",
+      "PlaceName": "London",
+      "CountryId": "UK-sky",
+      "RegionId": "",
+      "CityId": "LOND-sky",
+      "CountryName": "United Kingdom"
+    }
+  ]
+}
