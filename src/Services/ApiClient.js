@@ -8,34 +8,38 @@ let fetchRequest = (url, options) => {
 };
 
 export default {
-  getFlights: (origin, outbound, inbound) => {
-    return fetchRequest(
-      `${process.env.REACT_APP_API_URL}${origin}/anywhere/${outbound}/${inbound}`,
-      {
-        method: 'GET',
-        headers: {
-          'x-rapidapi-host':
-            'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
-          'x-rapidapi-key': process.env.REACT_APP_API_KEY,
-        },
-      }
-    ).then((data) => {
-      const quote = {
-        quotes: data.Quotes,
-        places: data.Places,
-        carriers: data.Carriers,
-      };
-      return quote;
-    });
+  getFlights: (origin, outbound, inbound, fetch) => {
+    return !fetch
+      ? fetchRequest(
+          `${process.env.REACT_APP_API_URL}${origin}/anywhere/${outbound}/${inbound}`,
+          {
+            method: 'GET',
+            headers: {
+              'x-rapidapi-host':
+                'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
+              'x-rapidapi-key': process.env.REACT_APP_API_KEY,
+            },
+          }
+        ).then((data) => {
+          const quote = {
+            quotes: data.Quotes,
+            places: data.Places,
+            carriers: data.Carriers,
+          };
+          return quote;
+        })
+      : fetch();
   },
-  getPlace: (query) => {
-    return fetchRequest(`${process.env.REACT_APP_API_PLACE_URL}${query}`, {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-host':
-          'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
-        'x-rapidapi-key': process.env.REACT_APP_API_KEY,
-      },
-    });
+  getPlace: (query, fetch) => {
+    return !fetch
+      ? fetchRequest(`${process.env.REACT_APP_API_PLACE_URL}${query}`, {
+          method: 'GET',
+          headers: {
+            'x-rapidapi-host':
+              'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
+            'x-rapidapi-key': process.env.REACT_APP_API_KEY,
+          },
+        })
+      : fetch();
   },
 };
