@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import './flightTile.css';
 import { useSelector } from 'react-redux';
 import IconButton from '@material-ui/core/IconButton';
@@ -6,12 +6,16 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 
+
 const FlightTile = ({ flight1, flight2, location }) => {
   const bookingUrl = 'https://www.skyscanner.net/transport/flights/';
   const places = useSelector((state) => state.places);
   const carriers = useSelector((state) => state.carriers);
   const [expanded, setExpanded] = useState(false);
   const classes = useStyles();
+  const currencySymbol = {"GBP": "£", "EUR": "€", "USD" : "$"}
+  const currency = useSelector((state) => state.currency)
+  
   function handleExpandClick() {
     setExpanded(!expanded);
   }
@@ -21,7 +25,7 @@ const FlightTile = ({ flight1, flight2, location }) => {
       <div className="flightTileMain">
         <div className="flight1">
           <div className="tripDetails">
-            <h4>{places[flight1.OutboundLeg.OriginId].CityName}</h4>€
+            <h4>{places[flight1.OutboundLeg.OriginId].CityName}</h4>{currencySymbol[currency]}
             {flight1.MinPrice}
             <div>{flight1.Direct ? 'Direct Flight' : 'Indirect Flight'}</div>
             <a
@@ -44,7 +48,7 @@ const FlightTile = ({ flight1, flight2, location }) => {
         <div className="bothFlights">
           <h3>{places[location].CityName}</h3>
           <h4>{places[location].CountryName}</h4>
-          <h4>€{flight2.MinPrice + flight1.MinPrice}</h4>
+          <h4>{currencySymbol[currency]}{flight2.MinPrice + flight1.MinPrice}</h4>
           <div className="moreDetails">
             {expanded ? 'Less Detail' : 'More Detail'}
             <IconButton
@@ -62,7 +66,7 @@ const FlightTile = ({ flight1, flight2, location }) => {
         <div className="flight2">
           <div className="tripDetails">
             <h4>{places[flight2.OutboundLeg.OriginId].CityName}</h4>
-            <div>€{flight2.MinPrice}</div>
+            <div>{currencySymbol[currency]}{flight2.MinPrice}</div>
             <div>{flight2.Direct ? 'Direct Flight' : 'Indirect Flight'}</div>
             <a
               href={`${bookingUrl}${places[

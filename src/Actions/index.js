@@ -10,6 +10,12 @@ export const setCurrency = (currency) => {
     payload: currency,
   };
 };
+export const setSearchParams = (searchParams) => {
+  return {
+    type: 'home/setSearchParams',
+    payload: searchParams,
+  };
+};
 
 export const getPlaces = (quotesA, quotesB) => {
   return {

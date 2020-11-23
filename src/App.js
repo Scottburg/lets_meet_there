@@ -34,9 +34,9 @@ function App() {
       <div className="App">
         <header className="App-header">
         <div className="currencyButtons">
-          <button onClick={() => (dispatch(setCurrency("GBP")))}>GBP</button>
-          <button onClick={() => dispatch(setCurrency("USD"))}>USD</button>
-          <button onClick={() => dispatch(setCurrency("EUR"))}>EUR</button>
+          <button className={useSelector(state => state.currency) === "GBP"? "selected" : "unselected"} onClick={() => (dispatch(setCurrency("GBP")))}>£</button>
+          <button className={useSelector(state => state.currency) === "USD"? "selected" : "unselected"} onClick={() => dispatch(setCurrency("USD"))}>$</button>
+          <button className={useSelector(state => state.currency) === "EUR"? "selected" : "unselected"} onClick={() => dispatch(setCurrency("EUR"))}>€</button>
         </div>
 
 
