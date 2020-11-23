@@ -4,11 +4,14 @@ import 'react-dates/initialize';
 import { DateRangePicker } from 'react-dates';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-dates/lib/css/_datepicker.css';
+import { useSelector } from 'react-redux';
+
 
 const SearchForm = ({ searchFlights, getPlace }) => {
   const initialState = {
     from1: '',
     from2: '',
+    currency: useSelector((state) => state.currency),
   };
   const [state, setState] = useState(initialState);
   const [focus, setFocus] = useState(null);
@@ -30,14 +33,14 @@ const SearchForm = ({ searchFlights, getPlace }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { from1, from2 } = state;
+    const { from1, from2, currency } = state;
     if (from1 && from2 && dateRange) {
       try {
         const fmtFrom1 = await getPlace(from1);
         const fmtFrom2 = await getPlace(from2);
         const departDate = dateRange.startDate.format('YYYY-MM-DD');
         const returnDate = dateRange.endDate.format('YYYY-MM-DD');
-        searchFlights(fmtFrom1, fmtFrom2, departDate, returnDate);
+        searchFlights(fmtFrom1, fmtFrom2, departDate, returnDate, currency);
         setState(initialState);
       } catch (e) {
         console.log(e);

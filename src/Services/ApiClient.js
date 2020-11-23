@@ -8,10 +8,10 @@ let fetchRequest = (url, options) => {
 };
 
 export default {
-  getFlights: (origin, outbound, inbound, fetch) => {
+  getFlights: (origin, outbound, inbound, currency, fetch) => {
     return !fetch
       ? fetchRequest(
-          `${process.env.REACT_APP_API_URL}${origin}/anywhere/${outbound}/${inbound}`,
+          `${process.env.REACT_APP_API_URL}/US/${currency}/en-US/${origin}/anywhere/${outbound}/${inbound}`,
           {
             method: 'GET',
             headers: {

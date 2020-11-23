@@ -6,7 +6,7 @@ import SearchForm from './Components/SearchForm/searchForm';
 import FlightList from './Containers/FlightList/flightList';
 import helpers from './helpers';
 import { useSelector, useDispatch } from 'react-redux';
-import { isLoading, getPlaces, getCarriers } from './Actions';
+import { isLoading, getPlaces, getCarriers, setCurrency } from './Actions';
 function App() {
   const [matched, setMatched] = useState([]);
   // Redux items
@@ -19,10 +19,10 @@ function App() {
     });
   };
 
-  const searchFlights = async (from1, from2, departDate, returnDate) => {
+  const searchFlights = async (from1, from2, departDate, returnDate, currency) => {
     dispatch(isLoading());
-    const quotesA = await ApiClient.getFlights(from1, departDate, returnDate);
-    const quotesB = await ApiClient.getFlights(from2, departDate, returnDate);
+    const quotesA = await ApiClient.getFlights(from1, departDate, returnDate, currency);
+    const quotesB = await ApiClient.getFlights(from2, departDate, returnDate, currency);
     dispatch(getPlaces(quotesA.places, quotesB.places)); // dispatch is a redux function that gets the named reducer and sets the state.
     dispatch(getCarriers(quotesA.carriers, quotesB.carriers));
     setMatched(helpers.matchFlights(quotesA, quotesB)); // as this is passed through props fine to leave outside redux.
@@ -32,7 +32,15 @@ function App() {
   return (
     <div className="App-body">
       <div className="App">
-        <header className="App-header"></header>
+        <header className="App-header">
+        <div className="currencyButtons">
+          <button onClick={() => (dispatch(setCurrency("GBP")))}>GBP</button>
+          <button onClick={() => dispatch(setCurrency("USD"))}>USD</button>
+          <button onClick={() => dispatch(setCurrency("EUR"))}>EUR</button>
+        </div>
+
+
+        </header>
         <h1>Search for a place to meet</h1>
 
         <SearchForm

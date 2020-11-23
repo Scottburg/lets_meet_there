@@ -4,6 +4,13 @@ export const isLoading = () => {
   };
 };
 
+export const setCurrency = (currency) => {
+  return {
+    type: 'home/setCurrency',
+    payload: currency,
+  };
+};
+
 export const getPlaces = (quotesA, quotesB) => {
   return {
     type: 'home/getPlaces',
