@@ -25,3 +25,7 @@ Components ----
 Dashboard 
 Flights List
 Flight Tile
+
+To Add -----
+Filter for direct flights only 
+autocomplete search bar
