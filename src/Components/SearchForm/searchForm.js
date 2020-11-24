@@ -4,7 +4,8 @@ import 'react-dates/initialize';
 import { DateRangePicker } from 'react-dates';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-dates/lib/css/_datepicker.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearchParams } from '../../Actions';
 
 
 const SearchForm = ({ searchFlights, getPlace }) => {
@@ -22,6 +23,7 @@ const SearchForm = ({ searchFlights, getPlace }) => {
   });
   const { startDate, endDate } = dateRange;
   const { from1, from2 } = state;
+  const dispatch = useDispatch()
 
   const handleOnDateChange = (startDate, endDate) =>
     setdateRange(startDate, endDate);
@@ -41,6 +43,7 @@ const SearchForm = ({ searchFlights, getPlace }) => {
         const departDate = dateRange.startDate.format('YYYY-MM-DD');
         const returnDate = dateRange.endDate.format('YYYY-MM-DD');
         searchFlights(fmtFrom1, fmtFrom2, departDate, returnDate, currency);
+        dispatch(setSearchParams({fmtFrom1, fmtFrom2, departDate, returnDate, currency}))
         setState(initialState);
       } catch (e) {
         console.log(e);
