@@ -43,10 +43,10 @@ function App() {
     <div className="App-body">
       <div className="App">
         <header className="App-header">
-        <div className="currencyButtons">
-          <button className={useSelector(state => state.currency) === "GBP"? "selected" : "unselected"} onClick={() => changeCurrency("GBP")}>£</button>
-          <button className={useSelector(state => state.currency) === "USD"? "selected" : "unselected"} onClick={() => changeCurrency("USD")}>$</button>
-          <button className={useSelector(state => state.currency) === "EUR"? "selected" : "unselected"} onClick={() => changeCurrency("EUR")}>€</button>
+        <div className="Currency-buttons">
+          <div className={useSelector(state => state.currency) === "GBP"? "selected" : "unselected"} onClick={() => changeCurrency("GBP")}>&nbsp;£&nbsp;</div>
+          <div className={useSelector(state => state.currency) === "USD"? "selected" : "unselected"} onClick={() => changeCurrency("USD")}>&nbsp;$&nbsp;</div>
+          <div className={useSelector(state => state.currency) === "EUR"? "selected" : "unselected"} onClick={() => changeCurrency("EUR")}>&nbsp;€&nbsp;</div>
         </div>
 
 
