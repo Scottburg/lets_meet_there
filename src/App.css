@@ -18,6 +18,8 @@
 .Currency-buttons {
   display: flex;
   justify-content: flex-end;
+  margin-right: 20px;
+  color: rgba(255, 72, 0, 0.789);
 }
 .selected {
   text-decoration: underline;
