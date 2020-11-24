@@ -8,3 +8,4 @@ const currencyReducer = (state = "GBP", action) => {
 };
 
 export default currencyReducer;
+

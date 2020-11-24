@@ -6,11 +6,13 @@ import SearchForm from './Components/SearchForm/searchForm';
 import FlightList from './Containers/FlightList/flightList';
 import helpers from './helpers';
 import { useSelector, useDispatch } from 'react-redux';
-import { isLoading, getPlaces, getCarriers, setCurrency } from './Actions';
+import { isLoading, getPlaces, getCarriers, setCurrency, setSearchParams } from './Actions';
 function App() {
   const [matched, setMatched] = useState([]);
   // Redux items
   const loading = useSelector((state) => state.isLoading);
+  const searchParams = useSelector((state) => state.searchParams);
+  const currentCurrency = useSelector((state) => state.currency);
   const dispatch = useDispatch();
 
   const getPlace = async (query) => {
@@ -28,15 +30,23 @@ function App() {
     setMatched(helpers.matchFlights(quotesA, quotesB)); // as this is passed through props fine to leave outside redux.
     dispatch(isLoading());
   };
+  const changeCurrency = (currency) => { 
+    
+    if (searchParams !== null && currency !== currentCurrency) {
+    searchFlights(searchParams.fmtFrom1,searchParams.fmtFrom2, searchParams.departDate, searchParams.returnDate, currency);
+    dispatch(setSearchParams({fmtFrom1: searchParams.fmtFrom1, fmtFrom2: searchParams.fmtFrom2, departDate: searchParams.departDate, returnDate: searchParams.returnDate, currency: currency}))
+  };
+    if (currency !== currentCurrency)  {dispatch(setCurrency(currency))}; 
+    };
 
   return (
     <div className="App-body">
       <div className="App">
         <header className="App-header">
         <div className="currencyButtons">
-          <button className={useSelector(state => state.currency) === "GBP"? "selected" : "unselected"} onClick={() => (dispatch(setCurrency("GBP")))}>£</button>
-          <button className={useSelector(state => state.currency) === "USD"? "selected" : "unselected"} onClick={() => dispatch(setCurrency("USD"))}>$</button>
-          <button className={useSelector(state => state.currency) === "EUR"? "selected" : "unselected"} onClick={() => dispatch(setCurrency("EUR"))}>€</button>
+          <button className={useSelector(state => state.currency) === "GBP"? "selected" : "unselected"} onClick={() => changeCurrency("GBP")}>£</button>
+          <button className={useSelector(state => state.currency) === "USD"? "selected" : "unselected"} onClick={() => changeCurrency("USD")}>$</button>
+          <button className={useSelector(state => state.currency) === "EUR"? "selected" : "unselected"} onClick={() => changeCurrency("EUR")}>€</button>
         </div>
 
 

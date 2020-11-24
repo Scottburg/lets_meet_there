@@ -1,4 +1,4 @@
-const searchParamsReducer = (state = {}, action) => {
+const searchParamsReducer = (state = null, action) => {
   switch (action.type) {
     case 'home/setSearchParams':
       return action.payload;
