@@ -8,7 +8,6 @@ import helpers from './helpers';
 import { useSelector, useDispatch } from 'react-redux';
 import { isLoading, getPlaces, getCarriers, setCurrency, setSearchParams, setMatchedResults } from './Actions';
 function App() {
-  // const [searchedBoolean, setSearchedBoolean] = useState(false);
   // Redux items
   const loading = useSelector((state) => state.isLoading);
   const searchParams = useSelector((state) => state.searchParams);
@@ -31,9 +30,6 @@ function App() {
     dispatch(getPlaces(quotesA.places, quotesB.places)); // dispatch is a redux function that gets the named reducer and sets the state.
     dispatch(getCarriers(quotesA.carriers, quotesB.carriers));
     dispatch(setMatchedResults(quotesA, quotesB));
-    }
-    // setMatched(helpers.matchFlights(quotesA, quotesB)); // as this is passed through props fine to leave outside redux.
-    // setSearchedBoolean(true)
     dispatch(isLoading());
   };
   const changeCurrency = (currency) => { 
