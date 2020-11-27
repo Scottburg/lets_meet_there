@@ -32,3 +32,11 @@ export const getCarriers = (quotesA, quotesB) => {
     quotesB: quotesB,
   };
 };
+
+export const setMatchedResults = (quotesA, quotesB) => {
+  return {
+    type: 'home/setMatchedResults',
+    quotesA: quotesA,
+    quotesB: quotesB,
+  };
+};

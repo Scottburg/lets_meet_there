@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import logo from './assets/Plane.svg';
 import ApiClient from './Services/ApiClient';
 import './App.css';
@@ -6,13 +6,14 @@ import SearchForm from './Components/SearchForm/searchForm';
 import FlightList from './Containers/FlightList/flightList';
 import helpers from './helpers';
 import { useSelector, useDispatch } from 'react-redux';
-import { isLoading, getPlaces, getCarriers, setCurrency, setSearchParams } from './Actions';
+import { isLoading, getPlaces, getCarriers, setCurrency, setSearchParams, setMatchedResults } from './Actions';
 function App() {
-  const [matched, setMatched] = useState([]);
+  // const [matched, setMatched] = useState([]);
   // Redux items
   const loading = useSelector((state) => state.isLoading);
   const searchParams = useSelector((state) => state.searchParams);
   const currentCurrency = useSelector((state) => state.currency);
+  const matched = useSelector((state) => state.matchedFlights);
   const dispatch = useDispatch();
 
   const getPlace = async (query) => {
@@ -27,7 +28,9 @@ function App() {
     const quotesB = await ApiClient.getFlights(from2, departDate, returnDate, currency);
     dispatch(getPlaces(quotesA.places, quotesB.places)); // dispatch is a redux function that gets the named reducer and sets the state.
     dispatch(getCarriers(quotesA.carriers, quotesB.carriers));
-    setMatched(helpers.matchFlights(quotesA, quotesB)); // as this is passed through props fine to leave outside redux.
+    dispatch(setMatchedResults(quotesA, quotesB));
+
+    // setMatched(helpers.matchFlights(quotesA, quotesB)); // as this is passed through props fine to leave outside redux.
     dispatch(isLoading());
   };
   const changeCurrency = (currency) => { 
