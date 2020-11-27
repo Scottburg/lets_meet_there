@@ -33,6 +33,7 @@ const toTitleCase = (str) => {
 
 export default {
   createDict: (arrOfObj1, arrOfObj2, key) => {
+  try{
     let combined = [...arrOfObj1, ...arrOfObj2];
 
     let combined2 = Array.from(
@@ -42,6 +43,9 @@ export default {
       return combined.find((a) => a[key] === num); // find returns the  first element that has the same PlaceId
     });
     return ArrToDict(combined2, key);
+  } catch (error){
+    return {};
+  }
   },
   matchFlights: (quotes, quotes2) => {
     const unionSet = {};

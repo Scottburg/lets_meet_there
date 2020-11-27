@@ -26,10 +26,12 @@ function App() {
     dispatch(isLoading());
     const quotesA = await ApiClient.getFlights(from1, departDate, returnDate, currency);
     const quotesB = await ApiClient.getFlights(from2, departDate, returnDate, currency);
+    console.log(quotesA)
+    if (quotesA.quotes !== undefined || quotesA.quotes !== undefined){
     dispatch(getPlaces(quotesA.places, quotesB.places)); // dispatch is a redux function that gets the named reducer and sets the state.
     dispatch(getCarriers(quotesA.carriers, quotesB.carriers));
     dispatch(setMatchedResults(quotesA, quotesB));
-
+    }
     // setMatched(helpers.matchFlights(quotesA, quotesB)); // as this is passed through props fine to leave outside redux.
     dispatch(isLoading());
   };
@@ -63,9 +65,9 @@ function App() {
         <div>
           {loading ? (
             <img src={logo} className="App-logo" alt="logo" />
-          ) : (
+          ) : matched.length ? (
             <FlightList matchedFlights={matched}></FlightList>
-          )}
+          ) : (<div>No flights found</div>)}
         </div>
       </div>
     </div>
