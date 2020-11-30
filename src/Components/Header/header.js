@@ -1,8 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrency, setSearchParams } from '../../Actions';
+import { directFlights } from '../../Actions';
 
 function Header( {searchFlights }) {
+
+  const directOnly = useSelector((state) => state.directFlights)
 
 
   const currentCurrency = useSelector((state) => state.currency);
@@ -29,7 +32,7 @@ function Header( {searchFlights }) {
           <div className={currentCurrency === "EUR"? "selected" : "unselected"} onClick={() => changeCurrency("EUR")}>&nbsp;€&nbsp;</div>
         </div>
         {matched[0]? <div className="Directflights-toggle">
-        {false? "Direct Flights": "All Flights"}  
+        {directOnly? "Direct Flights": "All Flights"}  
         </div> : null}
     {!matched[0] ? (<h1>Search for a place to meet</h1>): null}
     </header>

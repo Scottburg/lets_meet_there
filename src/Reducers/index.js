@@ -5,6 +5,7 @@ import { combineReducers } from 'redux';
 import currencyReducer from './currencyReducer';
 import searchParamsReducer from './searchParamsReducer';
 import matchedFlightsReducer from './matchedFlightsReducer';
+import directFlightsReducer from './directFlightsReducer';
 
 const allReducers = combineReducers({
   isLoading: isLoadingReducer,
@@ -13,6 +14,7 @@ const allReducers = combineReducers({
   currency: currencyReducer,
   searchParams: searchParamsReducer,
   matchedFlights: matchedFlightsReducer,
+  directFlights: directFlightsReducer,
 });
 
 export default allReducers;

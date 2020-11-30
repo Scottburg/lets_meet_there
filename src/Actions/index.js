@@ -3,6 +3,11 @@ export const isLoading = () => {
     type: 'home/isLoading',
   };
 };
+export const directFlights = () => {
+  return {
+    type: 'home/directFlights',
+  };
+};
 
 export const setCurrency = (currency) => {
   return {
