@@ -4,14 +4,16 @@ import ApiClient from './Services/ApiClient';
 import './App.css';
 import SearchForm from './Components/SearchForm/searchForm';
 import FlightList from './Containers/FlightList/flightList';
+import Header from './Components/Header/header';
 import helpers from './helpers';
 import { useSelector, useDispatch } from 'react-redux';
-import { isLoading, getPlaces, getCarriers, setCurrency, setSearchParams, setMatchedResults } from './Actions';
+import { isLoading, getPlaces, getCarriers, setMatchedResults } from './Actions';
+
+
 function App() {
   // Redux items
   const loading = useSelector((state) => state.isLoading);
   const searchParams = useSelector((state) => state.searchParams);
-  const currentCurrency = useSelector((state) => state.currency);
   const matched = useSelector((state) => state.matchedFlights);
   const dispatch = useDispatch();
 
@@ -32,29 +34,15 @@ function App() {
     dispatch(setMatchedResults(quotesA, quotesB));
     dispatch(isLoading());
   };
-  const changeCurrency = (currency) => { 
-    
-    if (searchParams !== null && currency !== currentCurrency) {
-    searchFlights(searchParams.fmtFrom1,searchParams.fmtFrom2, searchParams.departDate, searchParams.returnDate, currency);
-    dispatch(setSearchParams({fmtFrom1: searchParams.fmtFrom1, fmtFrom2: searchParams.fmtFrom2, departDate: searchParams.departDate, returnDate: searchParams.returnDate, currency: currency}))
   };
-    if (currency !== currentCurrency)  {dispatch(setCurrency(currency))}; 
-    };
-
+  
   return (
     <div className="App-body">
       <div className="App">
-        <header className="App-header">
-        <div className="Currency-buttons">
-          <div className={useSelector(state => state.currency) === "GBP"? "selected" : "unselected"} onClick={() => changeCurrency("GBP")}>&nbsp;£&nbsp;</div>
-          <div className={useSelector(state => state.currency) === "USD"? "selected" : "unselected"} onClick={() => changeCurrency("USD")}>&nbsp;$&nbsp;</div>
-          <div className={useSelector(state => state.currency) === "EUR"? "selected" : "unselected"} onClick={() => changeCurrency("EUR")}>&nbsp;€&nbsp;</div>
-        </div>
-
-
-        </header>
-        <h1>Search for a place to meet</h1>
-
+      <Header
+      searchFlights={searchFlights}>
+      </Header>
+      
         <SearchForm
           searchFlights={searchFlights}
           getPlace={getPlace}
