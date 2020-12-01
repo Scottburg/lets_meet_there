@@ -7,6 +7,38 @@
   align-items: right;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
   margin: 20px;
+}
+.Currency-buttons {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+  margin-right: 20px;
+  color: red;
+}
+.selected {
+  text-decoration: underline;
+  float: left;
+}
+.unselected {
+  float: left;
+}
+
+.direct {
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 20px;
+  color: rgba(255, 72, 0, 0.789);
+}
+
+.Filters {
+  display: flex;
+  align-items: stretch;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  color: rgba(255, 72, 0, 0.789);
+}
+
+#allFlights {
+  margin-left: 20px;
 }

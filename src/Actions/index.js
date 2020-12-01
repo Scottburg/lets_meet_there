@@ -3,7 +3,7 @@ export const isLoading = () => {
     type: 'home/isLoading',
   };
 };
-export const directFlights = () => {
+export const setDirectFlights = () => {
   return {
     type: 'home/directFlights',
   };

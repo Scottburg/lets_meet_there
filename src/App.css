@@ -15,17 +15,17 @@
   }
 }
 
-.Currency-buttons {
+/* .Currency-buttons {
   display: flex;
   justify-content: flex-end;
   margin-right: 20px;
   color: rgba(255, 72, 0, 0.789);
-}
+} */
 .selected {
   text-decoration: underline;
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 10vh;
   width: 90vw;
@@ -36,7 +36,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
   margin: 20px;
-}
+} */
 .App-body {
   background-color: #282c34;
   min-height: 130vh;

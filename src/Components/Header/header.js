@@ -1,13 +1,12 @@
 import React from 'react';
+import './header.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrency, setSearchParams } from '../../Actions';
-import { directFlights } from '../../Actions';
+import { setDirectFlights } from '../../Actions';
 
 function Header( {searchFlights }) {
 
   const directOnly = useSelector((state) => state.directFlights)
-
-
   const currentCurrency = useSelector((state) => state.currency);
   const searchParams = useSelector((state) => state.searchParams);
   const matched = useSelector((state) => state.matchedFlights);
@@ -23,17 +22,29 @@ function Header( {searchFlights }) {
     if (currency !== currentCurrency)  {dispatch(setCurrency(currency))}; 
     };
 
+    const handleToggleDirectFlights  = () => {
+        dispatch(setDirectFlights());
+      }
+
 
   return (
     <header className="App-header">
-        <div className="Currency-buttons">
+    <div className="Filters">
+    <div>
+          <div className={directOnly? "selected" : "unselected"} onClick={() => handleToggleDirectFlights()}>Direct Only</div>
+          <div id="allFlights" className={!directOnly? "selected" : "unselected"} onClick={() => handleToggleDirectFlights()}>All Flights</div>
+    </div>
+     
+    
+        <div>
+
           <div className={currentCurrency === "GBP"? "selected" : "unselected"} onClick={() => changeCurrency("GBP")}>&nbsp;£&nbsp;</div>
           <div className={currentCurrency === "USD"? "selected" : "unselected"} onClick={() => changeCurrency("USD")}>&nbsp;$&nbsp;</div>
           <div className={currentCurrency === "EUR"? "selected" : "unselected"} onClick={() => changeCurrency("EUR")}>&nbsp;€&nbsp;</div>
         </div>
-        {matched[0]? <div className="Directflights-toggle">
-        {directOnly? "Direct Flights": "All Flights"}  
-        </div> : null}
+          
+        </div>
+
     {!matched[0] ? (<h1>Search for a place to meet</h1>): null}
     </header>
 
