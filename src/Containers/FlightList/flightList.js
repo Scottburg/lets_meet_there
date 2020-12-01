@@ -2,7 +2,7 @@ import React from 'react';
 import './flightList.css';
 import FlightTile from '../../Components/FlightTile/flightTile';
 import { useSelector } from 'react-redux';
-import { directFlights } from '../../Actions';
+
 
 export default ({ matchedFlights }) => {
 
