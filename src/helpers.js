@@ -48,6 +48,8 @@ export default {
   }
   },
   matchFlights: (quotes, quotes2) => {
+
+    try{
     const unionSet = {};
 
     for (let i = 0; i < quotes.quotes.length; i++) {
@@ -76,6 +78,8 @@ export default {
     );
     orderedCollection(filteredSet);
     return orderedCollection(filteredSet);
+  }
+  catch{ return []}
   },
   placeId: (res, query) => {
     if (res.Places.length === 0) return null;

@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 
 export default ({ matchedFlights }) => {
 
-console.log(matchedFlights);
 const directOnly = useSelector((state) => state.directFlights)
 
   return (
