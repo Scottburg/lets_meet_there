@@ -3,8 +3,8 @@ import ApiClient from './ApiClient';
 const mocks = {
   query: 'london',
   origin: 'LOND-sky',
-  outbound: '2020-08-23',
-  inbound: '2020-08-27',
+  outbound: '2021-08-23',
+  inbound: '2021-08-27',
   mockFetchGetFlights: jest.fn().mockReturnValue(
     Promise.resolve({
       Quotes: [
@@ -67,6 +67,7 @@ describe('get flights fetch tests', () => {
       mocks.origin,
       mocks.outbound,
       mocks.inbound,
+      'GBP',
       mocks.mockFetchGetFlights
     ).then((data) => {
       expect(mocks.mockFetchGetFlights.mock.calls.length).toBeGreaterThan(0);

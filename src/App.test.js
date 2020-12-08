@@ -8,7 +8,7 @@ const mockStore = configureStore([]);
 const store = mockStore();
 
 describe('test the Spinner', () => {
-  it('should match snapshot', () => {
+  it.only('should match snapshot', () => {
     const { asFragment } = render(
       <Provider store={store}>
         <App />
