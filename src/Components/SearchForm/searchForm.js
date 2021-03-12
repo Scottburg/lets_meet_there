@@ -7,7 +7,6 @@ import 'react-dates/lib/css/_datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchParams } from '../../Actions';
 
-
 const SearchForm = ({ searchFlights, getPlace }) => {
   const initialState = {
     from1: '',
@@ -23,7 +22,7 @@ const SearchForm = ({ searchFlights, getPlace }) => {
   });
   const { startDate, endDate } = dateRange;
   const { from1, from2 } = state;
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleOnDateChange = (startDate, endDate) =>
     setdateRange(startDate, endDate);
@@ -43,7 +42,15 @@ const SearchForm = ({ searchFlights, getPlace }) => {
         const departDate = dateRange.startDate.format('YYYY-MM-DD');
         const returnDate = dateRange.endDate.format('YYYY-MM-DD');
         searchFlights(fmtFrom1, fmtFrom2, departDate, returnDate, currency);
-        dispatch(setSearchParams({fmtFrom1, fmtFrom2, departDate, returnDate, currency}))
+        dispatch(
+          setSearchParams({
+            fmtFrom1,
+            fmtFrom2,
+            departDate,
+            returnDate,
+            currency,
+          })
+        );
         setState(initialState);
       } catch (e) {
         console.log(e);
@@ -56,30 +63,27 @@ const SearchForm = ({ searchFlights, getPlace }) => {
     <div className="form-container">
       <div className="form">
         <form className="form" onSubmit={handleSubmit}>
-          <div className="from1">
-            <div className="formTitles">From</div>
-            <label htmlFor="from1"></label>
-            <input
-              className="inputboxes"
-              type="text"
-              name="from1"
-              onChange={handleChange}
-              value={from1}
-              placeholder="E.g. London"
-            />
-          </div>
-          <div className="from2">
-            <div className="formTitles">And</div>
-            <label htmlFor="from2"></label>
-            <input
-              className="inputboxes"
-              type="text"
-              name="from2"
-              onChange={handleChange}
-              value={from2}
-              placeholder="E.g. Barcelona"
-            />
-          </div>
+          <div className="formTitles">From</div>
+          <label htmlFor="from1"></label>
+          <input
+            class="form-control form-control-lg"
+            type="text"
+            name="from1"
+            onChange={handleChange}
+            value={from1}
+            placeholder="E.g. London"
+          ></input>
+          <div className="formTitles">And</div>
+          <label htmlFor="from2"></label>
+          <input
+            class="form-control form-control-lg"
+            type="text"
+            name="from2"
+            onChange={handleChange}
+            value={from2}
+            placeholder="E.g. Barcelona"
+          ></input>
+
           <div className="datePicker">
             <DateRangePicker
               startDatePlaceholderText="Depart"
@@ -100,7 +104,9 @@ const SearchForm = ({ searchFlights, getPlace }) => {
             />
           </div>
           <div className="buttonDiv">
-            <button type="submit"> Lets Meet There!</button>
+            <button type="submit" class="btn btn-light btn-lg">
+              Lets Meet There!
+            </button>
           </div>
         </form>
       </div>
